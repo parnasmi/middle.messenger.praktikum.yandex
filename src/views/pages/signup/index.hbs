@@ -10,28 +10,36 @@ scripts:
 	- ./index.js
 stylesheets:
 - ../../../scss/styles.scss
-- ./signin.scss
-title: Вход
-uri: /about
+- ./signup.scss
+title: Регистрация
 ---
 {{#extend "base"}}
 	{{#content "main"}}
 		<main class="flex items-center justify-center">
 			<div class="sign-form flex flex-col">
-				<h1 class="sign-form__heading">Вход</h1>
-				<div class="sign-form__fields sign-form__fields_login">
-					{{#each signin}}
+				<h1 class="sign-form__heading">Регистрация</h1>
+				<div class="sign-form__fields sign-form__fields_signup">
+					{{#each signup}}
 						<div class="sign-form__field">
-							<input placeholder="{{ this.label }}" type="{{this.type}}" class="sign-form__input" name="{{ this.name }}">
+							<input
+											placeholder="{{ this.label }}"
+											type="{{this.type}}"
+											class="sign-form__input {{ this.inputClass }}"
+											name="{{ this.name }}"
+											value=" {{ this.value }} "
+							>
 							{{#if this.showError}}
 								<div class="sign-form__field-error error">Неверный {{this.label}}</div>
+							{{/if }}
+							{{#if this.showPasswordError}}
+								<div class="sign-form__field-error error">Пароли не совпадают</div>
 							{{/if }}
 						</div>
 					{{/each}}
 				</div>
 				<div class="sign-forms__buttons mt-auto text-center">
-					<button type="button" class="sign-forms__main-btn btn block full-w">Авторизоваться</button>
-					<a href="#" >Нет аккаунта?</a>
+					<button type="button" class="sign-forms__main-btn btn block full-w">Зарегистрироваться</button>
+					<a href="#">Войти</a>
 				</div>
 			</div>
 		</main>
