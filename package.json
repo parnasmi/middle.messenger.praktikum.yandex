@@ -4,7 +4,7 @@
   "description": "### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main.  ### ВАЖНО: pull request должен называться “Sprint i” (i — номер спринта).",
   "scripts": {
     "dev": "npm run clean && parcel index.hbs",
-    "build": "parcel build index.hbs",
+    "build": "npm run clean && parcel build index.hbs",
     "server": "node app.js",
     "clean": "rimraf ./dist && rimraf ./.parcel-cache"
   },
