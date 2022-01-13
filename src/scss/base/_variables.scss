@@ -1,9 +1,13 @@
-$body-bg: #fff;
-$font-size-base: 14px;
-$line-height-base:1.428571429;
 $dark-color: #1e1e1e;
 $color-black: #000;
-$text-color: $dark-color;
-$link-color: blue;
-
+$color-white: #fff;
 $color-primary: #3369F3;
+$color-grey: #999;
+$color-red: #FF2F2F;
+
+$body-bg: $color-white;
+$font-size-base: 14px;
+$line-height-base:1.428571429;
+$text-color: $dark-color;
+$link-color: $color-primary;
+

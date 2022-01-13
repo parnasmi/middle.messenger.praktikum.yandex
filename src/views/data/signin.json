@@ -1,0 +1,14 @@
+[
+  {
+    "name": "login",
+    "label": "Логин",
+    "type": "text",
+    "showError": true
+  },
+  {
+    "name": "password",
+    "label": "Пароль",
+    "type" :"password",
+    "showError":  false
+  }
+]

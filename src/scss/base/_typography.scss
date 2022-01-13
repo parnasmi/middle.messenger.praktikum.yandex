@@ -1,10 +1,10 @@
 body {
 	font-size: $font-size-base;
-	font-weight: 400;
 	line-height: $line-height-base;
 	-webkit-font-smoothing: antialiased;
 	color: $text-color;
-	 font-family: Inter, sans-serif;
+	font-family: Inter, sans-serif;
+	font-weight: 500;
 }
 
 h1,
@@ -19,13 +19,10 @@ h6 {
 
 
 a {
-
 	font-family: inherit;
 	color: $link-color;
 	transition: all 0.3s ease;
 	text-decoration: none;
-	transition: all 0.3s;
-
 	&:hover,
 	&:focus {
 		//color: $link-hover-color;
@@ -38,13 +35,13 @@ a {
 }
 
 a[href]:not([class]) {
+	color: $color-primary;
 	// &:link,
 	// &:visited {
 	// 	color: $color-primary;
 	// }
 
 	&:hover {
-		// color: rgba($color-primary-link, .6);
-		color: $color-black;
+		text-decoration: underline;
 	}
 }
