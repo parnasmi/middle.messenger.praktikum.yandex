@@ -18,6 +18,10 @@
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -58,4 +62,20 @@
 .mx-auto {
   margin-left:auto;
   margin-right:auto;
+}
+
+.reset-list {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+  }
+}
+
+.text-right {
+  text-align: right;
+}
+
+.border-none {
+  border: none 0;
 }

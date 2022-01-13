@@ -25,3 +25,30 @@
 .profile__info {
   width: 510px;
 }
+
+.profile__avatar {
+  background-color: $color-grey-light-2;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.profile__data-item:not(:last-child) {
+  border-bottom: 1px solid $color-grey-border;
+}
+
+.profile__name {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.profile__avatar_edit {
+  margin-bottom: 97px;
+}
+
+.profile__actions_save-btn {
+  width: 280px;
+}
