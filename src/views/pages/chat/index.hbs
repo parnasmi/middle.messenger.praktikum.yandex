@@ -1,0 +1,23 @@
+---
+bodyclass: sign-in
+language: en
+meta:
+	author: Ilhom Maksadkulov
+	description: Sign in page of chat application
+	keywords: Some, Meta, Keywords
+	robots: index, follow
+scripts:
+	- ./index.js
+stylesheets:
+- ../../../scss/styles.scss
+- ./signin.scss
+title: Chat
+---
+{{#extend "base"}}
+	{{#content "main"}}
+		<main>
+			<h1>Welcome from signin page</h1>
+			Some sign inputs must had been here
+		</main>
+	{{/content}}
+{{/extend}}

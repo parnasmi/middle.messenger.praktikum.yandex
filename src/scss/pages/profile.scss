@@ -1,0 +1,27 @@
+@import "../base/variables";
+.profile {
+
+}
+
+.profile__nav {
+  background-color: $color-grey-light;
+  border: 1px solid $color-grey-border;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.profile__nav-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: $color-primary;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+}
+
+.profile__info {
+  width: 510px;
+}
