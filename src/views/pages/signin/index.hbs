@@ -1,0 +1,35 @@
+---
+bodyclass: sign-in not-auth h-screen w-screen
+language: en
+meta:
+	author: Ilhom Maksadkulov
+	description: Sign in page of chat application
+	keywords: Some, Meta, Keywords
+	robots: index, follow
+scripts:
+	- ./index.js
+stylesheets:
+- ../../../scss/styles.scss
+- ./signin.scss
+title: Вход
+uri: /about
+---
+{{#extend "base"}}
+	{{#content "main"}}
+		<main class="flex items-center justify-center">
+			<div class="sign-form flex flex-col">
+				<h1 class="sign-form__heading">Вход</h1>
+				<div class="sign-form__fields">
+					<div class="sign-form__field">
+						<div class="sign-form__label">Логин</div>
+						<input type="text" class="sign-form__input">
+					</div>
+					<div>field2</div>
+				</div>
+				<div class="sign-forms__buttons mt-auto">
+					buttons
+				</div>
+			</div>
+		</main>
+	{{/content}}
+{{/extend}}
