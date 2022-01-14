@@ -1,1 +1,1 @@
-console.log('this is profile page')
+console.log('this is profile password change page')
