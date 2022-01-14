@@ -6,6 +6,7 @@
     "dev": "npm run clean && parcel index.hbs",
     "build": "npm run clean && parcel build index.hbs",
     "server": "node app.js",
+    "start": "npm run clean && parcel build index.hbs && node app.js",
     "clean": "rimraf ./dist && rimraf ./.parcel-cache"
   },
   "engines": {

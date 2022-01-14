@@ -1,0 +1,25 @@
+.profile-info {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.profile-info__label {
+  font-size: 13px;
+}
+
+.profile-info__value {
+  color: $color-grey;
+}
+
+.profile__data_profile {
+  margin-bottom: 60px;
+}
+
+.profile-info__action {
+  color: $color-primary;
+}
+.profile__logout {
+  &:hover {
+    color: darken($color-red, 10%);
+  }
+}
