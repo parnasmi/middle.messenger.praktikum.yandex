@@ -14,12 +14,19 @@
   align-items: center;
 }
 
+.items-end {
+  align-items: flex-end;
+}
+
 .justify-center {
   justify-content: center;
 }
 
 .justify-between {
   justify-content: space-between;
+}
+.justify-end {
+  justify-content: flex-end;
 }
 
 .flex-col {
@@ -78,4 +85,19 @@
 
 .border-none {
   border: none 0;
+}
+
+.table {
+  display: table;
+}
+
+.block {
+  display: block;
+}
+
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
 }
