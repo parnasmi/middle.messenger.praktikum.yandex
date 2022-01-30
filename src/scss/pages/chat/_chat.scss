@@ -1,0 +1,41 @@
+.chat {
+}
+
+.chat__sidebar {
+  width: 310px;
+  border-right: 1px solid $color-grey-border;
+}
+
+.chat__not-selected-chat-text {
+  color: $color-grey;
+  font-size: 12px;
+}
+
+.chat__header {
+  padding: 21px 10px 14px 10px;
+}
+
+.chat__profile-link {
+  margin-bottom: 23px;
+  color: $color-grey;
+  line-height: 1;
+}
+
+.chat__profile-link-icon {
+  position: relative;
+  top: 1px;
+  margin-left: 5px;
+}
+
+.chat__search-input[type=search] {
+  border-radius: 5px;
+  background-color: $color-grey-light-2;
+  font-size: 12px;
+  padding: 9px 10px 9px 25px;
+  box-sizing: border-box;
+}
+
+.chat__search-icon {
+  top: 10px;
+  left: 10px
+}

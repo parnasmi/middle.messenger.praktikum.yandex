@@ -1,2 +1,12 @@
+### Веб приложение "Chat"
+
+В проекте были использован сборщик Parcel
+- Чтобы запустить в режиме разработки нужно запустить команду `npm run dev`
+- Чтобы собрать build, нужно запустить команду `npm run build`
+- Чтобы запустить сервер на порту 3000, нужно запустить команду `npm run start`
+
+## Адрес задеплоенной версии
+https://loving-banach-cbcad4.netlify.app/
+
 ### Ссылка на PR Спринт 1
 https://github.com/parnasmi/middle.messenger.praktikum.yandex/pull/1
