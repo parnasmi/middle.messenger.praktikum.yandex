@@ -1,7 +1,7 @@
 export interface IInput {
   events?: {
-   change:() => void,
-   blur:() => void,
+   focus:(e:Event) => void,
+   blur:(e:Event) => void,
   };
   attributes?: {
     placeholder?:string;
@@ -9,5 +9,7 @@ export interface IInput {
     disabled?: string;
     class?:string;
     name:string;
+    value?:string;
+    required?:boolean;
   }
 }

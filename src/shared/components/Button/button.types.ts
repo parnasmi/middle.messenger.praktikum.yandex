@@ -1,7 +1,7 @@
 export interface IButton {
   title: string;
   events?: {
-   click:() => void
+   click:(e:Event) => void
   };
   attributes?: {
     id?:string;

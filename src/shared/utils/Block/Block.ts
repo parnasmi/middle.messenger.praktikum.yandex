@@ -16,17 +16,18 @@ export class Block<P=any> {
   private _element: HTMLElement | null = null;
   protected readonly props: P;
   public eventBus: () => EventBus<Events>;
-  public children: Block[] | null = null;
+  // public children: Record<string, Block> = {};
+  public children: {[key: string]: Block | Block[]} = {};
 
-  public constructor(tagName: string, props?: P) {
+  public constructor(tagName: string, propsAndChildren?: P) {
     const eventBus = new EventBus<Events>()
-
+    const { children, props } = this._getChildren(propsAndChildren);
     this._meta = {
       tagName, props
     }
 
     this.props = this._makePropsProxy(props || {} as P)
-    this.children = (this.props as any).children;
+    this.children = {...(this.props as any).children,...children};
     this.eventBus = () => eventBus;
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT, this.props)
@@ -38,6 +39,55 @@ export class Block<P=any> {
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
   }
+
+  _getChildren(propsAndChildren: any) {
+    const children:Record<string, Block> | Record<string, Block[]> = {};
+    const props:any = {};
+
+    Object.entries(propsAndChildren).forEach(([key, value]) => {
+      if (value instanceof Block) {
+        children[key] = value;
+      } else {
+        props[key as string] = value;
+      }
+    });
+
+    return { children, props };
+  }
+  // eslint-disable-next-line no-unused-vars
+  compile(tmpl:(ctx:any) => string, props:any) {
+    const propsAndStubs = { ...props };
+
+    Object.entries(this.children).forEach(([key, child]) => {
+      if(Array.isArray(child)) {
+        propsAndStubs[key] = []
+        child.forEach((childItem) => {
+          propsAndStubs[key].push(`<div data-id="${childItem.id}"></div>`)
+        })
+      } else {
+        propsAndStubs[key] = `<div data-id="${child.id}"></div>`
+      }
+    });
+
+    const fragment = document.createElement('template');
+    fragment.innerHTML = tmpl(propsAndStubs);
+
+    Object.values(this.children).forEach(child => {
+      if(Array.isArray(child)) {
+        child.forEach((childItem) => {
+          const stub = fragment.content.querySelector(`[data-id="${childItem.id}"]`);
+          if(!stub) return;
+          stub.replaceWith(childItem.getContent());
+        })
+      } else {
+        const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+        if(!stub) return;
+        stub.replaceWith(child.getContent());
+      }
+    });
+    return fragment.content;
+  }
+
   private _componentDidUpdate(oldProps: P, newProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);
 
@@ -87,14 +137,14 @@ export class Block<P=any> {
     })
   }
 
-  private _updateChildren() {
-    if(!this.children) return;
-    this.element!.innerHTML = ''
-
-    this.children.forEach((child) =>{
-      this._element?.appendChild(child.getContent())
-    })
-  }
+  // private _updateChildren() {
+  //   if(!this.children) return;
+  //   this.element!.innerHTML = ''
+  //
+  //   this.children.forEach((child) =>{
+  //     this._element?.appendChild(child.getContent())
+  //   })
+  // }
 
   public getContent(): HTMLElement {
     return this.element!;
@@ -118,8 +168,22 @@ export class Block<P=any> {
   public componentDidUpdate(oldProps: P, newProps: P) {
     return true
   }
+
+  public dispatchComponentDidMount() {
+    this.eventBus().emit(Block.EVENTS.FLOW_CDM)
+  }
+
   private _componentDidMount(props: P) {
     this.componentDidMount(props);
+
+    Object.values(this.children).forEach(child => {
+      if(Array.isArray(child)) {
+        child.forEach((childElement) => childElement.dispatchComponentDidMount)
+      } else {
+        child.dispatchComponentDidMount();
+      }
+    });
+
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
@@ -151,7 +215,7 @@ export class Block<P=any> {
 					},
 					set(target: Record<string, unknown>, prop:string,value: unknown) {
             target[prop] = value;
-            self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target)
+            self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, self._meta.props)
             return true;
           },
 					deleteProperty() {

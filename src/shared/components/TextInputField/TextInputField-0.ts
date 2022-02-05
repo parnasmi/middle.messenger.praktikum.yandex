@@ -2,7 +2,6 @@ import {Block} from "../../utils";
 import {TextInput} from "../TextInput";
 import {FormFieldErrorMsg} from "../FormFieldErrorMsg";
 import {TextInputFieldTypes} from "./textInputField.types";
-import tmpl from './textInputField.hbs'
 
 export class TextInputField extends Block {
 	constructor(props: TextInputFieldTypes) {
@@ -14,21 +13,31 @@ export class TextInputField extends Block {
 				...(props.selfProps?.attributes || {}),
 				class: `sign-form__field ${props.selfProps?.attributes?.class}`
 			},
-			children: {textInput, errorMessage},
+			children: [textInput, errorMessage],
 		});
 	}
 
 	componentDidUpdate(oldProps: any, newProps: any): boolean {
-		(this.children.textInput as Block).setProps(newProps.textInput);
-		(this.children.textInput as Block).setProps(newProps.errorMessage);
+		this.children![0].setProps(newProps.textInput);
+		this.children![1].setProps(newProps.errorMessage);
 		return super.componentDidUpdate(oldProps, newProps);
 	}
 
 	public validateInput(isValid: boolean) {
-		(this.children.errorMessage as Block).setProps({ isShown: !isValid })
+		if (isValid) {
+			this.componentDidUpdate(this.props, {
+				...this.props,
+				errorMessage: { ...this.props.errorMessage, isShown: false },
+			});
+			return;
+		}
+		this.componentDidUpdate(this.props, {
+			...this.props,
+			errorMessage: { ...this.props.errorMessage, isShown: true },
+		});
 	}
 
-	render(): DocumentFragment {
-		return this.compile(tmpl, this.props)
+	protected render(): DocumentFragment {
+		return new DocumentFragment();
 	}
 }

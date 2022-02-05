@@ -6,9 +6,9 @@ export class Button extends Block {
     super('button', {
       ...props,
       attributes: {
+        ...props.attributes,
         class: `btn ${props.attributes?.class}`,
-        ...props.attributes
-      }
+      },
     });
   }
   render() {

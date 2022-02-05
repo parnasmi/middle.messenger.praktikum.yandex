@@ -1,15 +1,5 @@
 {{#extend "layout"}}
 	{{#content "main"}}
-			<div class="sign-form flex flex-col">
-				<h1 class="sign-form__heading">Вход</h1>
-				<div class="sign-form__fields sign-form__fields_login">
-					{{{signInLoginField}}}
-					{{{signInPasswordField}}}
-				</div>
-				<div class="sign-forms__buttons mt-auto text-center">
-					{{{signInButton}}}
-					<a href="#" >Нет аккаунта?</a>
-				</div>
-			</div>
+			{{{signInForm}}}
 	{{/content}}
 {{/extend}}
