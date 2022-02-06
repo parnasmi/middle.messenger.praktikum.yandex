@@ -1,6 +1,10 @@
 .chat {
 }
 
+.chat__list-item {
+  //padding: 2px 0;
+}
+
 .chat__sidebar {
   width: 310px;
   border-right: 1px solid $color-grey-border;
@@ -38,4 +42,157 @@
 .chat__search-icon {
   top: 10px;
   left: 10px
+}
+
+
+.chat__list-wrapper {
+  height: calc(100% - 105px);
+}
+
+.chat__list {
+  height: 100%;
+  overflow-x:hidden;
+  overflow-y: auto;
+}
+
+.chat__content-active {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.chat__content-header {
+  border-bottom: 1px solid $color-grey-border;
+  padding: 10px 0;
+}
+
+.chat__content-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: $color-grey-light-2;
+}
+
+.chat__content-username {
+  margin-left: 10px;
+  font-size: 13px;
+  color: $dark-color;
+  font-weight: 700;
+}
+
+.chat__content-three-dot-btn {
+  background-color: transparent;
+  transition: all .3s;
+
+  &:hover {
+    svg {
+      color: $color-primary;
+    }
+
+    .chat__content-actions-popover {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.chat__content-actions-popover {
+  top: calc(100% + 22px);
+  right: 0;
+  &::before {
+    top: -25px;
+  }
+}
+
+.chat__content-input-control {
+  border-top: 1px solid $color-grey-border;
+  padding: 10px 0;
+}
+
+.chat__content-input-wrp {
+  margin: 0 10px;
+}
+
+.chat__content-attach-btn {
+  width: 30px;
+  height: 30px;
+  color: $color-grey;
+  transition: color .3s;
+  cursor: pointer;
+  &:hover {
+    svg {
+      color: $color-primary;
+    }
+
+    .chat__content-attach-popover {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.chat__content-attach-popover {
+  bottom: calc(100% + 22px);
+  left: 0;
+  &::before {
+    bottom: -25px;
+  }
+}
+
+.chat__content-attach-label {
+  transition: all .3s;
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.chat__content-attach-item-text {
+
+}
+
+.chat__content-attach-list-item {
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.chat__content-attach-label-text {
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+
+.chat__content-input {
+  border: 0 none;
+  background-color: $color-grey-light-2;
+  border-radius: 30px;
+  padding: 6px 10px;
+}
+
+.chat__content-send-btn {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-color: $color-primary;
+  border: 1px solid transparent;
+  transition: all .3s;
+  svg {
+    color: $color-white;
+  }
+
+  &:hover {
+    border-color: $color-primary;
+    background-color: $color-white;
+    svg {
+      color: $color-primary;
+    }
+  }
+}
+
+.chat_content-messages-list {
+  padding-top: 20px;
+}
+
+
+.chat__content-message-item {
+  margin-bottom: 10px;
 }

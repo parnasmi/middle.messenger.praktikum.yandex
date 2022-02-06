@@ -1,5 +1,5 @@
 import {Block, compile} from "../../utils";
-import tmpl from './button.hbs'
+import tmpl from './button.tmpl.hbs'
 import {IButton} from "./button.types";
 export class Button extends Block {
   constructor(props: IButton) {

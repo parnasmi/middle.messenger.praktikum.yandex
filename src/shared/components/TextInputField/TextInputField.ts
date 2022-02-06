@@ -1,8 +1,8 @@
-import {Block} from "../../utils";
+import {Block, mergeClassnames} from "../../utils";
 import {TextInput} from "../TextInput";
 import {FormFieldErrorMsg} from "../FormFieldErrorMsg";
 import {TextInputFieldTypes} from "./textInputField.types";
-import tmpl from './textInputField.hbs'
+import tmpl from './textInputField.tmpl.hbs'
 
 export class TextInputField extends Block {
 	constructor(props: TextInputFieldTypes) {
@@ -12,7 +12,7 @@ export class TextInputField extends Block {
 		super("div", {
 			attributes: {
 				...(props.selfProps?.attributes || {}),
-				class: `sign-form__field ${props.selfProps?.attributes?.class}`
+				class: `sign-form__field ${mergeClassnames(props.selfProps?.attributes?.class)}`
 			},
 			children: {textInput, errorMessage},
 		});
@@ -20,7 +20,7 @@ export class TextInputField extends Block {
 
 	componentDidUpdate(oldProps: any, newProps: any): boolean {
 		(this.children.textInput as Block).setProps(newProps.textInput);
-		(this.children.textInput as Block).setProps(newProps.errorMessage);
+		(this.children.errorMessage as Block).setProps(newProps.errorMessage);
 		return super.componentDidUpdate(oldProps, newProps);
 	}
 

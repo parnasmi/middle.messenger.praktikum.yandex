@@ -1,6 +1,6 @@
 import {Block} from "../../shared/utils";
 import handlebars from 'handlebars/dist/handlebars.runtime';
-import tmpl from "./signIn.hbs";
+import tmpl from "./signIn.tmpl.hbs";
 import {base} from '../../shared/views/layouts'
 const layouts = require('handlebars-layouts');
 import '../../scss/styles.scss'

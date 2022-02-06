@@ -49,6 +49,10 @@
   width: 100%;
 }
 
+.full-h {
+  height: 100%;
+}
+
 .error {
   color: $color-red;
 }
@@ -100,4 +104,23 @@
 }
 .absolute {
   position: absolute;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.items-justify-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

@@ -1,5 +1,5 @@
 import {Block, compile, mergeClassnames} from "../../utils";
-import tmpl from './FormFieldErrorMsg.hbs'
+import tmpl from './FormFieldErrorMsg.tmpl.hbs'
 import {FormFieldErrorMsgType} from "./formFieldErrorMsg.type";
 
 export class FormFieldErrorMsg extends Block {
@@ -8,7 +8,7 @@ export class FormFieldErrorMsg extends Block {
 			...props,
 			attributes: {
 				...props.attributes,
-				class: `error ${mergeClassnames(props.attributes?.class)}`,
+				class: `error sign-form__field-error ${mergeClassnames(props.attributes?.class)}`,
 			},
 		});
 	}
