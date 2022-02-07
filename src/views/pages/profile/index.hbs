@@ -1,40 +1,29 @@
----
-bodyclass: profile h-screen w-screen
-language: en
-meta:
-	author: Ilhom Maksadkulov
-	description: Profile page of chat application
-	keywords: Some, Meta, Keywords
-	robots: index, follow
-scripts:
-	- ./index.ts
-stylesheets:
-- ../../../scss/styles.scss
-- ../../../scss/pages/profile.scss
-title: Профиль
----
+--- bodyclass: profile h-screen w-screen language: en meta: author: Ilhom
+Maksadkulov description: ProfileEdit page of chat application keywords: Some,
+Meta, Keywords robots: index, follow scripts: - ./index.ts stylesheets: -
+../../../scss/styles.scss - ../../../scss/pages/profile.scss title: Профиль ---
 {{#extend "base"}}
 	{{#content "main"}}
 		<main class="flex full-h-w profile">
 			<div class="profile__nav flex-shrink-0 flex items-center justify-center">
-					<button type="button" class="profile__nav-btn">
-						<svg width="13" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill="#fff" d="M13 6.8H2V5.2h11z"/>
-							<path d="M6 11 2 6l4-5" stroke="#fff" stroke-width="1.6"/>
-						</svg>
-					</button>
+				<button type="button" class="profile__nav-btn">
+					<svg width="13" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill="#fff" d="M13 6.8H2V5.2h11z"></path>
+						<path d="M6 11 2 6l4-5" stroke="#fff" stroke-width="1.6"></path>
+					</svg>
+				</button>
 			</div>
 			<div class="profile__content flex-grow-1 flex items-center justify-center">
-				<div class="profile__info  mx-auto ">
+				<div class="profile__info mx-auto">
 					<div class="profile__avatar mx-auto flex items-center justify-center">
-						<img src="../../../assets/img/icon-avatar.svg" alt="">
+						<img src="../../../assets/img/icon-avatar.svg" alt="" />
 					</div>
 					<div class="profile__name">Иван</div>
-					<div class="profile__data profile__data_profile ">
+					<div class="profile__data profile__data_profile">
 						<ul class="profile__data-list reset-list">
-							{{#each profileData }}
+							{{#each profileData}}
 								<li class="profile__data-item">
-									<div class="profile-info flex items-center justify-between ">
+									<div class="profile-info flex items-center justify-between">
 										<div class="profile-info__label">
 											{{this.label}}
 										</div>
@@ -48,25 +37,25 @@ title: Профиль
 					</div>
 					<div class="profile__actions">
 						<ul class="profile__data-list reset-list">
-								<li class="profile__data-item">
-									<div class="profile-info flex items-center justify-between ">
-										<a class="profile-info__action" href="#">
-											Изменить данные
-										</a>
-									</div>
-								</li>
 							<li class="profile__data-item">
-									<div class="profile-info flex items-center justify-between ">
-										<a class="profile-info__action" href="#">
-											Изменить пароль
-										</a>
-									</div>
-								</li>
+								<div class="profile-info flex items-center justify-between">
+									<a class="profile-info__action" href="#">
+										Изменить данные
+									</a>
+								</div>
+							</li>
 							<li class="profile__data-item">
-									<div class="profile-info">
-										<a href="#" class="error profile__logout">Выйти</a>
-									</div>
-								</li>
+								<div class="profile-info flex items-center justify-between">
+									<a class="profile-info__action" href="#">
+										Изменить пароль
+									</a>
+								</div>
+							</li>
+							<li class="profile__data-item">
+								<div class="profile-info">
+									<a href="#" class="error profile__logout">Выйти</a>
+								</div>
+							</li>
 						</ul>
 					</div>
 

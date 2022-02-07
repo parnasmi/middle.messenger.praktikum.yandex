@@ -2,17 +2,17 @@ import {Block, mergeClassnames} from "../../utils";
 // import tmpl from './Input.hbs'
 import {IInput} from "./textinput.types";
 export class TextInput extends Block {
-	constructor(props: IInput) {
+	constructor({ hasDefaultClass = true, ...restProps }: IInput) {
 		super("input", {
-			...props,
+			...restProps,
 			attributes: {
-				...props.attributes,
-				class: `sign-form__input ${mergeClassnames(props.attributes?.class)}`
-			}
+				...restProps.attributes,
+				class: `${hasDefaultClass ? 'sign-form__input' : ''} ${mergeClassnames(restProps.attributes?.class)}`,
+			},
 		});
 	}
 	// componentDidUpdate(oldProps: any, newProps: any): boolean {
-  //   return true;
+	//   return true;
 	// }
 
 	render(): DocumentFragment {

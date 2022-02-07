@@ -4,11 +4,9 @@ import {base} from '../../shared/views/layouts'
 const layouts = require('handlebars-layouts');
 import '../../scss/styles.scss'
 import '../../scss/pages/chat/index.scss'
-import handlebars from "handlebars/dist/handlebars.runtime";
 import {ChatContent, ChatSidebar} from "./components";
-// import {ChatSidebar} from "./components/ChatSidebar/ChatSidebar";
-// import {ChatContent} from "./components/ChatContent";
 const searchIcon = new URL('../../assets/img/icon-search.svg', import.meta.url);
+import handlebars from "handlebars/dist/handlebars.runtime";
 // Register helpers
 handlebars.registerHelper(layouts(handlebars));
 // Register partials

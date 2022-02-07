@@ -1,7 +1,5 @@
 import {Block} from "../../utils";
-import {TextInputFieldTypes} from "../TextInputField/textInputField.types";
 import {TextInputField} from "../TextInputField";
-import {Button} from "../Button";
 
 type ValidationType = {
   name: string;
@@ -9,14 +7,12 @@ type ValidationType = {
 }
 
 export class Form extends Block {
-  buttonText:string;
   protected formData: Record<string, string>;
   private formInputPatterns: Record<string, RegExp>;
 
   constructor(props: any) {
-    const { inputs,buttonText,...restProps } = props;
     super("form", {
-      ...restProps,
+      ...props,
       events: {
         submit: (event: Event) => {
           event.preventDefault()
@@ -24,8 +20,6 @@ export class Form extends Block {
         },
       }
     });
-    this.buttonText = buttonText;
-    this._generateInputs(inputs);
 
     this.formData = {}
 
@@ -40,32 +34,7 @@ export class Form extends Block {
     }
   }//constructor
 
-  protected _generateInputs(inputs:any) {
-    this.children.inputs = inputs.map((inputProps: TextInputFieldTypes, index:number):Block => {
-      const input = new this.props.TextInputField({
-        ...inputProps,
-        textInput: {
-          ...inputProps.textInput,
-          events: {
-            blur: (event: Event) => this._onFocus(index, event),
-            focus: (event: Event) => this._onFocus(index,event),
-          },
-        },
-      });
-
-      return input;
-    });
-
-    this.children.button = new Button({
-      title: this.buttonText,
-      attributes: { class: "block full-w sign-forms__main-btn", type: "submit" },
-      events: {
-        click: this._handleSubmit.bind(this)
-      }
-    });
-  }
-
-  private _handleSubmit() {
+  protected _handleSubmit() {
     const isValid = Object.keys(this.formData).length && Object.entries(this.formData).every(([key, value]) => this._validate({ name:key, value }))
     console.log('isValid',isValid)
     if(isValid) {

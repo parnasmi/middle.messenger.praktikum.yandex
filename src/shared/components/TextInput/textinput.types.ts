@@ -11,5 +11,6 @@ export interface IInput {
     name:string;
     value?:string;
     required?:boolean;
-  }
+  },
+  hasDefaultClass?: boolean
 }
