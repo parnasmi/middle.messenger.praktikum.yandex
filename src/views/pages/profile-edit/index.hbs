@@ -1,56 +1,52 @@
----
-bodyclass: profile h-screen w-screen
-language: en
-meta:
-	author: Ilhom Maksadkulov
-	description: Edit ProfileEdit page of chat application
-	keywords: Some, Meta, Keywords
-	robots: index, follow
-scripts:
-	- ./index.ts
-stylesheets:
-- ../../../scss/styles.scss
-- ../../../scss/pages/profile.scss
-title: Профиль
----
+--- bodyclass: profile h-screen w-screen language: en meta: author: Ilhom
+Maksadkulov description: Edit ProfilePasswordChange page of chat application
+keywords: Some, Meta, Keywords robots: index, follow scripts: - ./index.ts
+stylesheets: - ../../../scss/styles.scss - ../../../scss/pages/profile.scss
+title: Профиль ---
 {{#extend "base"}}
 	{{#content "main"}}
 		<main class="flex full-h-w profile">
 			<div class="profile__nav flex-shrink-0 flex items-center justify-center">
-					<button type="button" class="profile__nav-btn">
-						<svg width="13" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill="#fff" d="M13 6.8H2V5.2h11z"/>
-							<path d="M6 11 2 6l4-5" stroke="#fff" stroke-width="1.6"/>
-						</svg>
-					</button>
+				<button type="button" class="profile__nav-btn">
+					<svg width="13" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill="#fff" d="M13 6.8H2V5.2h11z"></path>
+						<path d="M6 11 2 6l4-5" stroke="#fff" stroke-width="1.6"></path>
+					</svg>
+				</button>
 			</div>
 			<div class="profile__content flex-grow-1 flex items-center justify-center">
-				<div class="profile__info  mx-auto ">
-					<div class="profile__avatar profile__avatar_edit  mx-auto flex items-center justify-center">
-						<img src="../../../assets/img/icon-avatar.svg" alt="">
+				<div class="profile__info mx-auto">
+					<div
+						class="profile__avatar profile__avatar_edit mx-auto flex items-center justify-center"
+					>
+						<img src="../../../assets/img/icon-avatar.svg" alt="" />
 					</div>
 					<form action="">
-					<div class="profile__data profile__data_profile ">
-						<ul class="profile__data-list reset-list">
-							{{#each profileData }}
-								<li class="profile__data-item">
-									<div class="profile-info flex items-center justify-between ">
-										<div class="profile-info__label">
-											{{this.label}}
+						<div class="profile__data profile__data_profile">
+							<ul class="profile__data-list reset-list">
+								{{#each profileData}}
+									<li class="profile__data-item">
+										<div class="profile-info flex items-center justify-between">
+											<div class="profile-info__label">
+												{{this.label}}
+											</div>
+											<div class="profile-info__value">
+												<input
+													type="text"
+													value="{{this.value}}"
+													class="profile-info__input border-none text-right"
+												/>
+											</div>
 										</div>
-										<div class="profile-info__value">
-											<input type="text" value="{{this.value}}" class="profile-info__input border-none text-right">
-										</div>
-									</div>
-								</li>
-							{{/each}}
-						</ul>
-					</div>
-					<div class="profile__actions flex justify-center">
-						<div class="profile__actions_save-btn">
-							<button class="btn full-w" type="submit">Сохранить</button>
+									</li>
+								{{/each}}
+							</ul>
 						</div>
-					</div>
+						<div class="profile__actions flex justify-center">
+							<div class="profile__actions_save-btn">
+								<button class="btn full-w" type="submit">Сохранить</button>
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>

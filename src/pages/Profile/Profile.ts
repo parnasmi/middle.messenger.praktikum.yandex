@@ -3,7 +3,7 @@ import '../../scss/pages/profile.scss'
 import {Block} from "../../shared/utils";
 import tmpl from './profile.tmpl.hbs'
 import {ProfileDataItem, ProfileNav} from "../../shared/components";
-import {ProfileAvatar} from "../../shared/components/ProfileAvatar";
+import {ProfileAvatar} from "../../shared/components";
 import {ProfileDataItemTypes} from "../../shared/components/ProfileDataItem/ProfileDataItem.types";
 
 const dataItemJson = [
@@ -38,7 +38,7 @@ export class Profile extends Block {
 		document.body.className = 'h-screen profile w-screen';
 		document.title = 'Profile';
 		const profileNav = new ProfileNav()
-		const profileAvatar = new ProfileAvatar()
+		const profileAvatar = new ProfileAvatar({})
 		super('main', {
 			attributes: {
 				class: 'flex full-h-w profile'

@@ -24,27 +24,31 @@ export class Form extends Block {
     this.formData = {}
 
     this.formInputPatterns = {
-      login:/\S+@\S+\.\S+/,
+      login:/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/,
       email:/\S+@\S+\.\S+/,
       password:/^(?=.*\d)[0-9a-zA-Z]{8,}$/,
+      old_password:/^(?=.*\d)[0-9a-zA-Z]{8,}$/,
+      new_password:/^(?=.*\d)[0-9a-zA-Z]{8,}$/,
       'retype-password':/^(?=.*\d)[0-9a-zA-Z]{8,}$/,
       first_name:/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/,
       second_name:/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/,
+      chat_name:/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/,
       phone:/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im,
     }
   }//constructor
 
   protected _handleSubmit() {
     const isValid = Object.keys(this.formData).length && Object.entries(this.formData).every(([key, value]) => this._validate({ name:key, value }))
-    console.log('isValid',isValid)
     if(isValid) {
-      console.log( 'Valid form data',this.formData)
+      console.log('isValid',isValid)
       this._onSend()
       return;
     }
     console.error('form is not valid',this.formData)
 
   }
+
+  //TODO: compare password validation, save formdata prop to field on mount
 
   protected _onSend() {}
 
@@ -72,6 +76,7 @@ export class Form extends Block {
   }
 
   protected _validate({name,value}:ValidationType):boolean {
-    return this.formInputPatterns[name].test(value)
+    const isValid = this.formInputPatterns[name].test(value);
+    return isValid
   }
 }
