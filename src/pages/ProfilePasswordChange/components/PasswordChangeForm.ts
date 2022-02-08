@@ -94,6 +94,7 @@ export class PasswordChangeForm extends Form {
         ...dataItem,
         textInput: {
           ...dataItem.textInput,
+          hasDefaultClass:false,
           events: {
             blur: (event: Event) => this._onFocus(index, event),
             focus: (event: Event) => this._onFocus(index,event),

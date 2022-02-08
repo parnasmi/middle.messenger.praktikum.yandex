@@ -31,6 +31,9 @@ export class SignUp extends Block {
 						errorMessage: {
 							errorText: "Такой email существует",
 							isShown: false,
+							attributes: {
+								class: "sign-form__field-error",
+							},
 						},
 					},
 					{
@@ -45,6 +48,9 @@ export class SignUp extends Block {
 						errorMessage: {
 							errorText: "Такой логин существует",
 							isShown: false,
+							attributes: {
+								class: "sign-form__field-error",
+							},
 						},
 					},
 					{
@@ -59,6 +65,9 @@ export class SignUp extends Block {
 						errorMessage: {
 							errorText: "Обязателен для ввода",
 							isShown: false,
+							attributes: {
+								class: "sign-form__field-error",
+							}
 						},
 					},
 					{
@@ -73,6 +82,9 @@ export class SignUp extends Block {
 						errorMessage: {
 							errorText: "Обязателен для ввода",
 							isShown: false,
+							attributes: {
+								class: "sign-form__field-error",
+							}
 						},
 					},
 					{
@@ -87,6 +99,9 @@ export class SignUp extends Block {
 						errorMessage: {
 							errorText: "Обязателен для ввода",
 							isShown: false,
+							attributes: {
+								class: "sign-form__field-error",
+							}
 						},
 					},
 					{
@@ -101,6 +116,9 @@ export class SignUp extends Block {
 						errorMessage: {
 							errorText: "Обязателен для ввода",
 							isShown: false,
+							attributes: {
+								class: "sign-form__field-error",
+							}
 						},
 					},
 					{
@@ -115,6 +133,9 @@ export class SignUp extends Block {
 						errorMessage: {
 							errorText: "Обязателен для ввода",
 							isShown: false,
+							attributes: {
+								class: "sign-form__field-error",
+							}
 						},
 					}
 					],

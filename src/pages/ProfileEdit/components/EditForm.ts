@@ -139,7 +139,7 @@ export class EditForm extends Form {
             attributes: {
               ...userProfileFormFields[curr].textInput.attributes,
               class: 'border-none profile-info__input text-right',
-              value: userProfileData[curr]
+              value: userProfileData[curr],
             }
           }
         }
@@ -152,6 +152,7 @@ export class EditForm extends Form {
         ...dataItem,
         textInput: {
           ...dataItem.textInput,
+          hasDefaultClass:false,
           events: {
             blur: (event: Event) => this._onFocus(index, event),
             focus: (event: Event) => this._onFocus(index,event),

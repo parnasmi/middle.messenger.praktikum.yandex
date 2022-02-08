@@ -8,7 +8,7 @@ export class FormFieldErrorMsg extends Block {
 			...props,
 			attributes: {
 				...props.attributes,
-				class: `error sign-form__field-error ${mergeClassnames(props.attributes?.class)}`,
+				class: `error  ${mergeClassnames(props.attributes?.class)}`,
 			},
 		});
 	}
