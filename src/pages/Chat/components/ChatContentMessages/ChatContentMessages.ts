@@ -52,7 +52,7 @@ export class ChatContentMessages extends Block {
 	}
 
 	private _generateMessages(messagesJson:ChatMessageType[]) {
-		this.children.messagesLogs = messagesJson.map((message, index):Block => {
+		this.children.messagesLogs = messagesJson.map((message):Block => {
 			return new ChatMessage(message);
 		})
 	}

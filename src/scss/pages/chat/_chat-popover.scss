@@ -1,14 +1,15 @@
 .chat-popover {
   position: absolute;
-  box-shadow: 0 0 6px 0 rgba(#000, .14);
+  box-shadow: 0 0 6px 0 rgba(#000, 0.14);
   background-color: $color-white;
   border-radius: 12px;
   padding: 15px;
   visibility: hidden;
   opacity: 0;
-  transition: all .3s;
+  transition: all 0.3s;
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     height: 25px;
     background-color: transparent;

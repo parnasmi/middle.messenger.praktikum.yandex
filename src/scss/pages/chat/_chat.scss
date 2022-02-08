@@ -16,7 +16,7 @@
 }
 
 .chat__header {
-  padding: 21px 10px 14px 10px;
+  padding: 21px 10px 14px;
 }
 
 .chat__profile-link {
@@ -31,7 +31,7 @@
   margin-left: 5px;
 }
 
-.chat__search-input[type=search] {
+.chat__search-input[type="search"] {
   border-radius: 5px;
   background-color: $color-grey-light-2;
   font-size: 12px;
@@ -41,9 +41,8 @@
 
 .chat__search-icon {
   top: 10px;
-  left: 10px
+  left: 10px;
 }
-
 
 .chat__list-wrapper {
   height: calc(100% - 105px);
@@ -51,7 +50,7 @@
 
 .chat__list {
   height: 100%;
-  overflow-x:hidden;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -81,7 +80,7 @@
 
 .chat__content-three-dot-btn {
   background-color: transparent;
-  transition: all .3s;
+  transition: all 0.3s;
 
   &:hover {
     svg {
@@ -98,6 +97,7 @@
 .chat__content-actions-popover {
   top: calc(100% + 22px);
   right: 0;
+
   &::before {
     top: -25px;
   }
@@ -116,8 +116,9 @@
   width: 30px;
   height: 30px;
   color: $color-grey;
-  transition: color .3s;
+  transition: color 0.3s;
   cursor: pointer;
+
   &:hover {
     svg {
       color: $color-primary;
@@ -133,13 +134,15 @@
 .chat__content-attach-popover {
   bottom: calc(100% + 22px);
   left: 0;
+
   &::before {
     bottom: -25px;
   }
 }
 
 .chat__content-attach-label {
-  transition: all .3s;
+  transition: all 0.3s;
+
   &:hover {
     color: $color-primary;
   }
@@ -160,7 +163,6 @@
   white-space: nowrap;
 }
 
-
 .chat__content-input {
   border: 0 none;
   background-color: $color-grey-light-2;
@@ -174,7 +176,8 @@
   border-radius: 50%;
   background-color: $color-primary;
   border: 1px solid transparent;
-  transition: all .3s;
+  transition: all 0.3s;
+
   svg {
     color: $color-white;
   }
@@ -182,6 +185,7 @@
   &:hover {
     border-color: $color-primary;
     background-color: $color-white;
+
     svg {
       color: $color-primary;
     }
@@ -191,7 +195,6 @@
 .chat_content-messages-list {
   padding-top: 20px;
 }
-
 
 .chat__content-message-item {
   margin-bottom: 10px;
