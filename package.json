@@ -10,10 +10,6 @@
     "clean": "rimraf ./dist && rimraf ./.parcel-cache",
     "eslint": "eslint 'src/**/*.ts' --fix"
   },
-  "engines": {
-    "npm": "6.14.8",
-    "node": "14.15.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parnasmi/middle.messenger.praktikum.yandex.git"
