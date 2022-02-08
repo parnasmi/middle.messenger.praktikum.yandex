@@ -1,10 +1,10 @@
 body {
-	font-size: $font-size-base;
-	line-height: $line-height-base;
-	-webkit-font-smoothing: antialiased;
-	color: $text-color;
-	font-family: Inter, sans-serif;
-	font-weight: 500;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  -webkit-font-smoothing: antialiased;
+  color: $text-color;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
 }
 
 h1,
@@ -13,39 +13,40 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: normal;
-	margin-top: 0;
+  font-weight: normal;
+  margin-top: 0;
 }
 
-
 a {
-	font-family: inherit;
-	color: $link-color;
-	transition: all 0.3s ease;
-	text-decoration: none;
-	&:hover {
-		color: darken($link-color, 10%);
-	}
+  font-family: inherit;
+  color: $link-color;
+  transition: all 0.3s ease;
+  text-decoration: none;
 
-	&:hover,
-	&:focus {
-		//color: $link-hover-color;
-		//text-decoration: @link-hover-decoration;
-	}
+  &:hover {
+    color: darken($link-color, 10%);
+  }
 
-	&:focus {
-		//.tab-focus();
-	}
+  &:hover,
+  &:focus {
+    //color: $link-hover-color;
+    //text-decoration: @link-hover-decoration;
+  }
+
+  &:focus {
+    //.tab-focus();
+  }
 }
 
 a[href]:not([class]) {
-	color: $color-primary;
-	// &:link,
-	// &:visited {
-	// 	color: $color-primary;
-	// }
+  color: $color-primary;
 
-	&:hover {
-		text-decoration: underline;
-	}
+  // &:link,
+  // &:visited {
+  // 	color: $color-primary;
+  // }
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
