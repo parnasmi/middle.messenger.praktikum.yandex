@@ -70,7 +70,7 @@ try {
 *  3) APPLY STYLELINT, PRETTIER, ESLINT
 *  4) VALIDATION REGEX
 *  5) EDIT README
-*  6) inputs in edit pages must get sign_for classes
+*  6) inputs in edit pages must get sign_for classes - done
 *  7) REMOVE THIS TODO
 *  8) SEND TO CODE REVIEW
 * */

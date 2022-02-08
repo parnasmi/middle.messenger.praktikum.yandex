@@ -5,11 +5,23 @@ import {TextInputFieldTypes} from "../TextInputField/textInputField.types";
 import {Block} from "../../utils";
 import {Button} from "../Button";
 
+type SignFormType = {
+  inputs: TextInputFieldTypes[];
+  attributes: {
+    class: string;
+  };
+  signFormModifierClass: string;
+  buttonText: string;
+  linkText: string;
+  link: string;
+  headingText: string;
+}
+
 export class SignForm extends Form {
   buttonText:string;
-  constructor({inputs,buttonText,...restProps}:any) {
+  constructor({inputs,buttonText,...restProps}:SignFormType) {
     super({ ...restProps });
-    this.buttonText = buttonText
+    this.buttonText = buttonText;
     this._generateInputs(inputs);
   }
   _onSend() {
