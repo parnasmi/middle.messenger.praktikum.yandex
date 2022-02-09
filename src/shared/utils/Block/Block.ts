@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { Meta, Events } from "./types";
 import { EventBus } from "../Eventbus";
-
+// Ревьюверу - никак не смог заставить работать через generic. Во вложенных компонентах не удалось типизировать
 export class Block<P = any> {
 	static EVENTS = {
 		INIT: "init",

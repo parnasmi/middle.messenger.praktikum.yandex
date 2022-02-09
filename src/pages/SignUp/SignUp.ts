@@ -16,12 +16,11 @@ handlebars.registerPartial('layout', base);
 export class SignUp extends Block {
 	constructor() {
 		document.title = 'Sign Up'
-		document.body.className = 'h-screen not-auth w-screen';
 		const signInForm = new SignForm(
 			{
 				inputs: signUpJsonData,
 				attributes: {
-					class: "flex flex-col sign-form",
+					class: "flex flex-col sign-form not-auth",
 				},
 				signFormModifierClass: 'sign-form__fields_signup',
 				buttonText: 'Зарегистрироваться',

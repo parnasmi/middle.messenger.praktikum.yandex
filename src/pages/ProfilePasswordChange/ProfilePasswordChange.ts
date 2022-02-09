@@ -7,7 +7,6 @@ import {PasswordChangeForm} from "./components";
 
 export class ProfilePasswordChange extends Block {
 	constructor() {
-		document.body.className = 'h-screen profile w-screen';
 		document.title = 'Profile';
 		const profileNav = new ProfileNav()
 		const profileAvatar = new ProfileAvatar({attributes: {class: 'profile__avatar_edit'}})

@@ -13,13 +13,13 @@ handlebars.registerHelper(layouts(handlebars));
 handlebars.registerPartial('layout', base);
 import {chatJsonItems} from './chatJsonItems'
 
-export class Chat extends Block {
+export class Chat extends Block<{}> {
 	constructor() {
 		const chatSidebar = new ChatSidebar({chatItems:chatJsonItems})
 		const chatContent = new ChatContent()
 		super("main", {
 			attributes: {
-				class: "full-h-w",
+				class: "full-h-w chat-page",
 			},
 			searchIcon: searchIcon,
 			children: {
@@ -27,7 +27,6 @@ export class Chat extends Block {
 				chatContent
 			}
 		});
-		document.body.className = "chat-page h-screen w-screen";
 		document.title = 'Chat'
 	}
 

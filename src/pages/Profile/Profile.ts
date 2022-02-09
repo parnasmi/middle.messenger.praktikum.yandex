@@ -6,9 +6,8 @@ import {ProfileDataItem, ProfileNav} from "../../shared/components";
 import {ProfileAvatar} from "../../shared/components";
 import {ProfileDataItemTypes} from "../../shared/components/ProfileDataItem/ProfileDataItem.types";
 import {dataItemJson} from './dataItemJson'
-export class Profile extends Block {
+export class Profile extends Block<{}> {
 	constructor() {
-		document.body.className = 'h-screen profile w-screen';
 		document.title = 'Profile';
 		const profileNav = new ProfileNav()
 		const profileAvatar = new ProfileAvatar({})

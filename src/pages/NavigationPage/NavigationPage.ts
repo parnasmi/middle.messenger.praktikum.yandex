@@ -11,9 +11,8 @@ import ProfilePasswordChange from '../ProfilePasswordChange'
 import NotFound from '../404'
 import ServerErrorPage from '../500'
 import {Button} from "../../shared/components";
-export class NavigationPage extends Block {
+export class NavigationPage extends Block<{}> {
 	constructor() {
-	document.body.className = 'h-screen not-auth w-screen';
 		super("main", {
 			attributes: {
 				class: "flex items-center justify-center full-h-w",

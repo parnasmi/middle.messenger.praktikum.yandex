@@ -17,7 +17,6 @@ const userProfileData:Record<string, string> = {
 
 export class ProfileEdit extends Block {
 	constructor() {
-		document.body.className = 'h-screen profile w-screen';
 		document.title = 'Profile';
 		const profileNav = new ProfileNav()
 		const profileAvatar = new ProfileAvatar({})
