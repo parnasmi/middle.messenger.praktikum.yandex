@@ -5,34 +5,7 @@ import tmpl from './profile.tmpl.hbs'
 import {ProfileDataItem, ProfileNav} from "../../shared/components";
 import {ProfileAvatar} from "../../shared/components";
 import {ProfileDataItemTypes} from "../../shared/components/ProfileDataItem/ProfileDataItem.types";
-
-const dataItemJson = [
-	{
-	label: 'Почта',
-	valueComponent: 'pochta@yandex.ru'
-	},
-	{
-		label: 'Логин',
-		valueComponent: 'ivanivanov'
-	},
-	{
-		label: 'Имя',
-		valueComponent: 'Иван'
-	},
-	{
-		label: 'Фамилия',
-		valueComponent: 'Иванов'
-	},
-	{
-		label: 'Имя в чате',
-		valueComponent: 'Иван'
-	},
-	{
-		label: 'Телефон',
-		valueComponent: '+7 (909) 967 30 30'
-	}
-]
-
+import {dataItemJson} from './dataItemJson'
 export class Profile extends Block {
 	constructor() {
 		document.body.className = 'h-screen profile w-screen';

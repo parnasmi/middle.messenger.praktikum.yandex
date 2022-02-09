@@ -6,6 +6,7 @@ const layouts = require("handlebars-layouts");
 import "../../scss/styles.scss";
 import "../../scss/pages/sign-form.scss";
 import { SignForm } from "../../shared/components";
+import {signInJsonData} from "./signInJsonData";
 
 // Register helpers
 handlebars.registerHelper(layouts(handlebars));
@@ -16,54 +17,7 @@ export class SignIn extends Block {
 	constructor() {
 		document.body.className = "h-screen not-auth w-screen";
 		const signInForm = new SignForm({
-			inputs: [
-				{
-					selfProps: {
-						attributes: {
-							class: "",
-						},
-					},
-					textInput: {
-						attributes: {
-							class: "sign-form__input",
-							type: "email",
-							name: "login",
-							placeholder: "Логин",
-							required: true,
-						},
-					},
-					errorMessage: {
-						errorText: "Неверный логин",
-						isShown: false,
-						attributes: {
-							class: "sign-form__field-error",
-						},
-					},
-				},
-				{
-					selfProps: {
-						attributes: {
-							class: "",
-						},
-					},
-					textInput: {
-						attributes: {
-							class: "sign-form__input",
-							type: "password",
-							name: "password",
-							placeholder: "Пароль",
-							required: true,
-						},
-					},
-					errorMessage: {
-						errorText: "Неверный пароль",
-						isShown: false,
-						attributes: {
-							class: "sign-form__field-error",
-						},
-					},
-				},
-			],
+			inputs: signInJsonData,
 			attributes: {
 				class: "flex flex-col sign-form",
 			},

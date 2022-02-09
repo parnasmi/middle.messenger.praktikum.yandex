@@ -20,7 +20,7 @@ export class ProfileEdit extends Block {
 		document.body.className = 'h-screen profile w-screen';
 		document.title = 'Profile';
 		const profileNav = new ProfileNav()
-		const profileAvatar = new ProfileAvatar()
+		const profileAvatar = new ProfileAvatar({})
     const editForm = new EditForm({userProfileData})
 		super('main', {
 			attributes: {
