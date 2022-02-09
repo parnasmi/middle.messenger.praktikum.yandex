@@ -8,7 +8,7 @@ export class EventBus<
 	// eslint-disable-next-line no-unused-vars
 	private events: { [key in E]?: Listener<M[E]>[] } = {};
 	//Ревьюверу: Спасибо. Извините, но я не понял что где как поправить.
-	// Можете поделиться ссылкой где вы типизировали как вы написали?
+	// Можете поделиться ссылкой где типизировали как вы написали?
 	on(event: E, callback: Listener<M[E]>): void {
 		if (!this.events[event]) this.events[event] = [];
 		this.events[event]?.push(callback);
