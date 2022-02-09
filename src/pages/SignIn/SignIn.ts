@@ -2,11 +2,12 @@ import { Block } from "../../shared/utils";
 import handlebars from "handlebars/dist/handlebars.runtime";
 import tmpl from "./signIn.tmpl.hbs";
 import { base } from "../../shared/views/layouts";
+
 const layouts = require("handlebars-layouts");
 import "../../scss/styles.scss";
 import "../../scss/pages/sign-form.scss";
 import { SignForm } from "../../shared/components";
-import {signInJsonData} from "./signInJsonData";
+import { signInJsonData } from "./signInJsonData";
 
 // Register helpers
 handlebars.registerHelper(layouts(handlebars));
