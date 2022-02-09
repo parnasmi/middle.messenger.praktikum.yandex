@@ -4,5 +4,5 @@ export type ChatItemTypes = {
   from_user: string;
   last_text_message: string;
   date:string;
-  unread_count:number | null;
+  unread_count: number | null;
 }
