@@ -15,5 +15,10 @@
 ## Адрес задеплоенной версии
 https://loving-banach-cbcad4.netlify.app/
 
+
+### Ссылка на PR Спринт 1
+https://github.com/parnasmi/middle.messenger.praktikum.yandex/pull/1
+
 ### Ссылка на PR Спринт 2
 https://github.com/parnasmi/middle.messenger.praktikum.yandex/pull/2
+

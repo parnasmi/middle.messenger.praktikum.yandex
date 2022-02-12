@@ -2,6 +2,7 @@
 /dist
 .cache/
 .parcel-cache/
+.idea
 
 # OS generated files #
 ######################

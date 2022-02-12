@@ -1,7 +1,8 @@
 @import "../base/variables";
+
 .sign-form {
-  padding: 50px 30px 30px 30px;
-  box-shadow: 0 0 6px 0 rgba($color-black, .14);
+  padding: 50px 30px 30px;
+  box-shadow: 0 0 6px 0 rgba($color-black, 0.14);
   border-radius: 12px;
 }
 
@@ -15,6 +16,7 @@
 .sign-form__fields_login {
   margin-bottom: 170px;
 }
+
 .sign-form__fields_signup {
   margin-bottom: 60px;
 }
@@ -22,6 +24,7 @@
 .sign-form__field {
   width: 280px;
   position: relative;
+
   &:not(:last-child) {
     margin-bottom: 16px;
   }
@@ -49,6 +52,7 @@
   padding-top: 7px;
   padding-bottom: 7px;
 }
+
 .sign-forms__main-btn {
   margin-bottom: 14px;
 }

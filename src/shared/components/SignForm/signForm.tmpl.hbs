@@ -1,0 +1,14 @@
+{{#extend "layout"}}
+	{{#content "main"}}
+		<h1 class="sign-form__heading">{{headingText}}</h1>
+		<div class="sign-form__fields {{signFormModifierClass}}">
+			{{#each inputs}}
+				{{{this}}}
+			{{/each}}
+		</div>
+		<div class="sign-forms__buttons mt-auto text-center">
+			{{{button}}}
+			<a href="{{link}}" >{{linkText}}</a>
+		</div>
+	{{/content}}
+{{/extend}}
