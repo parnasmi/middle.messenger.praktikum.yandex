@@ -33,20 +33,20 @@ export class Route {
     return isEqual(pathname, this._pathname);
   }
 
-  render() {
-    if (!this._block) {
-      this._block = new this._blockClass();
-      if(this._block && this._props) {
-        render(this._props.rootQuery, this._block);
-      }
-      return;
-    }
-
-    console.log(' this._block', this._block)
-
-    // this._block.show();
+  private mountInDom() {
     if(this._block && this._props) {
       render(this._props.rootQuery, this._block);
     }
+  }
+
+  render() {
+    if (!this._block) {
+      this._block = new this._blockClass();
+      this.mountInDom();
+      return;
+    }
+    // this._block.show();
+    this.mountInDom();
+
   }
 }

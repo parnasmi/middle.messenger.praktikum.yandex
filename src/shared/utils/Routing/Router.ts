@@ -38,14 +38,14 @@ export class Router {
 
   _onRoute(pathname:string) {
     const route = this.getRoute(pathname);
-    const areRoutesNotEqual = this._currentRoute !== route;
+    // const areRoutesNotEqual = this._currentRoute !== route;
     if (!route) {
       return;
     }
 
-    if (this._currentRoute && areRoutesNotEqual) {
-      this._currentRoute.leave();
-    }
+    // if (this._currentRoute && areRoutesNotEqual) {
+    //   this._currentRoute.leave();
+    // }
 
     this._currentRoute = route;
     // route.render(route, pathname);
