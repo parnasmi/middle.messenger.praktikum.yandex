@@ -25,7 +25,7 @@ export class SignUp extends Block {
 			signFormModifierClass: "sign-form__fields_signup",
 			buttonText: "Зарегистрироваться",
 			linkText: "Войти",
-			link: "sign-in",
+			link: "/",
 			headingText: "Регистрация",
 		});
 

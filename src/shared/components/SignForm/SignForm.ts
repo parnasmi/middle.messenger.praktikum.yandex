@@ -2,9 +2,11 @@ import tmpl from './signForm.tmpl.hbs'
 import {Form} from "../Form";
 import {TextInputField} from "../TextInputField";
 import {TextInputFieldTypes} from "../TextInputField/textInputField.types";
-import {Block} from "../../utils";
+import {Block, Router} from "../../utils";
 import {Button} from "../Button";
+import {Element} from '../index'
 
+const router = new Router('#root');
 type SignFormType = {
   inputs: TextInputFieldTypes[];
   attributes: {
@@ -47,6 +49,17 @@ export class SignForm extends Form {
       attributes: { class: "block full-w sign-forms__main-btn", type: "submit" },
       events: {
         click: this._handleSubmit.bind(this)
+      }
+    });
+    this.children.aLink = new Element({
+      tagName: 'a',
+      title: this.props.linkText,
+      attributes: { class: "", href: this.props.link},
+      events: {
+        click: (e:Event) => {
+          e.preventDefault();
+          router.go(this.props.link)
+        }
       }
     });
   }

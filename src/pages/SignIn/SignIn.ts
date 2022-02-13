@@ -24,7 +24,7 @@ export class SignIn extends Block {
 			signFormModifierClass: "sign-form__fields_login",
 			buttonText: "Авторизоваться",
 			linkText: "Нет аккаунта",
-			link: "sign-up",
+			link: "/sign-up",
 			headingText: "Вход",
 		});
 
