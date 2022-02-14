@@ -2,14 +2,13 @@ import { isEqual } from '../utilityFns/';
 import { render } from '../render';
 import {Block} from "../Block";
 import {RouteProps} from "./routing.types";
-
 export class Route {
   private _block:Block | null;
   private _pathname: string = '';
-  private _blockClass: new () => Block;//TODO: check field
+  private _blockClass: new (props:any) => Block;//TODO: check field
   private _props: RouteProps;
 
-  constructor(pathname:string, view:new () => Block, props:RouteProps) {
+  constructor(pathname:string, view:new (props:any) => Block, props:RouteProps) {
     this._pathname = pathname;
     this._blockClass = view;
     this._block = null;
@@ -41,7 +40,7 @@ export class Route {
 
   render() {
     if (!this._block) {
-      this._block = new this._blockClass();
+      this._block = new this._blockClass({});
       this.mountInDom();
       return;
     }
