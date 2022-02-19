@@ -8,7 +8,7 @@
     textInput: {
       attributes: {
         class: "sign-form__input",
-        type: "email",
+        type: "text",
         name: "login",
         placeholder: "Логин",
         required: true,

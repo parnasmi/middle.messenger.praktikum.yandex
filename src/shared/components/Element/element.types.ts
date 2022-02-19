@@ -1,6 +1,6 @@
 export interface IElement {
   tagName:string;
-  title: string;
+  text: string;
   events?: {
    click:(e:Event) => void
   };

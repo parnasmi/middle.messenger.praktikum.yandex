@@ -11,6 +11,7 @@ export class Element extends Block {
       },
     });
   }
+  
   render() {
     return compile(tmpl, this.props)
   }

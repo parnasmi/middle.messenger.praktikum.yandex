@@ -4,9 +4,12 @@ import {TextInputField} from "../TextInputField";
 import {TextInputFieldTypes} from "../TextInputField/textInputField.types";
 import {Block, Router} from "../../utils";
 import {Button} from "../Button";
-import {Element} from '../index'
+import {Element, Loader} from '../index'
+import {SignUpController, SignUpTypes} from "../../modules/signUp";
+import {AuthController} from "../../modules/auth";
 
 const router = new Router('#root');
+
 type SignFormType = {
   inputs: TextInputFieldTypes[];
   attributes: {
@@ -17,17 +20,55 @@ type SignFormType = {
   linkText: string;
   link: string;
   headingText: string;
+  pageType: 'sign-up' | 'sign-in'
 }
 
-export class SignForm extends Form {
+const signUpController = new SignUpController();
+const authController = new AuthController()
+
+export class SignForm extends Form<SignUpTypes> {
   buttonText:string;
   constructor({inputs,buttonText,...restProps}:SignFormType) {
     super({ ...restProps });
     this.buttonText = buttonText;
     this._generateInputs(inputs);
+    (this.children.spinner as Block).hide()
   }
   _onSend() {
-    console.log('formData has been sent', this.formData)
+    (this.children.apiErrorText as Block).hide();
+    (this.children.spinner as Block).show();
+
+    if(this.props.pageType === 'sign-up') {
+      signUpController.register(this.formData, {
+        success: (data) => {
+          console.log('data in callback', data);
+        },
+        error: (error) => {
+          (this.children.apiErrorText as Block).show();
+          (this.children.apiErrorText as Block).setProps({text:(error as any).reason});
+        },
+        finally: () => {
+          (this.children.spinner as Block).hide();
+        }
+      })
+    }
+
+    if(this.props.pageType === 'sign-in') {
+      // authController.getUser()
+      authController.signIn(this.formData, {
+        success: (data) => {
+          console.log('data in callback', data)
+        },
+        error: (error) => {
+          (this.children.apiErrorText as Block).show();
+          (this.children.apiErrorText as Block).setProps({text:(error as any).reason});
+        },
+        finally: () => {
+          (this.children.spinner as Block).hide();
+        }
+      })
+    }
+
   }
   private _generateInputs(inputs:any) {
     this.children.inputs = inputs.map((inputProps: TextInputFieldTypes, index:number):Block => {
@@ -46,14 +87,11 @@ export class SignForm extends Form {
 
     this.children.button = new Button({
       title: this.buttonText,
-      attributes: { class: "block full-w sign-forms__main-btn", type: "submit" },
-      events: {
-        click: this._handleSubmit.bind(this)
-      }
+      attributes: { class: "block full-w sign-forms__main-btn", type: "submit" }
     });
     this.children.aLink = new Element({
       tagName: 'a',
-      title: this.props.linkText,
+      text: this.props.linkText,
       attributes: { class: "", href: this.props.link},
       events: {
         click: (e:Event) => {
@@ -62,6 +100,12 @@ export class SignForm extends Form {
         }
       }
     });
+    this.children.apiErrorText = new Element({
+      tagName: 'div',
+      text: '',
+      attributes: { class: "error"},
+    });
+    this.children.spinner = new Loader()
   }
   render(): DocumentFragment {
     return this.compile(tmpl, this.props);

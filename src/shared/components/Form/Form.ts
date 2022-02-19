@@ -6,8 +6,8 @@ type ValidationType = {
   value: string;
 }
 
-export class Form extends Block {
-  protected formData: Record<string, string>;
+export class Form<T> extends Block {
+  protected formData: T;
   private formInputPatterns: Record<string, RegExp>;
 
   constructor(props: any) {
@@ -21,7 +21,7 @@ export class Form extends Block {
       }
     });
 
-    this.formData = {}
+    this.formData = {} as T;
 
     this.formInputPatterns = {
       login:/^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/,
@@ -40,7 +40,6 @@ export class Form extends Block {
   protected _handleSubmit() {
     const isValid = Object.keys(this.formData).length && Object.entries(this.formData).every(([key, value]) => this._validate({ name:key, value }))
     if(isValid) {
-      console.log('isValid',isValid)
       this._onSend()
       return;
     }
@@ -55,6 +54,7 @@ export class Form extends Block {
   protected _onFocus(index:number, event:Event) {
     const input = event.target as HTMLInputElement;
     const { name, value } = input;
+    //@ts-ignore
     this.formData[name] = value
     const isValid = this._validate({ name, value })
 
@@ -76,7 +76,6 @@ export class Form extends Block {
   }
 
   protected _validate({name,value}:ValidationType):boolean {
-    const isValid = this.formInputPatterns[name].test(value);
-    return isValid
+    return this.formInputPatterns[name].test(value);
   }
 }

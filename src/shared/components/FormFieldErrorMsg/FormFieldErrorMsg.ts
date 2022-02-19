@@ -28,6 +28,5 @@ export class FormFieldErrorMsg extends Block {
 			return compile(tmpl, this.props);
 		}
 		return new DocumentFragment()
-
 	}
 }

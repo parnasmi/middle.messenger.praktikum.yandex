@@ -19,18 +19,19 @@ export class SignIn extends Block {
 		const signInForm = new SignForm({
 			inputs: signInJsonData,
 			attributes: {
-				class: "flex flex-col sign-form not-auth",
+				class: "flex flex-col sign-form not-auth relative",
 			},
 			signFormModifierClass: "sign-form__fields_login",
 			buttonText: "Авторизоваться",
 			linkText: "Нет аккаунта",
 			link: "/sign-up",
 			headingText: "Вход",
+			pageType: 'sign-in'
 		});
 
 		super("div", {
 			attributes: {
-				class: "flex items-center justify-center full-h-w outer-wrapper",
+				class: "flex items-center justify-center full-h-w",
 			},
 			signInForm,
 		});

@@ -1,1 +1,1 @@
-export { httpRequest } from "./HTTPTransport";
+export { HTTPTransport } from "./HTTPTransport";
