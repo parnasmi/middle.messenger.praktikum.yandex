@@ -60,3 +60,19 @@
   right: 0;
   bottom: -11px;
 }
+
+.profile__avatar-overlay {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba($color-black, 50%);
+  color: $color-white;
+  padding: 20px;
+  opacity: 0;
+  transition: .2s ease;
+}
+
+.profile__avatar:hover .profile__avatar-overlay {
+  opacity: 1;
+}

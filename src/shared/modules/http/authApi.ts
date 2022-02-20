@@ -7,7 +7,7 @@ const authHttpInstance = new HTTPTransport({ endPoint: "/auth" });
 export class AuthApi extends BaseApi {
 	create(loginData: AuthProfileTypes) {
 		return authHttpInstance.post("/signin", {
-			data: loginData,
+			data: JSON.stringify(loginData),
 			headers: {"content-type": "application/json"},
 		});
 	}

@@ -1,0 +1,34 @@
+<!--<div class="popup__inner">-->
+<!--	<div class="popup__heading">Файл загружен</div>-->
+<!--	<div class="popup__action-text {{selectedClass}}">выбрать файл на компьютере</div>-->
+
+<!--	<form id="avatarUploader" enctype="multipart/form-data">-->
+<!--		Картинка: <input id="avatar" type="file" name="avatar" accept="image/*">-->
+<!--		{{{button}}}-->
+<!--	</form>-->
+<!--	<div class="popup__instruction-text">Нужно выбрать файл</div>-->
+<!--</div>-->
+
+
+<div class="popup__inner">
+	{{#if fileHasbeenUploaded}}
+		<div class="popup__heading">Файл загружен</div>
+	{{/if}}
+<!--	<form id="avatarUploader" enctype="multipart/form-data">-->
+<!--		<label class="popup__action-text block cursor-pointer {{selectedClass}}" for="avatar">-->
+<!--			{{#if filename}}-->
+<!--				{{filename}}-->
+<!--			{{else}}-->
+<!--				выбрать файл на компьютере-->
+<!--			{{/if}}-->
+<!--		</label>-->
+<!--		<input id="avatar" type="file" name="avatar" accept="image/*" class="visually-hidden">-->
+<!--		{{{button}}}-->
+<!--	</form>-->
+	{{{form}}}
+	{{#if filename}}
+		<span></span>
+	{{else}}
+		<div class="popup__instruction-text">{{errorText}}</div>
+	{{/if}}
+</div>

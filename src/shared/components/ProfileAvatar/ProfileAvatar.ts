@@ -1,19 +1,42 @@
-import {Block, mergeClassnames} from "../../utils";
-import tmpl from './profileAvatar.tmpl.hbs'
-import {ProfileAvatarTypes} from "./ProfileAvatar.types";
-const avatarIcon = new URL('../../../assets/img/icon-avatar.svg', import.meta.url);
+import { Block, mergeClassnames } from "../../utils";
+import tmpl from "./profileAvatar.tmpl.hbs";
+import { ProfileAvatarTypes } from "./ProfileAvatar.types";
+
+const avatarIcon = new URL(
+	"../../../assets/img/icon-avatar.svg",
+	import.meta.url,
+);
 
 export class ProfileAvatar extends Block {
-	constructor(props:ProfileAvatarTypes) {
+	openModalButtons = document.querySelectorAll("[data-modal-target]");
+	closeModalButtons = document.querySelectorAll("[data-close-button]");
+	overlay = document.querySelector(".overlay-popup");
+
+	constructor(props: ProfileAvatarTypes) {
 		super("div", {
+			...props,
 			attributes: {
-				class: `profile__avatar mx-auto flex items-center justify-center ${mergeClassnames(props?.attributes?.class)}`
+				...props.attributes,
+				class: `profile__avatar  mx-auto flex overflow-hidden items-center justify-center overflow-hidden relative ${mergeClassnames(
+					props?.attributes?.class,
+				)}`,
+				"data-modal-target": "avatar-popup",
 			},
-			avatarIcon
+			// events: {
+			// 	click: () => {
+			// 		const popup = document.querySelector('.popup');
+			// 		const overlay = document.querySelector('.overlay-popup');
+			// 		console.log('popup',popup)
+			//
+			// 		this.openModal(popup as HTMLElement, overlay as HTMLElement)
+			// 	},
+			// },
+			avatarUrl: props.avatarUrl || avatarIcon,
 		});
 	}
 
+
 	protected render(): DocumentFragment {
-		return this.compile(tmpl, this.props)
+		return this.compile(tmpl, this.props);
 	}
 }

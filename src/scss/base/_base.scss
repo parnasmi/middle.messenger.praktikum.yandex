@@ -102,3 +102,20 @@ iframe {
   height: 395px;
   position: relative;
 }
+
+.overlay-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($color-black, 50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: .3s ease;
+
+  &.active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}

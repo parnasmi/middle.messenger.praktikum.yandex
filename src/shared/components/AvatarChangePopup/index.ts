@@ -1,0 +1,1 @@
+export { AvatarChangePopup } from "./AvatarChangePopup";

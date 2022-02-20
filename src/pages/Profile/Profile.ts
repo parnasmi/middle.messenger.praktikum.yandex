@@ -1,25 +1,32 @@
 import "../../scss/styles.scss";
 import "../../scss/pages/profile.scss";
-import { Block } from "../../shared/utils";
 import tmpl from "./profile.tmpl.hbs";
-import { ProfileDataItem, ProfileNav } from "../../shared/components";
-import { ProfileAvatar } from "../../shared/components";
+import {
+	AvatarChangePopup,
+	ProfileDataItem,
+	ProfileNav,
+	ProfileAvatar, Popup,
+} from "../../shared/components";
 import { ProfileDataItemTypes } from "../../shared/components/ProfileDataItem/ProfileDataItem.types";
 import { dataItemJson } from "./dataItemJson";
 // import {connect} from "../../shared/store";
 import { SkeletonProfile } from "./components";
 // import store, { StoreEvents } from "../../shared/store";
 import { ProfileController } from "../../shared/modules/profile";
+import { OverlayPopup } from "../../shared/components/OverlayPopup";
 // import { TUser } from "../../shared/modules/types";
 
 const profileController = new ProfileController();
 
-export class Profile extends Block<{}> {
+export class Profile extends Popup {
+
 	constructor() {
 		document.title = "Profile";
 		const profileNav = new ProfileNav();
-		const profileAvatar = new ProfileAvatar({});
+		const profileAvatar = new ProfileAvatar({ avatarUrl: null });
 		const skeleton = new SkeletonProfile();
+		const overlayPopup = new OverlayPopup();
+		const avatarChangePopup = new AvatarChangePopup();
 		super("main", {
 			attributes: {
 				class: "flex full-h-w profile",
@@ -27,6 +34,8 @@ export class Profile extends Block<{}> {
 			children: {
 				profileNav,
 				profileAvatar,
+				overlayPopup,
+				avatarChangePopup,
 			},
 			isFetched: false,
 			skeleton,
@@ -36,7 +45,7 @@ export class Profile extends Block<{}> {
 		// 	// вызываем обновление компонента, передав данные из хранилища
 		// 	this.setProps(store.getState().user);
 
-		this.children.profileItemsList = this._generateDataItems(dataItemJson);
+		this.children.dataItemsList = this._generateDataItems(dataItemJson);
 		profileController.getProfile({
 			success: (data: any) => {
 				try {
@@ -44,32 +53,36 @@ export class Profile extends Block<{}> {
 						return [...acc, { ...curr, valueComponent: data[curr.field] }];
 					}, [] as ProfileDataItemTypes[]);
 
-					const profileItemsList = this._generateDataItems(profileData);
+					const items = this._generateDataItems(profileData);
 					this.setProps({
 						children: {
-							profileItemsList,
+							dataItemsList: items,
 							profileNav,
 							profileAvatar,
+							overlayPopup,
+							avatarChangePopup,
 						},
 						isFetched: true,
 					});
+					// profileAvatar.setProps({avatarUrl: null})
 				} catch (e) {
-					console.log('error occured while set props', e)
+					console.log("error occured while set props", e);
 				}
-
 			},
 		});
+		// console.log("props profile", this.props);
 	}
 
 	private _generateDataItems(dataItems: ProfileDataItemTypes[]) {
-		console.log('dataItems',dataItems)
 		return dataItems.map((dataItem) => {
 			return new ProfileDataItem({
 				label: dataItem.label,
 				valueComponent: dataItem.valueComponent,
 			});
 		});
+
 	}
+
 
 	render(): DocumentFragment {
 		return this.compile(tmpl, this.props);

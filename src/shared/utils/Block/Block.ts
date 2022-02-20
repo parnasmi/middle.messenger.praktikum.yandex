@@ -91,7 +91,6 @@ export class Block<P = any> {
 	}
 
 	private _componentDidMount(props: P) {
-		this.componentDidMount(props);
 
 		Object.values(this.children).forEach((child) => {
 			if (Array.isArray(child)) {
@@ -102,6 +101,9 @@ export class Block<P = any> {
 		});
 
 		this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+		setTimeout(() => {
+			this.componentDidMount(props);
+		},100)
 	}
 
 	public dispatchComponentDidMount() {

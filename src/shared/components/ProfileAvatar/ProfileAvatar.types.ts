@@ -1,5 +1,10 @@
 export type ProfileAvatarTypes = {
   attributes?:{
-    class?: string
-  }
+    class?: string;
+    'data-modal-target'?: string;
+  },
+  events?: {
+    click:() => void;
+  },
+  avatarUrl: string | null;
 }

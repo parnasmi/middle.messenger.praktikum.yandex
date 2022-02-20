@@ -11,3 +11,5 @@ export {EditInputField} from './EditInputField'
 export {Element} from './Element';
 export {Loader} from './Loader'
 export {ProfileBackBtn} from './ProfileBackBtn'
+export {AvatarChangePopup} from './AvatarChangePopup'
+export {Popup} from './Popup'

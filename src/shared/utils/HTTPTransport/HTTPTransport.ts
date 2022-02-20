@@ -4,7 +4,6 @@ type OptionsWithoutMethod = Omit<HTTPOptions, "method">;
 
 const defaultOptions:HTTPOptions = {
   headers: {
-    'Content-Type': 'application/json',
     'Cache-Control': 'no-cache'
   },
   timeout: 5000,
@@ -107,7 +106,7 @@ export class HTTPTransport {
       if (method === HTTPMethods.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(JSON.stringify(data));
+        xhr.send(data);
       }
 
     })
