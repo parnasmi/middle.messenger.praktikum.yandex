@@ -17,8 +17,6 @@ export class SignUpApi extends BaseApi {
 	}
 
 	request() {
-		return signUpHttpInstance.get("/user", {
-			headers: { mode: "cors", credentials: "include" },
-		});
+		return signUpHttpInstance.get("/user", {});
 	}
 }

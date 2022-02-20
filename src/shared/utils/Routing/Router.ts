@@ -17,8 +17,6 @@ export class Router {
     this._rootQuery = rootQuery;
 
     Router.__instance = this;
-
-    console.log('router',rootQuery)
   }
 
   use(pathname:string, block:new () => Block) {
@@ -42,6 +40,7 @@ export class Router {
     const route = this.getRoute(pathname);
     // const areRoutesNotEqual = this._currentRoute !== route;
     if (!route) {
+      this.go('/not-found')
       return;
     }
 

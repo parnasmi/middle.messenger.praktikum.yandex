@@ -54,7 +54,6 @@ export class SignForm extends Form<SignUpTypes> {
     }
 
     if(this.props.pageType === 'sign-in') {
-      // authController.getUser()
       authController.signIn(this.formData, {
         success: (data) => {
           console.log('data in callback', data)

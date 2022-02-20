@@ -1,29 +1,28 @@
-import {SignUpApi} from "../http";
-import {SignUpTypes} from "./signUp.types";
-import {XHRHTTPRequestResultType} from "../../utils/HTTPTransport/types";
-import {IFormCallback} from "../types";
-import {privateRoutes} from "../../../index";
-import {Router} from "../../utils";
+import { SignUpApi } from "../http";
+import { SignUpTypes } from "./signUp.types";
+import { XHRHTTPRequestResultType } from "../../utils/HTTPTransport/types";
+import { IFormCallback } from "../types";
+import { initializePrivateRoutes } from "../../../index";
+import { Router } from "../../utils";
+import { AuthController } from "../auth";
 
 const signUpApi = new SignUpApi();
-const router = new Router('#root');
-export class SignUpController {
+const router = new Router("#root");
+const authController = new AuthController();
 
-  public async register(data: SignUpTypes, cb?:IFormCallback) {
-    try {
-      console.log('register data', data)
-       await signUpApi.create(data);
-      const userData = await signUpApi.request();
-      console.log('userData', userData.json())
-      privateRoutes()
-      router.go('/chat')
-      cb?.success!(userData.json());
-    } catch(e:unknown) {
-      //Логика обработки ошибки
-      console.log('ошибка регистрации',e)
-      cb?.error!((e as XHRHTTPRequestResultType).json());
-    } finally {
-      cb?.finally!()
-    }
-  }
+export class SignUpController {
+	public async register(data: SignUpTypes, cb?: IFormCallback) {
+		try {
+			await signUpApi.create(data);
+			const userData = await authController.getUser();
+			initializePrivateRoutes();
+			router.go("/chat");
+			cb?.success!(userData);
+		} catch (e: unknown) {
+			//Логика обработки ошибки
+			cb?.error!((e as XHRHTTPRequestResultType).json());
+		} finally {
+			cb?.finally!();
+		}
+	}
 }

@@ -10,3 +10,4 @@ export {ProfileDataItem} from './ProfileDataItem'
 export {EditInputField} from './EditInputField'
 export {Element} from './Element';
 export {Loader} from './Loader'
+export {ProfileBackBtn} from './ProfileBackBtn'

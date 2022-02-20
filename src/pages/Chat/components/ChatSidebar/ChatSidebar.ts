@@ -1,12 +1,13 @@
-import {Block} from "../../../../shared/utils";
+import {Block, Router} from "../../../../shared/utils";
 import tmpl from './chatSidebar.tmpl.hbs';
 import {ChatSearch} from "../ChatSearch";
 import {ChatItemTypes} from "../ChatItem/chatItemTypes.types";
 import {ChatItem} from "../ChatItem/ChatItem";
+import {ChatSidebarProfileLink} from "../ChatSidebarProfileLink";
 type ChatSidebarType = {
   chatItems: ChatItemTypes[]
 }
-
+const router = new Router('#root')
 export class ChatSidebar extends Block {
 	constructor({ chatItems }:ChatSidebarType) {
 		const searchInput = new ChatSearch({
@@ -21,13 +22,21 @@ export class ChatSidebar extends Block {
 			},
 			searchInput,
 		});
-    this._generateChatItems(chatItems)
+    this._generateSidebarElements(chatItems)
 	}
 
-	private _generateChatItems(chatItems: ChatItemTypes[]) {
+	private _generateSidebarElements(chatItems: ChatItemTypes[]) {
     this.children.chatList = [...chatItems,...chatItems,...chatItems,...chatItems,...chatItems].map((chat, index) => {
       return new ChatItem(chat);
     })
+		this.children.profileButton = new ChatSidebarProfileLink({
+			events: {
+				click: (e:Event) => {
+					e.preventDefault();
+					router.go('/profile')
+				}
+			}
+		});
   }
 
 	render(): DocumentFragment {

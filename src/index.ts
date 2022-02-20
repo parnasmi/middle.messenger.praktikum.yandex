@@ -2,35 +2,41 @@ import { Router } from "./shared/utils";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Chat from "./pages/Chat";
-
-import { HTTPTransport } from "./shared/utils";
-import {AuthController} from "./shared/modules/auth";
+import Profile from "./pages/Profile";
+import ProfileEdit from "./pages/ProfileEdit";
+import ProfilePasswordChange from "./pages/ProfilePasswordChange";
+import NotFoundPage from "./pages/404";
+import { AuthController } from "./shared/modules/auth";
+import store from "./shared/store";
 
 const router = new Router("#root");
-const indexHttpInstance = new HTTPTransport({ endPoint: "/auth" });
-const authController = new AuthController()
+const authController = new AuthController();
+
 // authController.logout();
 
-export function privateRoutes() {
-  router
-    .use('/',Chat)
-    .use('/chat',Chat)
-    .start()
-}
-export function publicRoutes() {
-  router
-    .use('/',SignIn)
-    .use('/sign-up',SignUp)
-    .start()
+export function initializePrivateRoutes() {
+	router
+		.use("/", Chat)
+		.use("/chat", Chat)
+		.use("/profile", Profile)
+		.use("/profile-update", ProfileEdit)
+		.use("/profile-update", ProfilePasswordChange)
+		.use("/not-found", NotFoundPage)
+		.start();
 }
 
-indexHttpInstance.get("/user")
-  .then(() => {
-    privateRoutes();
-    router.go('/chat');
-  })
-  .catch(() => {
-    publicRoutes();
-    router.go('/')
-  });
+export function initializePublicRoutes() {
+	router.use("/", SignIn).use("/sign-up", SignUp).start();
+}
 
+authController
+	.getUser()
+	.then(() => {
+		initializePrivateRoutes();
+		router.go(document.location.pathname);
+		console.log("store", store.getState());
+	})
+	.catch(() => {
+		initializePublicRoutes();
+		router.go(document.location.pathname);
+	});
