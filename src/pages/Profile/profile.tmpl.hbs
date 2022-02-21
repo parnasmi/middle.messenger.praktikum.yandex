@@ -3,7 +3,7 @@
 	{{#if isFetched}}
 		<div class="profile__info mx-auto">
 			{{{profileAvatar}}}
-			<div class="profile__name">Иван</div>
+			<div class="profile__name">{{firstName}}</div>
 			<div class="profile__data profile__data_profile">
 				<ul class="profile__data-list reset-list">
 					{{#each dataItemsList}}
@@ -15,21 +15,17 @@
 				<ul class="profile__data-list reset-list">
 					<li class="profile__data-item">
 						<div class="profile-info flex items-center justify-between">
-							<a class="profile-info__action" href="profile-edit">
-								Изменить данные
-							</a>
+							{{{editLink}}}
 						</div>
 					</li>
 					<li class="profile__data-item">
 						<div class="profile-info flex items-center justify-between">
-							<a class="profile-info__action" href="profile-password-change">
-								Изменить пароль
-							</a>
+							{{{passwordChangeLink}}}
 						</div>
 					</li>
 					<li class="profile__data-item">
 						<div class="profile-info">
-							<a href="#" class="error profile__logout">Выйти</a>
+							{{{logoutLink}}}
 						</div>
 					</li>
 				</ul>

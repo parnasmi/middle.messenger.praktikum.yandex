@@ -20,7 +20,7 @@ export function initializePrivateRoutes() {
 		.use("/chat", Chat)
 		.use("/profile", Profile)
 		.use("/profile-update", ProfileEdit)
-		.use("/profile-update", ProfilePasswordChange)
+		.use("/password-change", ProfilePasswordChange)
 		.use("/not-found", NotFoundPage)
 		.start();
 }
