@@ -5,4 +5,5 @@ export interface SignUpTypes {
   email: string;
   password: string;
   phone: string;
+  display_name: string;
 }

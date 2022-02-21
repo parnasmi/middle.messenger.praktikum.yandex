@@ -95,11 +95,11 @@ export const userProfileFormFields:Record<string, EditInputFieldTypes> = {
         },
         label: 'Телефон'
     },
-    chat_name: {
+    display_name: {
         textInput: {
             attributes: {
                 type: "text",
-                name: "chat_name",
+                name: "display_name",
                 placeholder: "Имя в чате",
                 required: false,
                 value: ''

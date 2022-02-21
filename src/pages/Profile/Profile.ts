@@ -117,7 +117,7 @@ export class Profile extends Popup {
 						isFetched: true,
 						firstName: data.first_name
 					});
-					profileAvatar.setProps({avatarUrl:  `${RESOURCE_URL}${data.avatar}`})
+					profileAvatar.setProps({avatarUrl:  `${RESOURCE_URL}${data.avatar}`});
 				} catch (e) {
 					console.log("error occured while set props", e);
 				}
