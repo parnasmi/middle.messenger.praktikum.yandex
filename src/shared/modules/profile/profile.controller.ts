@@ -1,7 +1,7 @@
 import {IFormCallback} from "../types";
 import {AuthController} from "../auth";
 import {XHRHTTPRequestResultType} from "../../utils/HTTPTransport/types";
-import {ProfileApi} from "../http";
+import {PassWordFormType, ProfileApi} from "../http";
 import {SignUpTypes} from "../signUp";
 
 const profileApi = new ProfileApi()
@@ -29,6 +29,15 @@ export class ProfileController {
     try {
       const response = await profileApi.updateProfile(formData);
       cb.success!(response.json());
+    } catch (e) {
+      cb.error!((e as XHRHTTPRequestResultType).json())
+    }
+  }
+
+  public async changePassword(formData:PassWordFormType, cb:IFormCallback) {
+    try {
+      await profileApi.changePassword(formData);
+      cb.success!()
     } catch (e) {
       cb.error!((e as XHRHTTPRequestResultType).json())
     }

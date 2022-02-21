@@ -1,11 +1,11 @@
 import {EditInputFieldTypes} from "../../../shared/components/EditInputField/editInputField.types";
 
 export const userProfileFormFields:Record<string, EditInputFieldTypes> = {
-  old_password: {
+  oldPassword: {
     textInput: {
       attributes: {
         type: "password",
-        name: "old_password",
+        name: "oldPassword",
         placeholder: "Старый пароль",
         required: true,
         value: ''
@@ -20,11 +20,11 @@ export const userProfileFormFields:Record<string, EditInputFieldTypes> = {
     },
     label: 'Старый пароль'
   },
-  new_password: {
+  newPassword: {
     textInput: {
       attributes: {
         type: "password",
-        name: "new_password",
+        name: "newPassword",
         placeholder: "Новый пароль",
         required: true,
         value: ''
@@ -39,11 +39,11 @@ export const userProfileFormFields:Record<string, EditInputFieldTypes> = {
     },
     label: 'Новый пароль'
   },
-  retype_password: {
+  retypePassword: {
     textInput: {
       attributes: {
         type: "password",
-        name: "old_password",
+        name: "retypePassword",
         placeholder: "Повторите новый пароль",
         required: true,
         value: ''

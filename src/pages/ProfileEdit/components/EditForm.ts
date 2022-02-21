@@ -13,8 +13,7 @@ export class EditForm extends Form<SignUpTypes> {
 		this._generateInputs(userProfileFormFields, userProfileData);
 	}
 	async _onSend() {
-		console.log("formData has been sent", this.formData);
-		profileController.updateProfile(this.formData, {
+		await profileController.updateProfile(this.formData, {
 			success:(data) => {
 				console.log('updated data', data)
 			},
@@ -60,9 +59,6 @@ export class EditForm extends Form<SignUpTypes> {
 		this.children.saveButton = new Button({
 			title: "Сохранить",
 			attributes: { class: "full-w", type: "submit" },
-			// events: {
-			// 	click: () => console.log("data saved"),
-			// },
 		});
 	}
 	componentDidUpdate(oldProps: any, newProps: any): boolean {
