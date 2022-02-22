@@ -103,7 +103,7 @@ export class Block<P = any> {
 		this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
 		setTimeout(() => {
 			this.componentDidMount(props);
-		},100)
+		},300)
 	}
 
 	public dispatchComponentDidMount() {

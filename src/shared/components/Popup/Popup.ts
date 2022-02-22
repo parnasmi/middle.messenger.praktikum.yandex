@@ -8,11 +8,14 @@ export class Popup extends Block {
 	componentDidMount() {
 			this.openModalButtons = document.querySelectorAll("[data-modal-target]");
 			this.closeModalButtons = document.querySelectorAll("[data-close-button]");
+
 			this.overlay = document.querySelector(".overlay-popup") as HTMLElement;
 			this.openModalButtons.forEach((button) => {
 				button.addEventListener("click", () => {
-					const popup = document.querySelector(`.${(button as HTMLElement).dataset.modalTarget}`);
-					this.openModal(popup as HTMLElement)
+					const popup = document.querySelector(
+						`.${(button as HTMLElement).dataset.modalTarget}`,
+					);
+					this.openModal(popup as HTMLElement);
 				});
 			});
 
@@ -26,13 +29,13 @@ export class Popup extends Block {
 
 	protected openModal(popup: HTMLElement) {
 		if (popup === null) return;
-		popup.classList.add('active');
-		this.overlay?.classList.add('active');
+		popup.classList.add("active");
+		this.overlay?.classList.add("active");
 	}
 
 	public closeModal(popup: HTMLElement) {
 		if (popup === null) return;
-		popup.classList.remove('active');
-		this.overlay?.classList.remove('active');
+		popup.classList.remove("active");
+		this.overlay?.classList.remove("active");
 	}
 }

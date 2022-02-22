@@ -1,13 +1,20 @@
-import {BaseApi} from './baseApi'
-import {HTTPTransport} from "../../utils";
+import { BaseApi } from "./baseApi";
+import { HTTPTransport } from "../../utils";
+import { ChatCreateFormType } from "./http.types";
 
-const chatApiInstance = new HTTPTransport({endPoint: '/chat'});
+const chatApiInstance = new HTTPTransport({ endPoint: "/chats" });
 
 export class ChatApi extends BaseApi {
-	create() {
-		return chatApiInstance.post("/", { data: { title: "someTitle" } });
+	create(formData: ChatCreateFormType) {
+		return chatApiInstance.post("", {
+			data: JSON.stringify(formData),
+			headers: {
+				"content-type": "application/json"
+			},
+		});
 	}
+
 	request() {
-		return chatApiInstance.get('/full');
+		return chatApiInstance.get("/full");
 	}
 }

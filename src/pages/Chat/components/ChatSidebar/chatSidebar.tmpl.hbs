@@ -1,11 +1,8 @@
 <div class="chat__header flex flex-col items-end">
-<!--	<a href="profile" class="chat__profile-link flex items-center">-->
-<!--		<span>Профиль</span>-->
-<!--		<svg class="chat__profile-link-icon" width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--			<path d="M1 9L5 5L1 1" stroke="currentColor"/>-->
-<!--		</svg>-->
-<!--	</a>-->
-	{{{profileButton}}}
+	<div class="flex items-center chat__header-sub justify-between full-w">
+		{{{createChatButton}}}
+		{{{profileButton}}}
+	</div>
 	{{{searchInput}}}
 </div>
 <div class="chat__list-wrapper">
@@ -15,3 +12,4 @@
 		{{/each }}
 	</ul>
 </div>
+{{{chatCreatePopup}}}
