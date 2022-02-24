@@ -12,8 +12,6 @@ import store from "./shared/store";
 const router = new Router("#root");
 const authController = new AuthController();
 
-// authController.logout();
-
 export function initializePrivateRoutes() {
 	router
 		.use("/messenger", Chat)
