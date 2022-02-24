@@ -19,7 +19,7 @@ export class AuthController {
 			const userData = await this.getUser();
 			cb?.success!(userData);
 			initializePrivateRoutes();
-			router.go("/chat");
+			router.go("/messenger");
 			console.log("sign in data", { data, userData });
 		} catch (e: unknown) {
 			console.error("sign in error", e);

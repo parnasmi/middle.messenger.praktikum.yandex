@@ -1,19 +1,18 @@
 import { Router } from "../../../../shared/utils";
 import tmpl from "./chatSidebar.tmpl.hbs";
 import { ChatSearch } from "../ChatSearch";
-import { ChatItemTypes } from "../ChatItem/chatItemTypes.types";
-import { ChatItem } from "../ChatItem/ChatItem";
 import { ChatSidebarProfileLink } from "../ChatSidebarProfileLink";
 import { Button, Popup } from "../../../../shared/components";
 import { ChatCreatePopup } from "../../../../shared/components/ChatCreatePopup";
+import { ChatController } from "../../../../shared/modules/chat/chat.controller";
+import ChatList from "../ChatList";
 
-type ChatSidebarType = {
-	chatItems: ChatItemTypes[];
-};
+
 const router = new Router("#root");
+const chatController = new ChatController();
 
 export class ChatSidebar extends Popup {
-	constructor({ chatItems }: ChatSidebarType) {
+	constructor() {
 		const searchInput = new ChatSearch({
 			events: {
 				blur: (e: Event) =>
@@ -30,6 +29,14 @@ export class ChatSidebar extends Popup {
 		});
 
 		const chatCreatePopup = new ChatCreatePopup();
+		const profileButton = new ChatSidebarProfileLink({
+			events: {
+				click: (e: Event) => {
+					e.preventDefault();
+					router.go("/profile");
+				},
+			},
+		});
 		// console.log('chatCreatePopup',chatCreatePopup)
 
 		super("aside", {
@@ -40,35 +47,14 @@ export class ChatSidebar extends Popup {
 				searchInput,
 				createChatButton,
 				chatCreatePopup,
+				profileButton,
+				chatList: new ChatList()
 			},
 		});
-		this._generateSidebarElements(chatItems);
+
+		chatController.getChatList();
 	}
 
-	private _generateSidebarElements(chatItems: ChatItemTypes[]) {
-		this.children.chatList = [
-			...chatItems,
-			...chatItems,
-			...chatItems,
-			...chatItems,
-			...chatItems,
-		].map((chat, index) => {
-			return new ChatItem(chat);
-		});
-		this.children.profileButton = new ChatSidebarProfileLink({
-			events: {
-				click: (e: Event) => {
-					e.preventDefault();
-					router.go("/profile");
-				},
-			},
-		});
-	}
-
-	componentDidMount(props) {
-		super.componentDidMount(props);
-		console.log('chat sidebar')
-	}
 
 	render(): DocumentFragment {
 		return this.compile(tmpl, this.props);

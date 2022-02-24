@@ -13,7 +13,11 @@ class Store extends EventBus {
 
 	public set(path: string, value: unknown) {
 		set(this.state, path, value);
-		this.emit(StoreEvents.Updated);
+		try {
+			this.emit(StoreEvents.Updated);
+		} catch (e) {
+			console.error('no such event', e)
+		}
 	}
 }
 

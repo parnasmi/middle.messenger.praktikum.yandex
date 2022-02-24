@@ -63,9 +63,9 @@ export class Profile extends Popup {
 					e.preventDefault();
 					await authController.logout({
 						success: () => {
-							initializePublicRoutes();
-								router.go('/')
 							setTimeout(() => {
+								initializePublicRoutes();
+								router.go('/')
 							}, 100)
 						}
 					})

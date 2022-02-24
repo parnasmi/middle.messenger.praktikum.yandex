@@ -1,8 +1,8 @@
-export type ChatItemTypes = {
-  id:number;
-  avatar: string;
-  from_user: string;
-  last_text_message: string;
-  date:string;
-  unread_count: number | null;
+export type ChatItemType = {
+  avatar: null,
+  created_by: number;
+  id: number;
+  last_message:null | string;
+  title:string;
+  unread_count:0;
 }

@@ -225,7 +225,7 @@ export class Block<P = any> {
 
 	public setProps = (nextProps: P) => {
 		if (!nextProps) return;
-
+		// const { children, props } = this._getChildren(nextProps);
 		Object.assign(this.props, nextProps);
 	};
 

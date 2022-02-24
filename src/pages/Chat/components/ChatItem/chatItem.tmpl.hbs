@@ -4,11 +4,11 @@
 	</div>
 	<div class="chat-item__content flex-grow-1 flex ">
 		<div class="chat-item__text-info flex-grow-1">
-			<div class="chat-item__name">{{from_user}}</div>
-			<div class="chat-item__last-msg-text">{{last_text_message}}</div>
+			<div class="chat-item__name">{{title}}</div>
+			<div class="chat-item__last-msg-text">{{last_message}}</div>
 		</div>
 		<div class="chat-item__meta-info flex-shrink-0 flex flex-col items-end">
-			<div class="chat-item__date">{{date}}</div>
+<!--			<div class="chat-item__date">{{date}}</div>-->
 			{{#if unread_count }}
 			<div class="chat-item__unread-count">{{unread_count}}</div>
 			{{/if}}

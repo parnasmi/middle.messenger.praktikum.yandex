@@ -14,6 +14,10 @@ export class ChatApi extends BaseApi {
 		});
 	}
 
+	getChatList() {
+		return chatApiInstance.get("")
+	}
+
 	request() {
 		return chatApiInstance.get("/full");
 	}

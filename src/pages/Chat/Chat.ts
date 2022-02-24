@@ -13,12 +13,11 @@ import handlebars from "handlebars/dist/handlebars.runtime";
 handlebars.registerHelper(layouts(handlebars));
 // Register partials
 handlebars.registerPartial("layout", base);
-import { chatJsonItems } from "./chatJsonItems";
 import {OverlayPopup} from "../../shared/components/OverlayPopup";
 
 export class Chat extends Block<{}> {
 	constructor() {
-		const chatSidebar = new ChatSidebar({ chatItems: chatJsonItems });
+		const chatSidebar = new ChatSidebar();
 		const chatContent = new ChatContent();
 		const overlayPopup = new OverlayPopup();
 		super("main", {
