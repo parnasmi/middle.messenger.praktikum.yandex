@@ -9,16 +9,22 @@ export class ChatApi extends BaseApi {
 		return chatApiInstance.post("", {
 			data: JSON.stringify(formData),
 			headers: {
-				"content-type": "application/json"
+				"content-type": "application/json",
 			},
 		});
 	}
 
 	getChatList() {
-		return chatApiInstance.get("")
+		return chatApiInstance.get("");
 	}
 
 	request() {
 		return chatApiInstance.get("/full");
+	}
+
+	getChatToken(chatId: number) {
+		return chatApiInstance.post(`/token/${chatId}`, {
+			headers: { "content-type": "application/json" },
+		});
 	}
 }

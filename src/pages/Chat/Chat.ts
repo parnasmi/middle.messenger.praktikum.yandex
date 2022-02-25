@@ -9,6 +9,7 @@ import { ChatContent, ChatSidebar,ChatPending } from "./components";
 import {OverlayPopup} from "../../shared/components/OverlayPopup";
 import handlebars from "handlebars/dist/handlebars.runtime";
 import store, {connect} from '../../shared/store';
+import {ChatItemType} from "./components/ChatItem/chatItemTypes.types";
 
 const searchIcon = new URL("../../assets/img/icon-search.svg", import.meta.url);
 // Register helpers
@@ -38,15 +39,12 @@ class Chat extends Block {
 
 		window.addEventListener("hashchange", () => {
 			const chatId = window.location.hash.slice(1);
-			store.set("selectedChatId", chatId);
-			console.log("hashChange", chatId);
+			const selectedChat = store.getState().chats.find((chat: ChatItemType) => chat.id === +chatId);
+			// store.set("selectedChatId", +chatId);
+			store.set("selectedChat", selectedChat);
 		});
 	}
-
-	componentDidUpdate(oldProps: any, newProps: any): boolean {
-		console.log('newProps Chat', newProps)
-		return true
-	}
+	
 
 	protected render(): DocumentFragment {
 		return this.compile(tmpl, this.props);

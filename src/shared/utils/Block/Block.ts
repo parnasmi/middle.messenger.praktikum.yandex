@@ -211,10 +211,12 @@ export class Block<P = any> {
 				return typeof value === "function" ? value.bind(target) : value;
 			},
 			set(target: Record<string, unknown>, prop: string, value: unknown) {
+				const oldValue = {...target};
 				target[prop] = value;
 				self
 					.eventBus()
-					.emit(Block.EVENTS.FLOW_CDU, { ...target }, self._meta.props);
+					// .emit(Block.EVENTS.FLOW_CDU, { ...target }, self._meta.props);
+					.emit(Block.EVENTS.FLOW_CDU, oldValue, target);
 				return true;
 			},
 			deleteProperty() {

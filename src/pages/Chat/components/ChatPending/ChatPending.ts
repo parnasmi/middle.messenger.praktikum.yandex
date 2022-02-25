@@ -4,7 +4,7 @@ export class ChatPending extends Block {
 	constructor() {
 		super('div', {
 			attributes: {
-				class: 'chat__content-pending flex items-justify-center'
+				class: 'chat__content-pending flex items-justify-center full-w'
 			}
 		});
 	}
