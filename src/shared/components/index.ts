@@ -13,3 +13,4 @@ export {Loader} from './Loader'
 export {ProfileBackBtn} from './ProfileBackBtn'
 export {AvatarChangePopup} from './AvatarChangePopup'
 export {Popup} from './Popup'
+export {AddUserPopup} from './AddUserPopup';

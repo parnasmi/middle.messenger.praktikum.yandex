@@ -27,4 +27,27 @@ export class ChatApi extends BaseApi {
 			headers: { "content-type": "application/json" },
 		});
 	}
+
+	addUser(chatId: number, userId: number) {
+		return chatApiInstance.put("/users", {
+			headers: {
+				'content-type': 'application/json'
+			},
+			data: JSON.stringify({
+				users: [userId],
+				chatId,
+			}),
+		});
+	}
+	removeUser(chatId: number, userId: number) {
+		return chatApiInstance.delete("/users", {
+			headers: {
+				'content-type': 'application/json'
+			},
+			data: JSON.stringify({
+				users: [userId],
+				chatId,
+			}),
+		});
+	}
 }

@@ -20,13 +20,18 @@ export class FormContainer extends Form<any> {
 	protected _onSend() {
 		this.props.submitHandler(this.formData, {
 			success: (data: any) => {
-				console.log("chat successfully created", data);
+				console.log("successfully created", data);
+				if(typeof this.props.successHandler === 'function') {
+					this.props.successHandler()
+				}
 			},
 			error: (error: any) => {
-				console.error("chat create error", (error as any).reason);
 				(this.children.apiErrorText as Block).setProps({
 					text: (error as any).reason,
 				});
+				if(typeof this.props.errorHandler === 'function') {
+					this.props.errorHandler()
+				}
 			},
 		});
 	}

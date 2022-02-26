@@ -40,6 +40,23 @@ export class ChatController {
 			console.error('token getting error', (e as XHRHTTPRequestResultType).json())
 		}
 	}
+	
+	public async addUser(chatId:number, userId:number, cb:IFormCallback) {
+		try {
+			await chatApi.addUser(chatId, userId);
+			cb.success!({})
+		} catch (e) {
+			cb.error!({reason: "Error occured while adding user. Try again"})
+		}
+	}
+
+	public async removeUser(chatId:number, userId:number) {
+		try {
+			await chatApi.removeUser(chatId, userId);
+		} catch (e) {
+			console.error('remove user error', (e as XHRHTTPRequestResultType).json())
+		}
+	}
 
 	private initWebsocket({userId, chatId, token}:InitWsParams) {
 		websocket.init(`${userId}/${chatId}/${token}`);
