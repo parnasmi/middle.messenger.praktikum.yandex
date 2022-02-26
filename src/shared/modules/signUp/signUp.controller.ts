@@ -16,7 +16,7 @@ export class SignUpController {
 			await signUpApi.create(data);
 			const userData = await authController.getUser();
 			initializePrivateRoutes();
-			router.go("/chat");
+			router.go("/messenger");
 			cb?.success!(userData);
 		} catch (e: unknown) {
 			//Логика обработки ошибки

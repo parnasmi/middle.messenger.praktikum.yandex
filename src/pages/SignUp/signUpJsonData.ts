@@ -9,7 +9,7 @@ export const signUpJsonData = [
       }
     },
     errorMessage: {
-      errorText: "Такой email существует",
+      errorText: "Проверьте формат email а",
       isShown: false,
       attributes: {
         class: "sign-form__field-error",
@@ -26,7 +26,7 @@ export const signUpJsonData = [
       }
     },
     errorMessage: {
-      errorText: "Такой логин существует",
+      errorText: "Логин не должен включать числа",
       isShown: false,
       attributes: {
         class: "sign-form__field-error",
@@ -105,7 +105,7 @@ export const signUpJsonData = [
     textInput: {
       attributes: {
         type: "password",
-        name: "retype-password",
+        name: "retypePassword",
         placeholder: "Пароль еще раз",
         required: false,
       }

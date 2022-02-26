@@ -39,6 +39,11 @@ export class Form<T> extends Block {
 	} //constructor
 
 	protected _handleSubmit() {
+		if('message' in this.formData) {
+			this._customValidation();
+			this._onSend();
+			return;
+		}
 		const isValid =
 			Object.keys(this.formData).length &&
 			Object.entries(this.formData).every(([key, value]) =>
@@ -53,6 +58,8 @@ export class Form<T> extends Block {
 		}
 		console.error("form is not valid", this.formData);
 	}
+
+	protected _customValidation() {}
 
 	//TODO: compare password validation, save formdata prop to field on mount
 

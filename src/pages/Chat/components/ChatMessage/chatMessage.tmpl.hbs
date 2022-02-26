@@ -1,19 +1,31 @@
 <div class="chat-message relative {{isOwnMessageClass}} {{messageTypeClass}}">
 	{{#if file}}
-		<img src="{{file.url}}" alt="">
-		{{else}}
-		<div class="chat-message__text">{{message}}</div>
+		<img src="{{file.url}}" alt="" />
+	{{else}}
+		<div class="chat-message__text">{{ message }}</div>
+	{{/if}}
+	<div class="chat-message__date flex items-center">
+		{{#if isOwnMessage}}
+			<svg width="11" height="5" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					transform="scale(.99834 1.00166) rotate(45 -2.461 2.011)"
+					stroke="#3369F3"
+					d="M0-.5h3.765"
+				></path>
+				<path
+					transform="matrix(.70593 -.70828 .70593 .70828 3.358 5)"
+					stroke="#3369F3"
+					d="M0-.5h5.647"
+				></path>
+				<path
+					transform="matrix(.70593 -.70828 .70593 .70828 6.016 5)"
+					stroke="#3369F3"
+					d="M0-.5h5.647"
+				></path>
+			</svg>
 		{{/if}}
-		<div class="chat-message__date flex items-center">
-			{{#if isOwnMessage}}
-				<svg width="11" height="5" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path transform="scale(.99834 1.00166) rotate(45 -2.461 2.011)" stroke="#3369F3" d="M0-.5h3.765"/>
-					<path transform="matrix(.70593 -.70828 .70593 .70828 3.358 5)" stroke="#3369F3" d="M0-.5h5.647"/>
-					<path transform="matrix(.70593 -.70828 .70593 .70828 6.016 5)" stroke="#3369F3" d="M0-.5h5.647"/>
-				</svg>
-			{{/if}}
-			<div>
-				{{sent_time}}
-			</div>
+		<div>
+			{{time}}
 		</div>
+	</div>
 </div>

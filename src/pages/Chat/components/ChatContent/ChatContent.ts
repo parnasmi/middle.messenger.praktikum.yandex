@@ -3,7 +3,7 @@ import tmpl from "./chatContent.tmpl.hbs";
 import { ChatContentHeader } from "../ChatContentHeader";
 import { ChatContentInputs } from "../ChatContentInputs";
 import { ChatContentMessages } from "../ChatContentMessages";
-import { connect } from "../../../../shared/store";
+import store, { connect } from "../../../../shared/store";
 import {ChatController} from "../../../../shared/modules/chat/chat.controller";
 
 const chatController = new ChatController();
@@ -27,13 +27,11 @@ class ChatContentComponent extends Block {
 	}
 
 	componentDidUpdate(oldProps: any, newProps: any):boolean {
-		console.log("ChatContent cdu", { oldProps, newProps });
-
 		if(newProps?.selectedChat && oldProps?.selectedChat?.id !== newProps?.selectedChat?.id) {
-			//send request to get token
-			console.log('websocket state', websocket.isOpen())
+			//send request to get token and initialize websocket connection
 			if(websocket.isOpen() === 1) {
-				websocket.closeSocket()
+				websocket.closeSocket();
+				store.set('messages', [])
 			}
 			chatController.getChatToken(newProps.selectedChat.id);
 		}

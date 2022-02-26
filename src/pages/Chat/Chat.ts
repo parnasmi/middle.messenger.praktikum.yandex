@@ -20,7 +20,7 @@ handlebars.registerPartial("layout", base);
 class Chat extends Block {
 	constructor() {
 		const chatSidebar = new ChatSidebar();
-		const chatContent = new ChatContent();
+		const chatContent = new ChatContent({});
 		const chatPending = new ChatPending();
 		const overlayPopup = new OverlayPopup();
 		super("main", {
@@ -40,7 +40,6 @@ class Chat extends Block {
 		window.addEventListener("hashchange", () => {
 			const chatId = window.location.hash.slice(1);
 			const selectedChat = store.getState().chats.find((chat: ChatItemType) => chat.id === +chatId);
-			// store.set("selectedChatId", +chatId);
 			store.set("selectedChat", selectedChat);
 		});
 	}
@@ -51,4 +50,4 @@ class Chat extends Block {
 	}
 }
 
-export default connect(Chat, (state) => ({selectedChatId: state?.selectedChatId}))
+export default connect(Chat, (state) => ({selectedChat: state?.selectedChat}))

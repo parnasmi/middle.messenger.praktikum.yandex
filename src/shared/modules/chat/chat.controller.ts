@@ -48,7 +48,7 @@ export class ChatController {
 
 			setInterval(() => {
 				websocket.sendMessage({type: 'ping'})
-			}, 300000)
+			}, 30000)
 
 			websocket.sendMessage({
 				type: 'ping',
@@ -64,7 +64,12 @@ export class ChatController {
 		})
 		websocket.onMessage((event) => {
 			const data = JSON.parse(event.data);
-			console.log('message data',data)
+			const storeMessages = store.getState().messages;
+			if(data.type === 'message') {
+				//save to store
+				store.set('messages', [...storeMessages, data])
+			}
+			console.log("message data", { data, messages: storeMessages });
 		})
 	}
 }
