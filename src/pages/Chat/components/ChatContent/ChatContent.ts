@@ -19,7 +19,7 @@ class ChatContentComponent extends Popup {
 		const removeUserPopup = new RemoveUserPopup();
 		super("div", {
 			attributes: {
-				class: "chat__content flex-grow-1 flex",
+				class: "chat__content flex-grow-1 flex full-h",
 			},
 			children: {
 				chatContentHeader,

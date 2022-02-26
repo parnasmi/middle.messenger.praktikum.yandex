@@ -209,3 +209,8 @@
 .chat__header-sub {
   margin-bottom: 23px;
 }
+
+.chat__content-messages {
+  height: calc(100% - 55px - 51px);
+  overflow-y: auto;
+}
