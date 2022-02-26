@@ -29,9 +29,7 @@ export class Router {
 
   start() {
     window.onpopstate = ((event:PopStateEvent) => {
-      // this._onRoute(event.currentTarget.location.pathname);
       this._onRoute(document.location.pathname);
-      console.log('event popstate', event)
     }).bind(this);
 
     this._onRoute(window.location.pathname);
@@ -39,18 +37,12 @@ export class Router {
 
   _onRoute(pathname:string) {
     const route = this.getRoute(pathname);
-    // const areRoutesNotEqual = this._currentRoute !== route;
     if (!route) {
       this.go('/not-found')
       return;
     }
 
-    // if (this._currentRoute && areRoutesNotEqual) {
-    //   this._currentRoute.leave();
-    // }
-
     this._currentRoute = route;
-    // route.render(route, pathname);
     route.render();
   }
 
