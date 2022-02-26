@@ -2,27 +2,43 @@
 	{{#if file}}
 		<img src="{{file.url}}" alt="" />
 	{{else}}
-		<div class="chat-message__text">{{ message }}</div>
+		<div class="chat-message__text">{{message}}</div>
 	{{/if}}
 	<div class="chat-message__date flex items-center">
 		{{#if isOwnMessage}}
-			<svg width="11" height="5" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path
-					transform="scale(.99834 1.00166) rotate(45 -2.461 2.011)"
-					stroke="#3369F3"
-					d="M0-.5h3.765"
-				></path>
-				<path
-					transform="matrix(.70593 -.70828 .70593 .70828 3.358 5)"
-					stroke="#3369F3"
-					d="M0-.5h5.647"
-				></path>
-				<path
-					transform="matrix(.70593 -.70828 .70593 .70828 6.016 5)"
-					stroke="#3369F3"
-					d="M0-.5h5.647"
-				></path>
-			</svg>
+			{{#if isRead}}
+				<svg width="11" height="5" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						transform="scale(.99834 1.00166) rotate(45 -2.461 2.011)"
+						stroke="#3369F3"
+						d="M0-.5h3.765"
+					></path>
+					<path
+						transform="matrix(.70593 -.70828 .70593 .70828 3.358 5)"
+						stroke="#3369F3"
+						d="M0-.5h5.647"
+					></path>
+					<path
+						transform="matrix(.70593 -.70828 .70593 .70828 6.016 5)"
+						stroke="#3369F3"
+						d="M0-.5h5.647"
+					></path>
+				</svg>
+			{{else}}
+				<svg
+					stroke="currentColor"
+					fill="currentColor"
+					stroke-width="0"
+					viewBox="0 0 24 24"
+					height="1em"
+					width="1em"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path fill="none" d="M0 0h24v24H0z"></path>
+					<path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"></path>
+				</svg>
+			{{/if}}
+
 		{{/if}}
 		<div>
 			{{time}}

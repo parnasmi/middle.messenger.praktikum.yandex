@@ -1,7 +1,7 @@
 .chat-item {
   padding: 12px 10px;
   transition: all 0.3s;
-
+  &.active,
   &:hover {
     background-color: $color-bg-primary-hover;
   }
@@ -30,6 +30,7 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
+  color: #000000;
 }
 
 .chat-item__last-msg-text {
@@ -64,4 +65,8 @@
   text-align: center;
   font-size: 11px;
   line-height: 20px;
+}
+
+.chat-item__last-msg-author {
+  color: #000;
 }

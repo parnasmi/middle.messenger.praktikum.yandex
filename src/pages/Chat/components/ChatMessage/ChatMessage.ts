@@ -18,7 +18,8 @@ export class ChatMessage extends Block {
 				props.type === "message" ? "chat-message_text" : "chat-message_media",
 			isOwnMessage: props.user_id === props.currentUserId,
 			message: props.type === "message" ? props.content : "",
-			time: d.toLocaleTimeString()
+			time: d.toLocaleTimeString(),
+			isRead: props?.is_read
 		});
 	}
 

@@ -5,6 +5,7 @@ export type ChatMessageType = {
 	type: "message" | "file";
 	content: string;
 	currentUserId: number;
+	is_read?:boolean;
 	file?: {
 		id: number;
 		user_id: number;

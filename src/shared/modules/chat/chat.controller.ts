@@ -71,6 +71,10 @@ export class ChatController {
 			websocket.sendMessage({
 				type: 'ping',
 			});
+			websocket.sendMessage({
+				type: 'get old',
+				content: '0'
+			});
 		})
 		websocket.onClose((event) => {
 			if (event.wasClean) {
@@ -83,9 +87,14 @@ export class ChatController {
 		websocket.onMessage((event) => {
 			const data = JSON.parse(event.data);
 			const storeMessages = store.getState().messages;
+
 			if(data.type === 'message') {
 				//save to store
 				store.set('messages', [...storeMessages, data])
+			}
+
+			if(Array.isArray(data)) {
+				store.set('messages', [...data.reverse(),...storeMessages])
 			}
 			console.log("message data", { data, messages: storeMessages });
 		})
