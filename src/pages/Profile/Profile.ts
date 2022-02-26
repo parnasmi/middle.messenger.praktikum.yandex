@@ -39,7 +39,7 @@ export class Profile extends Popup {
 			events: {
 				click: (e:Event) => {
 					e.preventDefault();
-					router.go('/profile-update')
+					router.go('/settings-update')
 				}
 			}
 		});

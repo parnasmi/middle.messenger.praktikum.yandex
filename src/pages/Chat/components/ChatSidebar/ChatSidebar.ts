@@ -33,7 +33,7 @@ export class ChatSidebar extends Popup {
 			events: {
 				click: (e: Event) => {
 					e.preventDefault();
-					router.go("/profile");
+					router.go("/settings");
 				},
 			},
 		});

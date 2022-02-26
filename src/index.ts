@@ -14,9 +14,10 @@ const authController = new AuthController();
 
 export function initializePrivateRoutes() {
 	router
+		// .use("/", Chat)
 		.use("/messenger", Chat)
-		.use("/profile", Profile)
-		.use("/profile-update", ProfileEdit)
+		.use("/settings", Profile)
+		.use("/settings-update", ProfileEdit)
 		.use("/password-change", ProfilePasswordChange)
 		.use("/not-found", NotFoundPage)
 		.start();
@@ -30,7 +31,6 @@ authController
 	.getUser()
 	.then(() => {
 		initializePrivateRoutes();
-		console.log("document.location.pathname", document.location.pathname);
 		router.go(document.location.pathname);
 		console.log("store", store.getState());
 	})

@@ -20,25 +20,34 @@ export class Router {
   }
 
   use(pathname:string, block:new () => Block) {
+    console.log('initiate routes', pathname)
     const route = new Route(pathname, block, {rootQuery: this._rootQuery});
-
     this.routes.push(route);
-
     return this;
   }
 
   start() {
     window.onpopstate = ((event:PopStateEvent) => {
       this._onRoute(document.location.pathname);
-    }).bind(this);
+      // @ts-ignore
+      // const pathname = event.currentTarget.location.pathname;
+      // console.log('pathname onpopstate',pathname)
+      // this._onRoute(pathname);
 
+    }).bind(this);
+    console.log('window.location.pathname',window.location.pathname)
     this._onRoute(window.location.pathname);
   }
 
   _onRoute(pathname:string) {
-    const route = this.getRoute(pathname);
+    const calculatedPathname = document.location.pathname;
+    const route = this.getRoute(calculatedPathname);
+    const onLoadPathname = document.location.pathname;
+    console.log('route and pathname', {route, pathname,onLoadPathname})
     if (!route) {
-      this.go('/not-found')
+      console.log('this.routes', {routes: this.routes})
+      this.go('/settings')
+      // this.go(onLoadPathname)
       return;
     }
 
@@ -60,6 +69,7 @@ export class Router {
   }
 
   getRoute(pathname:string) {
+    console.log('pathname in getRoute',pathname)
     return this.routes.find(route => route.match(pathname));
   }
 }
