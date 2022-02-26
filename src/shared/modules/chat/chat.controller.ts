@@ -4,6 +4,7 @@ import { ChatApi } from "../http";
 import { ChatCreateFormType } from "../http/http.types";
 import store from '../../store';
 import {websocket} from "../../utils";
+import {InitWsParams} from "./chat.types";
 const chatApi = new ChatApi();
 
 
@@ -34,30 +35,36 @@ export class ChatController {
 			const response = await chatApi.getChatToken(chatId);
 			const { token } = response.json();
 			const { id: userId } = store.getState().user;
-			websocket.init(`${userId}/${chatId}/${token}`);
-			websocket.onOpen(() => {
-				console.log('socket is open')
-
-				websocket.sendMessage({
-					content: 'Моё первое сообщение миру!',
-					type: 'message',
-				});
-			})
-			websocket.onClose((event:CloseEvent) => {
-				if (event.wasClean) {
-					console.log('Соединение закрыто чисто');
-				} else {
-					console.log('Обрыв соединения');
-				}
-				console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-			})
-			websocket.onMessage((event) => {
-				const data = JSON.parse(event.data);
-					console.log('message data',data)
-			})
-			console.log('chat token', token);
+			this.initWebsocket({userId, chatId, token})
 		} catch (e) {
 			console.error('token getting error', (e as XHRHTTPRequestResultType).json())
 		}
+	}
+
+	private initWebsocket({userId, chatId, token}:InitWsParams) {
+		websocket.init(`${userId}/${chatId}/${token}`);
+		websocket.onOpen(() => {
+			console.log('socket is open')
+
+			setInterval(() => {
+				websocket.sendMessage({type: 'ping'})
+			}, 300000)
+
+			websocket.sendMessage({
+				type: 'ping',
+			});
+		})
+		websocket.onClose((event) => {
+			if (event.wasClean) {
+				console.log('Соединение закрыто чисто');
+			} else {
+				console.log('Обрыв соединения');
+			}
+			console.log(`Код: ${event.code} | Причина: ${event.reason}`);
+		})
+		websocket.onMessage((event) => {
+			const data = JSON.parse(event.data);
+			console.log('message data',data)
+		})
 	}
 }
