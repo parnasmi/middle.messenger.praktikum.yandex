@@ -12,7 +12,7 @@ const chatController = new ChatController();
 
 class ChatContentComponent extends Popup {
 	constructor() {
-		const chatContentHeader = new ChatContentHeader();
+		const chatContentHeader = new ChatContentHeader({});
 		const chatContentInputs = new ChatContentInputs();
 		const chatContentMessages = new ChatContentMessages({});
 		const addUserPopup = new AddUserPopup();

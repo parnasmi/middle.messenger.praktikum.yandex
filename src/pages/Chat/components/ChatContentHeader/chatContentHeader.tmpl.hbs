@@ -1,9 +1,11 @@
 <div class="chat__content-user flex items-center">
 	<div class="chat__content-avatar">
-		<img src="" alt="">
+		{{#if selectedChat.avatar}}
+			<img src="{{RESOURCE_URL}}{{selectedChat.avatar}}" alt="">
+		{{/if}}
 	</div>
 	<div class="chat__content-username">
-		Вадим
+		{{selectedChat.title}}
 	</div>
 </div>
 <div class="chat__content-three-dot-btn flex items-justify-center relative">

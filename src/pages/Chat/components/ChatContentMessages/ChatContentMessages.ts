@@ -21,7 +21,7 @@ class ChatContentMessagesComponent extends Block {
 		});
 	}
 
-	componentDidUpdate(oldProps: any, newProps: any): boolean {
+	componentDidUpdate(_: any, newProps: any): boolean {
 		this._generateMessages(newProps.messages);
 		return true;
 	}
