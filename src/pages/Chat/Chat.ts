@@ -1,63 +1,53 @@
-import {Block} from "../../shared/utils";
-import tmpl from './chat.tmpl.hbs'
-import {base} from '../../shared/views/layouts'
-const layouts = require('handlebars-layouts');
-import '../../scss/styles.scss'
-import '../../scss/pages/chat/index.scss'
-import {ChatContent, ChatSidebar} from "./components";
-const searchIcon = new URL('../../assets/img/icon-search.svg', import.meta.url);
+import { Block } from "../../shared/utils";
+import tmpl from "./chat.tmpl.hbs";
+import { base } from "../../shared/views/layouts";
+
+const layouts = require("handlebars-layouts");
+import "../../scss/styles.scss";
+import "../../scss/pages/chat/index.scss";
+import { ChatContent, ChatSidebar,ChatPending } from "./components";
+import {OverlayPopup} from "../../shared/components/OverlayPopup";
 import handlebars from "handlebars/dist/handlebars.runtime";
+import store, {connect} from '../../shared/store';
+import {ChatItemType} from "./components/ChatItem/chatItemTypes.types";
+
+const searchIcon = new URL("../../assets/img/icon-search.svg", import.meta.url);
 // Register helpers
 handlebars.registerHelper(layouts(handlebars));
 // Register partials
-handlebars.registerPartial('layout', base);
+handlebars.registerPartial("layout", base);
 
-const chatJsonItems = [
-	{
-		id:1,
-		avatar: 'https://image.flaticon.com/icons/png/512/206/206853.png?w=826',
-		from_user: 'Андрей',
-		last_text_message: 'Изображение',
-		date:'10:49',
-		unread_count:4
-	},
-	{
-		id:2,
-		avatar: 'https://www.meme-arsenal.com/memes/bb75b90d2a8352bc97c507f96c0c795f.jpg',
-		from_user: 'Ильхом',
-		last_text_message: 'Друзья, у меня для вас особенный выпуск новостей особенный выпуск новостей!...',
-		date:'10:49',
-		unread_count:null
-	},
-	{
-		id:2,
-		avatar: 'https://dergipark.org.tr/zollu/images/default-avatar.png',
-		from_user: 'Хандамир',
-		last_text_message: 'Выбери шаблон чтобы',
-		date:'10:49',
-		unread_count:12
-	}
-]
-
-export class Chat extends Block {
+class Chat extends Block {
 	constructor() {
-		const chatSidebar = new ChatSidebar({chatItems:chatJsonItems})
-		const chatContent = new ChatContent()
+		const chatSidebar = new ChatSidebar();
+		const chatContent = new ChatContent({});
+		const chatPending = new ChatPending();
+		const overlayPopup = new OverlayPopup();
 		super("main", {
 			attributes: {
-				class: "full-h-w",
+				class: "full-h-w chat-page",
 			},
 			searchIcon: searchIcon,
 			children: {
 				chatSidebar,
-				chatContent
-			}
+				chatContent,
+				overlayPopup,
+				chatPending,
+			},
 		});
-		document.body.className = "chat-page h-screen w-screen";
-		document.title = 'Chat'
+		document.title = "Chat";
+
+		window.addEventListener("hashchange", () => {
+			const chatId = window.location.hash.slice(1);
+			const selectedChat = store.getState().chats.find((chat: ChatItemType) => chat.id === +chatId);
+			store.set("selectedChat", selectedChat);
+		});
 	}
+	
 
 	protected render(): DocumentFragment {
-		return this.compile(tmpl, this.props)
+		return this.compile(tmpl, this.props);
 	}
 }
+
+export default connect(Chat, (state) => ({selectedChat: state?.selectedChat}))

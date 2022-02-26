@@ -1,38 +1,39 @@
 {{{profileNav}}}
 <div class="profile__content flex-grow-1 flex items-center justify-center">
-	<div class="profile__info  mx-auto ">
-		{{{profileAvatar}}}
-		<div class="profile__name">Иван</div>
-		<div class="profile__data profile__data_profile ">
-			<ul class="profile__data-list reset-list">
-				{{#each dataItemsList }}
-					{{{this}}}
-				{{/each}}
-			</ul>
+	{{#if isFetched}}
+		<div class="profile__info mx-auto">
+			{{{profileAvatar}}}
+			<div class="profile__name">{{firstName}}</div>
+			<div class="profile__data profile__data_profile">
+				<ul class="profile__data-list reset-list">
+					{{#each dataItemsList}}
+						{{{this}}}
+					{{/each}}
+				</ul>
+			</div>
+			<div class="profile__actions">
+				<ul class="profile__data-list reset-list">
+					<li class="profile__data-item">
+						<div class="profile-info flex items-center justify-between">
+							{{{editLink}}}
+						</div>
+					</li>
+					<li class="profile__data-item">
+						<div class="profile-info flex items-center justify-between">
+							{{{passwordChangeLink}}}
+						</div>
+					</li>
+					<li class="profile__data-item">
+						<div class="profile-info">
+							{{{logoutLink}}}
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class="profile__actions">
-			<ul class="profile__data-list reset-list">
-				<li class="profile__data-item">
-					<div class="profile-info flex items-center justify-between ">
-						<a class="profile-info__action" href="profile-edit">
-							Изменить данные
-						</a>
-					</div>
-				</li>
-				<li class="profile__data-item">
-					<div class="profile-info flex items-center justify-between ">
-						<a class="profile-info__action" href="profile-password-change">
-							Изменить пароль
-						</a>
-					</div>
-				</li>
-				<li class="profile__data-item">
-					<div class="profile-info">
-						<a href="#" class="error profile__logout">Выйти</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-
-	</div>
+	{{else}}
+		{{{skeleton}}}
+	{{/if}}
 </div>
+{{{overlayPopup}}}
+{{{avatarChangePopup}}}

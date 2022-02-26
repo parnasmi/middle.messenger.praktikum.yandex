@@ -1,56 +1,87 @@
-import { HTTPMethods, HTTPOptions } from "./types";
+import { HTTPMethods, HTTPOptions, XHRHTTPRequestResultType } from "./types";
 
 type OptionsWithoutMethod = Omit<HTTPOptions, "method">;
 
 const defaultOptions:HTTPOptions = {
   headers: {
-    'Content-Type': 'application/json',
     'Cache-Control': 'no-cache'
   },
   timeout: 5000,
   data: null,
-  method: HTTPMethods.GET
+  method: HTTPMethods.GET,
+  queryParams: {}
 }
 
-class HTTPTransport {
-  public get = (url:string, options:OptionsWithoutMethod = {}):Promise<XMLHttpRequest> => {
+interface ClassParams {
+  endPoint: string;
+  baseUrl?: string;
+}
+
+const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+
+export class HTTPTransport {
+  // private defaultOptions: HTTPOptions
+  // constructor(defaultOptions:HTTPOptions) {
+  //   this.defaultOptions = defaultOptions
+  // }
+  readonly baseUrl:string;
+  readonly endPoint:string;
+  constructor(params:ClassParams) {
+    this.baseUrl = params.baseUrl || BASE_URL;
+    this.endPoint = params.endPoint;
+  }
+  public get = (url:string, options:OptionsWithoutMethod = {}) => {
 
     return this.request(url, {
       ...options,
       method: HTTPMethods.GET
     }, options.timeout);
   };
-  public put = (url:string, options:OptionsWithoutMethod = {}):Promise<XMLHttpRequest> => {
+  public put = (url:string, options:OptionsWithoutMethod = {}) => {
     return this.request(url, {
       ...options,
       method: HTTPMethods.PUT
     }, options.timeout);
   };
-  public post = (url:string, options:OptionsWithoutMethod = {}):Promise<XMLHttpRequest> => {
+  public post = (url:string, options:OptionsWithoutMethod = {}) => {
     return this.request(url, {
       ...options,
       method: HTTPMethods.POST
     }, options.timeout);
   }
-  public delete = (url:string, options:OptionsWithoutMethod = {}):Promise<XMLHttpRequest> => {
+  public delete = (url:string, options:OptionsWithoutMethod = {}) => {
     return this.request(url, {
       ...options,
       method: HTTPMethods.DELETE
     }, options.timeout);
   }
 
-  private request = (url:string, options:HTTPOptions = {method: HTTPMethods.GET}, timeout = 5000):Promise<XMLHttpRequest> => {
+  private getXHRHTTPRequestResult = (xhr:XMLHttpRequest):XHRHTTPRequestResultType => {
+    return {
+      ok: xhr.status >=200 && xhr.status < 300,
+      status: xhr.status,
+      statusText: xhr.statusText,
+      headers: xhr.getAllResponseHeaders(),
+      data: xhr.responseText,
+      json: <T>() => JSON.parse(xhr.responseText) as T
+    }
+
+  }
+
+  private request = (url:string, options:HTTPOptions = {method: HTTPMethods.GET}, timeout = 5000):Promise<XHRHTTPRequestResultType> => {
     const {
       headers = {...defaultOptions.headers},
       data = defaultOptions.data,
-      method = defaultOptions.method
+      method = defaultOptions.method,
+      queryParams = defaultOptions.queryParams
     } = options;
 
 
-
+    const self = this;
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest()
-      xhr.open(options.method, method === HTTPMethods.GET ? `${url}${queryStringify(data)}` : url)
+      xhr.open(options.method, queryParams ? `${this.baseUrl}${this.endPoint}${url}${queryStringify(queryParams)}` : url,true)
+      xhr.withCredentials = true;
       const headerKeys = Object.keys(headers);
 
       if (headerKeys.length) {
@@ -60,7 +91,10 @@ class HTTPTransport {
       }
 
       xhr.onload = function() {
-        resolve(xhr)
+        if(!(xhr.status >= 200 && xhr.status < 300)) {
+          reject(self.getXHRHTTPRequestResult(xhr))
+        }
+        resolve(self.getXHRHTTPRequestResult(xhr))
       }
 
       xhr.timeout = timeout;
@@ -72,15 +106,13 @@ class HTTPTransport {
       if (method === HTTPMethods.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(JSON.stringify(data));
+        xhr.send(data);
       }
 
     })
 
   };
 }
-
-export const httpRequest = new HTTPTransport()
 
 
 /**

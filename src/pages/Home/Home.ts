@@ -1,24 +1,24 @@
-import {Block, compile} from "../../shared/utils";
-import tmpl from './home.hbs';
-import {Button} from "../../shared/components";
+import { Block, compile } from "../../shared/utils";
+import tmpl from "./home.hbs";
+import { Button } from "../../shared/components";
+
 export class HomePage extends Block {
-  constructor() {
-    super('div');
-  }
+	constructor() {
+		super("div");
+	}
 
-  render() {
+	render() {
+		const button = new Button({
+			title: "Jump",
+			events: {
+				click: () => console.log("Clicked"),
+			},
+		});
 
-    const button = new Button({
-      title: 'Jump',
-      events: {
-        click: () => console.log('Clicked')
-      }
-    })
+		setTimeout(() => {
+			button.setProps({ text: "new button" });
+		}, 1000);
 
-    setTimeout(() => {
-      button.setProps({text: 'new button'})
-    },1000)
-
-    return compile(tmpl, {button:button })
-  }
+		return compile(tmpl, { button: button });
+	}
 }

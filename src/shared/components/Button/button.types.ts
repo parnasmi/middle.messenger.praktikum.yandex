@@ -8,5 +8,6 @@ export interface IButton {
     class?:string;
     disabled?: string;
     type: 'submit' | 'reset' | 'button';
+    'data-modal-target'?: string;
   }
 }

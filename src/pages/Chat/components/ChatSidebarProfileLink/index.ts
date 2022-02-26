@@ -1,0 +1,1 @@
+export {ChatSidebarProfileLink} from './ChatSidebarProfileLink'

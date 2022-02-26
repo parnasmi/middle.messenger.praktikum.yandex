@@ -20,7 +20,7 @@
 }
 
 .chat__profile-link {
-  margin-bottom: 23px;
+
   color: $color-grey;
   line-height: 1;
 }
@@ -204,4 +204,13 @@
   width: 20px;
   height: 30px;
   cursor: pointer;
+}
+
+.chat__header-sub {
+  margin-bottom: 23px;
+}
+
+.chat__content-messages {
+  height: calc(100% - 55px - 51px);
+  overflow-y: auto;
 }

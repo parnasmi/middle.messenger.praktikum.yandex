@@ -1,71 +1,71 @@
-import {Block, render} from "../../shared/utils";
-import tmpl from './navigation.tmpl.hbs'
-import '../../scss/styles.scss'
-import '../../scss/pages/service-page.scss'
+import { Block, render } from "../../shared/utils";
+import tmpl from "./navigation.tmpl.hbs";
+import "../../scss/styles.scss";
+import "../../scss/pages/service-page.scss";
 import SignInPage from "../SignIn";
 import SignUpPage from "../SignUp";
 import ChatPage from "../Chat";
-import ProfilePage from '../Profile'
-import ProfileEdit from '../ProfileEdit'
-import ProfilePasswordChange from '../ProfilePasswordChange'
-import NotFound from '../404'
-import ServerErrorPage from '../500'
-import {Button} from "../../shared/components";
-export class NavigationPage extends Block {
+import ProfilePage from "../Profile";
+import ProfileEdit from "../ProfileEdit";
+import ProfilePasswordChange from "../ProfilePasswordChange";
+import NotFound from "../404";
+import ServerErrorPage from "../500";
+import { Button } from "../../shared/components";
+
+export class NavigationPage extends Block<{}> {
 	constructor() {
-	document.body.className = 'h-screen not-auth w-screen';
 		super("main", {
 			attributes: {
 				class: "flex items-center justify-center full-h-w",
 			},
 			signinButton: new Button({
-				title: 'Вход',
+				title: "Вход",
 				events: {
-					click: () => render('#root', new SignInPage())
-				}
+					click: () => render("#root", new SignInPage()),
+				},
 			}),
 			signupButton: new Button({
-				title: 'Регистрация',
+				title: "Регистрация",
 				events: {
-					click: () => render('#root', new SignUpPage())
-				}
+					click: () => render("#root", new SignUpPage()),
+				},
 			}),
 			chatButton: new Button({
-				title: 'Страница Чат',
+				title: "Страница Чат",
 				events: {
-					click: () => render('#root', new ChatPage())
-				}
+					click: () => render("#root", new ChatPage()),
+				},
 			}),
 			profileButton: new Button({
-				title: 'Страница Профиль',
+				title: "Страница Профиль",
 				events: {
-					click: () => render('#root', new ProfilePage())
-				}
+					click: () => render("#root", new ProfilePage()),
+				},
 			}),
 			profileEditButton: new Button({
-				title: 'Страница изменение профиля',
+				title: "Страница изменение профиля",
 				events: {
-					click: () => render('#root', new ProfileEdit())
-				}
+					click: () => render("#root", new ProfileEdit()),
+				},
 			}),
 			profilePasswordChangeButton: new Button({
-				title: 'Страница изменение пароля',
+				title: "Страница изменение пароля",
 				events: {
-					click: () => render('#root', new ProfilePasswordChange())
-				}
+					click: () => render("#root", new ProfilePasswordChange()),
+				},
 			}),
 			notFoundButton: new Button({
-				title: 'Страница 404',
+				title: "Страница 404",
 				events: {
-					click: () => render('#root', new NotFound())
-				}
+					click: () => render("#root", new NotFound()),
+				},
 			}),
 			serverErrorButton: new Button({
-				title: 'Страница 500',
+				title: "Страница 500",
 				events: {
-					click: () => render('#root', new ServerErrorPage())
-				}
-			})
+					click: () => render("#root", new ServerErrorPage()),
+				},
+			}),
 		});
 	}
 

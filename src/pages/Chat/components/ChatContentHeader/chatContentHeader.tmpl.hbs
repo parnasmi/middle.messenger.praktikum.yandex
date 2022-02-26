@@ -1,9 +1,11 @@
 <div class="chat__content-user flex items-center">
 	<div class="chat__content-avatar">
-		<img src="" alt="">
+		{{#if selectedChat.avatar}}
+			<img src="{{RESOURCE_URL}}{{selectedChat.avatar}}" alt="">
+		{{/if}}
 	</div>
 	<div class="chat__content-username">
-		Вадим
+		{{selectedChat.title}}
 	</div>
 </div>
 <div class="chat__content-three-dot-btn flex items-justify-center relative">
@@ -11,7 +13,7 @@
 	<div class="chat-popover chat__content-actions-popover absolute">
 		<ul class="chat__content-attach-items-list reset-list">
 			<li class="chat__content-attach-list-item">
-				<div class="chat__content-attach-label flex items-center cursor-pointer">
+				<div class="chat__content-attach-label flex items-center cursor-pointer" data-modal-target="add-user-popup">
 					<svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<circle cx="11" cy="11" r="10.25" stroke="#3369F3" stroke-width="1.5"/>
 						<path stroke="#3369F3" stroke-width="1.5" d="M11 5.5v11M5.5 11h11"/>
@@ -20,7 +22,7 @@
 				</div>
 			</li>
 			<li class="chat__content-attach-list-item">
-				<div class="chat__content-attach-label flex items-center cursor-pointer">
+				<div class="chat__content-attach-label flex items-center cursor-pointer" data-modal-target="remove-user-popup">
 					<svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<circle cx="11" cy="11" r="10.25" stroke="#3369F3" stroke-width="1.5"/>
 						<path stroke="#3369F3" stroke-width="1.5" d="m7.111 7.111 7.778 7.778M7.111 14.889l7.778-7.778"/>

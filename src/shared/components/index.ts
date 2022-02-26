@@ -8,3 +8,9 @@ export {ProfileNav} from './ProfileNav'
 export {ProfileAvatar} from './ProfileAvatar'
 export {ProfileDataItem} from './ProfileDataItem'
 export {EditInputField} from './EditInputField'
+export {Element} from './Element';
+export {Loader} from './Loader'
+export {ProfileBackBtn} from './ProfileBackBtn'
+export {AvatarChangePopup} from './AvatarChangePopup'
+export {Popup} from './Popup'
+export {AddUserPopup} from './AddUserPopup';

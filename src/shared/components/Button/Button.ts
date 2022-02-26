@@ -7,7 +7,7 @@ export class Button extends Block {
       ...props,
       attributes: {
         ...props.attributes,
-        class: `btn ${props.attributes?.class}`,
+        class: `btn ${props.attributes?.class}`
       },
     });
   }

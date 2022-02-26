@@ -1,160 +1,40 @@
-import {Block} from "../../shared/utils";
-import handlebars from 'handlebars/dist/handlebars.runtime';
+import { Block } from "../../shared/utils";
+import handlebars from "handlebars/dist/handlebars.runtime";
 import tmpl from "./signUp.tmpl.hbs";
-import {base} from '../../shared/views/layouts'
-const layouts = require('handlebars-layouts');
-import '../../scss/styles.scss'
-import '../../scss/pages/sign-form.scss'
-import {SignForm} from "../../shared/components";
+import { base } from "../../shared/views/layouts";
+
+const layouts = require("handlebars-layouts");
+import "../../scss/styles.scss";
+import "../../scss/pages/sign-form.scss";
+import { SignForm } from "../../shared/components";
+import { signUpJsonData } from "./signUpJsonData";
 
 // Register helpers
 handlebars.registerHelper(layouts(handlebars));
 // Register partials
-handlebars.registerPartial('layout', base);
+handlebars.registerPartial("layout", base);
 
 export class SignUp extends Block {
 	constructor() {
-		document.title = 'Sign Up'
-		document.body.className = 'h-screen not-auth w-screen';
-		const signInForm = new SignForm(
-			{
-				inputs: [
-					{
-						textInput: {
-							attributes: {
-								type: "email",
-								name: "email",
-								placeholder: "Почта",
-								required: true,
-							}
-						},
-						errorMessage: {
-							errorText: "Такой email существует",
-							isShown: false,
-							attributes: {
-								class: "sign-form__field-error",
-							},
-						},
-					},
-					{
-						textInput: {
-							attributes: {
-								type: "text",
-								name: "login",
-								placeholder: "Логин",
-								required: true,
-							}
-						},
-						errorMessage: {
-							errorText: "Такой логин существует",
-							isShown: false,
-							attributes: {
-								class: "sign-form__field-error",
-							},
-						},
-					},
-					{
-						textInput: {
-							attributes: {
-								type: "text",
-								name: "first_name",
-								placeholder: "Имя",
-								required: true,
-							}
-						},
-						errorMessage: {
-							errorText: "Обязателен для ввода",
-							isShown: false,
-							attributes: {
-								class: "sign-form__field-error",
-							}
-						},
-					},
-					{
-						textInput: {
-							attributes: {
-								type: "text",
-								name: "second_name",
-								placeholder: "Фамилия",
-								required: true,
-							}
-						},
-						errorMessage: {
-							errorText: "Обязателен для ввода",
-							isShown: false,
-							attributes: {
-								class: "sign-form__field-error",
-							}
-						},
-					},
-					{
-						textInput: {
-							attributes: {
-								type: "tel",
-								name: "phone",
-								placeholder: "Телефон",
-								required: true,
-							}
-						},
-						errorMessage: {
-							errorText: "Обязателен для ввода",
-							isShown: false,
-							attributes: {
-								class: "sign-form__field-error",
-							}
-						},
-					},
-					{
-						textInput: {
-							attributes: {
-								type: "password",
-								name: "password",
-								placeholder: "Пароль",
-								required: false,
-							}
-						},
-						errorMessage: {
-							errorText: "Обязателен для ввода",
-							isShown: false,
-							attributes: {
-								class: "sign-form__field-error",
-							}
-						},
-					},
-					{
-						textInput: {
-							attributes: {
-								type: "password",
-								name: "retype-password",
-								placeholder: "Пароль еще раз",
-								required: false,
-							}
-						},
-						errorMessage: {
-							errorText: "Обязателен для ввода",
-							isShown: false,
-							attributes: {
-								class: "sign-form__field-error",
-							}
-						},
-					}
-					],
-				attributes: {
-					class: "flex flex-col sign-form",
-				},
-				signFormModifierClass: 'sign-form__fields_signup',
-				buttonText: 'Зарегистрироваться',
-				linkText: 'Войти',
-				link: 'sign-in',
-				headingText: 'Регистрация',
-			}
-		);
+		document.title = "Sign Up";
+		const signInForm = new SignForm({
+			inputs: signUpJsonData,
+			attributes: {
+				class: "flex flex-col sign-form not-auth relative",
+			},
+			signFormModifierClass: "sign-form__fields_signup",
+			buttonText: "Зарегистрироваться",
+			headingText: "Регистрация",
+			linkText: "Войти",
+			link: "/",
+			pageType: 'sign-up'
+		});
 
 		super("div", {
 			attributes: {
-				class: 'flex items-center justify-center full-h-w outer-wrapper'
+				class: "flex items-center justify-center full-h-w",
 			},
-			signInForm
+			signInForm,
 		});
 	}
 

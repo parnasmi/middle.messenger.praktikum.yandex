@@ -1,17 +1,22 @@
-<div class="chat-item flex relative cursor-pointer">
+<a class="chat-item flex relative cursor-pointer {{activeClass}}" href="#{{id}}">
 	<div class="chat-item__avatar flex-shrink-0">
 		<img src="{{avatar}}" alt="">
 	</div>
 	<div class="chat-item__content flex-grow-1 flex ">
 		<div class="chat-item__text-info flex-grow-1">
-			<div class="chat-item__name">{{from_user}}</div>
-			<div class="chat-item__last-msg-text">{{last_text_message}}</div>
+			<div class="chat-item__name">
+				{{title}}
+			</div>
+			<div class="chat-item__last-msg-text">
+				<span class="chat-item__last-msg-author">{{messageOwner}}</span>
+				{{last_message.content}}
+			</div>
 		</div>
 		<div class="chat-item__meta-info flex-shrink-0 flex flex-col items-end">
-			<div class="chat-item__date">{{date}}</div>
+			<div class="chat-item__date">{{time}}</div>
 			{{#if unread_count }}
 			<div class="chat-item__unread-count">{{unread_count}}</div>
 			{{/if}}
 		</div>
 	</div>
-</div>
+</a>
