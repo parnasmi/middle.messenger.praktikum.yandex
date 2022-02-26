@@ -1,4 +1,4 @@
-import {Block} from "../../utils";
+import {Block, closeModal} from "../../utils";
 import tmpl from "./chatCreatePopup.tmpl.hbs";
 import {FormContainer} from "../FormContainer";
 import {createChatInputsJsonData} from "./createChatInputsJSON";
@@ -20,6 +20,12 @@ export class ChatCreatePopup extends Block {
       buttonText: "Создать чат",
       headingText: "Создание нового чата",
       submitHandler: chatController.createChat,
+      successHandler: () => {
+        closeModal('chat-create-popup')
+      },
+      errorHandler: () => {
+        console.error("Error while creating chat");
+      },
     });
   }
   render(): DocumentFragment {

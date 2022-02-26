@@ -7,3 +7,4 @@ export { HTTPTransport } from "./HTTPTransport";
 export { Router } from "./Routing";
 export { set } from "./utilityFns";
 export { websocket } from "./websocket";
+export * from './utilityFns';
