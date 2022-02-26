@@ -50,11 +50,12 @@ export class ChatController {
 		}
 	}
 
-	public async removeUser(chatId:number, userId:number) {
+	public async removeUser(chatId:number, userId:number, cb:IFormCallback) {
 		try {
 			await chatApi.removeUser(chatId, userId);
+			cb.success!({})
 		} catch (e) {
-			console.error('remove user error', (e as XHRHTTPRequestResultType).json())
+			cb.error!({reason: "Error occured while removing user. Try again"})
 		}
 	}
 

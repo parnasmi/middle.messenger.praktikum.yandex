@@ -6,6 +6,7 @@ import { ChatContentMessages } from "../ChatContentMessages";
 import store, { connect } from "../../../../shared/store";
 import { ChatController } from "../../../../shared/modules/chat/chat.controller";
 import { AddUserPopup, Popup } from "../../../../shared/components";
+import {RemoveUserPopup} from "../../../../shared/components/RemoveUserPopup";
 
 const chatController = new ChatController();
 
@@ -15,6 +16,7 @@ class ChatContentComponent extends Popup {
 		const chatContentInputs = new ChatContentInputs();
 		const chatContentMessages = new ChatContentMessages({});
 		const addUserPopup = new AddUserPopup();
+		const removeUserPopup = new RemoveUserPopup();
 		super("div", {
 			attributes: {
 				class: "chat__content flex-grow-1 flex",
@@ -23,7 +25,8 @@ class ChatContentComponent extends Popup {
 				chatContentHeader,
 				chatContentInputs,
 				chatContentMessages,
-				addUserPopup
+				addUserPopup,
+				removeUserPopup
 			},
 		});
 

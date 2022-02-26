@@ -20,9 +20,8 @@ export class FormContainer extends Form<any> {
 	protected _onSend() {
 		this.props.submitHandler(this.formData, {
 			success: (data: any) => {
-				console.log("successfully created", data);
 				if(typeof this.props.successHandler === 'function') {
-					this.props.successHandler()
+					this.props.successHandler(data)
 				}
 			},
 			error: (error: any) => {
@@ -61,10 +60,6 @@ export class FormContainer extends Form<any> {
 			attributes: { class: "error" },
 		});
 		this.children.spinner = new Loader();
-	}
-
-	public showResultInfo(field: string, text: string) {
-		this.setProps({ [field]: text });
 	}
 
 	protected render(): DocumentFragment {
