@@ -30,6 +30,7 @@ authController
 	.getUser()
 	.then(() => {
 		initializePrivateRoutes();
+		console.log("document.location.pathname", document.location.pathname);
 		router.go(document.location.pathname);
 		console.log("store", store.getState());
 	})
