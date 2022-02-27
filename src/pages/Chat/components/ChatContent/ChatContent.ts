@@ -34,6 +34,7 @@ class ChatContentComponent extends Popup {
 
 
 	componentDidUpdate(oldProps: any, newProps: any): boolean {
+		super.dispatchComponentDidMount();//just to reinitialize popup events
 		if (
 			newProps?.selectedChat &&
 			oldProps?.selectedChat?.id !== newProps?.selectedChat?.id

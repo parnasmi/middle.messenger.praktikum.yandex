@@ -35,18 +35,13 @@ export class Router {
       // this._onRoute(pathname);
 
     }).bind(this);
-    console.log('window.location.pathname',window.location.pathname)
     this._onRoute(window.location.pathname);
   }
 
   _onRoute(pathname:string) {
-    const calculatedPathname = document.location.pathname;
-    const route = this.getRoute(calculatedPathname);
-    const onLoadPathname = document.location.pathname;
-    console.log('route and pathname', {route, pathname,onLoadPathname})
+    const route = this.getRoute(pathname);
     if (!route) {
-      console.log('this.routes', {routes: this.routes})
-      this.go('/settings')
+      this.go('/not-found')
       // this.go(onLoadPathname)
       return;
     }
@@ -69,7 +64,6 @@ export class Router {
   }
 
   getRoute(pathname:string) {
-    console.log('pathname in getRoute',pathname)
     return this.routes.find(route => route.match(pathname));
   }
 }
