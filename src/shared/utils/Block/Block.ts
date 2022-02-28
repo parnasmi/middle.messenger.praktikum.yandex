@@ -123,6 +123,7 @@ export class Block<P = any> {
 	}
 
 	// eslint-disable-next-line no-unused-vars
+	//@ts-ignore
 	public componentDidUpdate(oldProps: P, newProps: P) {
 		return true;
 	}
@@ -185,6 +186,7 @@ export class Block<P = any> {
 	}
 
 	// eslint-disable-next-line no-unused-vars
+	//@ts-ignore
 	public componentDidMount(props: P) {}
 
 	public init() {
