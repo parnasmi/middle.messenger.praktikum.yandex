@@ -27,6 +27,7 @@ export function initializePublicRoutes() {
 	router.use("/", SignIn).use("/sign-up", SignUp).start();
 }
 
+
 authController
 	.getUser()
 	.then(() => {

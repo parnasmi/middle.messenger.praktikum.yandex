@@ -2,8 +2,9 @@ import { Indexed, StoreEvents } from "./store.types";
 import { EventBus, set } from "../utils";
 class Store extends EventBus {
 	private state: Indexed = {
-		messages: []
+		messages: [],
 	};
+
 
 	public getState() {
 		return this.state;

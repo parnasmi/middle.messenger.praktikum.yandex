@@ -5,6 +5,9 @@ export function render(selector: string, block:Block): Element | undefined {
   if(!root) return;
   root.innerHTML = '';
   root.appendChild(block.getContent());
-  block.dispatchComponentDidMount()
+
+  if(typeof block.dispatchComponentDidMount === 'function') {
+    block.dispatchComponentDidMount()
+  }
   return root;
 }

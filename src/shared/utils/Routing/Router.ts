@@ -1,75 +1,68 @@
-import {Route} from './Route';
-import {Block} from "../Block";
+import { Route } from "./Route";
+import { Block } from "../Block";
+
 export class Router {
-  private history: History;
-  private routes:Route[];
-  private readonly _rootQuery: string;
-  private _currentRoute:Route | null;
-  static __instance: Router;
-  constructor(rootQuery: string) {
-    if (Router.__instance) {
-      return Router.__instance;
-    }
+	private history: History;
+	private routes: Route[];
+	private readonly _rootQuery: string;
+	//@ts-ignore
+	private _currentRoute: Route | null;
+	static __instance: Router;
 
-    this.routes = [];
-    this.history = window.history;
-    this._currentRoute = null;
-    this._rootQuery = rootQuery;
+	constructor(rootQuery: string) {
+		if (Router.__instance) {
+			return Router.__instance;
+		}
 
-    Router.__instance = this;
-  }
+		this.routes = [];
+		this.history = window.history;
+		this._currentRoute = null;
+		this._rootQuery = rootQuery;
 
-  use(pathname:string, block:new () => Block) {
-    console.log('initiate routes', pathname)
-    const route = new Route(pathname, block, {rootQuery: this._rootQuery});
-    this.routes.push(route);
-    return this;
-  }
+		Router.__instance = this;
+	}
 
-  start() {
-    window.onpopstate = ((event:PopStateEvent) => {
-      this._onRoute(document.location.pathname);
-      // @ts-ignore
-      // const pathname = event.currentTarget.location.pathname;
-      // console.log('pathname onpopstate',pathname)
-      // this._onRoute(pathname);
+	public use(pathname: string, block: typeof Block) {
+		const route = new Route(pathname, block, { rootQuery: this._rootQuery });
+		this.routes.push(route);
+		return this;
+	}
 
-    }).bind(this);
-    console.log('window.location.pathname',window.location.pathname)
-    this._onRoute(window.location.pathname);
-  }
+	public start() {
+		window.onpopstate = () => {
+			this._onRoute(window.location.pathname);
+		};
+		this._onRoute(window.location.pathname);
+	}
 
-  _onRoute(pathname:string) {
-    const calculatedPathname = document.location.pathname;
-    const route = this.getRoute(calculatedPathname);
-    const onLoadPathname = document.location.pathname;
-    console.log('route and pathname', {route, pathname,onLoadPathname})
-    if (!route) {
-      console.log('this.routes', {routes: this.routes})
-      this.go('/settings')
-      // this.go(onLoadPathname)
-      return;
-    }
+	public go(pathname: string) {
+		this.history.pushState({}, "", pathname);
+		this._onRoute(pathname);
+	}
 
-    this._currentRoute = route;
-    route.render();
-  }
+	public back() {
+		this.history.back();
+	}
 
-  go(pathname:string) {
-    this.history.pushState({}, '', pathname);
-    this._onRoute(pathname);
-  }
+	public forward() {
+		this.history.forward();
+	}
 
-  back() {
-    this.history.back();
-  }
+	private _onRoute(pathname: string) {
+		const route = this.getRoute(pathname);
+		if (!route) {
+			this.go("/not-found");
+			return;
+		}
+		// if (this._currentRoute) {
+		// 	this._currentRoute.leave();
+		// }
 
-  forward() {
-    this.history.forward();
-  }
+		// this._currentRoute = route;
+		route.render();
+	}
 
-  getRoute(pathname:string) {
-    console.log('pathname in getRoute',pathname)
-    return this.routes.find(route => route.match(pathname));
-  }
+	private getRoute(pathname: string) {
+		return this.routes.find((route) => route.match(pathname));
+	}
 }

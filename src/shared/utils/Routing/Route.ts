@@ -23,7 +23,7 @@ export class Route {
   }
 
   leave() {
-    if (this._block) {
+    if (this._block && typeof this._block.hide === 'function') {
       this._block.hide();
     }
   }
@@ -44,8 +44,6 @@ export class Route {
       this.mountInDom();
       return;
     }
-    // this._block.show();
     this.mountInDom();
-
   }
 }
