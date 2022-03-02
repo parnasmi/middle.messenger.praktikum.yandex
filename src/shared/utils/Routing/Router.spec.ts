@@ -35,7 +35,6 @@ describe("Router", () => {
 
 
 		it("should change location", () => {
-
 			expect(document.location.pathname).to.eq("/settings");
 		});
 		it("should render a new block", () => {

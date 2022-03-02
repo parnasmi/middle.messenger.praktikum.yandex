@@ -5,6 +5,7 @@ export class Router {
 	private history: History;
 	private routes: Route[];
 	private readonly _rootQuery: string;
+	//@ts-ignore
 	private _currentRoute: Route | null;
 	static __instance: Router;
 
@@ -53,11 +54,11 @@ export class Router {
 			this.go("/not-found");
 			return;
 		}
-		if (this._currentRoute) {
-			this._currentRoute.leave();
-		}
+		// if (this._currentRoute) {
+		// 	this._currentRoute.leave();
+		// }
 
-		this._currentRoute = route;
+		// this._currentRoute = route;
 		route.render();
 	}
 

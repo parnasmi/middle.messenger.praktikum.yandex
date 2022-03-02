@@ -29,6 +29,8 @@ export class ChatItem extends Block {
 			activeClass: selectedChat?.id === props.id ? "active" : "",
 			avatar: props.avatar ? `${RESOURCE_URL}${props.avatar}` : null
 		});
+
+		console.log('tmpl chat', tmpl)
 	}
 
 	render(): DocumentFragment {

@@ -9,7 +9,8 @@
     "start": "npm run clean && parcel build static/index.html && node app.js",
     "clean": "rimraf ./dist && rimraf ./.parcel-cache",
     "eslint": "eslint 'src/**/*.ts' --fix",
-    "test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha --require ts-node/register src/**/*.spec.ts"
+    "test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha --require ts-node/register src/**/*.spec.ts",
+		"test-b": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
