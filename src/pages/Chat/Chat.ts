@@ -39,7 +39,6 @@ class Chat extends Block {
 		//Ревьюэру: Где и как отписаться от hashchange не смог решить. Поэтому пошел таким путем. Был рад если
 		// если подсказали как отписаться в таких случае. У нас же нет componentDidUnmount.
 		if(!('hashChangeEventSet' in window)) {
-			console.log('hashchange event set')
 			window.addEventListener("hashchange", () => {
 				const chatId = window.location.hash.slice(1);
 				const selectedChat = store
