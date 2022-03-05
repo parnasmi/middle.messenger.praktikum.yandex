@@ -24,6 +24,8 @@ export class AuthController {
 		} catch (e: unknown) {
 			console.error("sign in error", e);
 			cb?.error!((e as XHRHTTPRequestResultType).json());
+		} finally {
+			cb?.finally!();
 		}
 	}
 
