@@ -42,6 +42,7 @@ class Chat extends Block {
 			const selectedChat = store.getState().chats.find((chat: ChatItemType) => chat.id === +chatId);
 			store.set("selectedChat", selectedChat);
 		});
+
 	}
 	
 

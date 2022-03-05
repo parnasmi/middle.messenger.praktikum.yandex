@@ -24,7 +24,7 @@ export class Form<T> extends Block {
 		this.formData = {} as T;
 
 		this.formInputPatterns = {
-			login: /^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/,
+			login: /^[a-zA-Z0-9]+$/,
 			email: /\S+@\S+\.\S+/,
 			password: /^(?=.*\d)[0-9a-zA-Z]{8,}$/,
 			oldPassword: /^(?=.*\d)[0-9a-zA-Z]{8,}$/,
