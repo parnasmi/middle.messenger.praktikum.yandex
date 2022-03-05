@@ -24,7 +24,7 @@ export class Form<T> extends Block {
 		this.formData = {} as T;
 
 		this.formInputPatterns = {
-			login: /^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$/,
+			login: /^[a-zA-Z0-9]+$/,
 			email: /\S+@\S+\.\S+/,
 			password: /^(?=.*\d)[0-9a-zA-Z]{8,}$/,
 			oldPassword: /^(?=.*\d)[0-9a-zA-Z]{8,}$/,
@@ -40,7 +40,7 @@ export class Form<T> extends Block {
 	} //constructor
 
 	protected _handleSubmit() {
-		if('message' in this.formData) {
+		if ("message" in this.formData) {
 			this._customValidation();
 			this._onSend();
 			return;

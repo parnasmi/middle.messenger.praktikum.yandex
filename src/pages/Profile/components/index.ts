@@ -1,1 +1,1 @@
-export {SkeletonProfile} from './SkeletonProfile';
+export { SkeletonProfile } from "./SkeletonProfile";

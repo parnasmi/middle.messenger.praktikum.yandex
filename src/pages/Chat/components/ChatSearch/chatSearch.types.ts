@@ -1,5 +1,5 @@
 export type ChatSearchTypes = {
-  events:{
-    blur: (e:Event) => void;
-  }
-}
+	events: {
+		blur: (e: Event) => void;
+	};
+};

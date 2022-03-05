@@ -91,7 +91,6 @@ export class Block<P = any> {
 	}
 
 	private _componentDidMount(props: P) {
-
 		Object.values(this.children).forEach((child) => {
 			if (Array.isArray(child)) {
 				child.forEach((childElement) => childElement.dispatchComponentDidMount());
@@ -103,7 +102,7 @@ export class Block<P = any> {
 		this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
 		setTimeout(() => {
 			this.componentDidMount(props);
-		},300)
+		}, 300);
 	}
 
 	public dispatchComponentDidMount() {
@@ -213,7 +212,7 @@ export class Block<P = any> {
 				return typeof value === "function" ? value.bind(target) : value;
 			},
 			set(target: Record<string, unknown>, prop: string, value: unknown) {
-				const oldValue = {...target};
+				const oldValue = { ...target };
 				target[prop] = value;
 				self
 					.eventBus()

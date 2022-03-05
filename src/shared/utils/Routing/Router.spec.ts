@@ -33,7 +33,6 @@ describe("Router", () => {
 			router.go("/settings");
 		});
 
-
 		it("should change location", () => {
 			expect(document.location.pathname).to.eq("/settings");
 		});
@@ -50,11 +49,10 @@ describe("Router", () => {
 		});
 	});
 
-	describe('Router instance', () => {
+	describe("Router instance", () => {
 		it("should be singleton", () => {
 			const router = new Router("#root");
 			expect(new Router("#root")).to.eq(router);
 		});
-	})
-
+	});
 });

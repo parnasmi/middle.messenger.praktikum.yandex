@@ -1,6 +1,6 @@
-import {Block} from "../../utils";
-import tmpl from './profileDataItem.tmpl.hbs'
-import {ProfileDataItemTypes} from "./ProfileDataItem.types";
+import { Block } from "../../utils";
+import tmpl from "./profileDataItem.tmpl.hbs";
+import { ProfileDataItemTypes } from "./ProfileDataItem.types";
 
 export class ProfileDataItem extends Block {
 	constructor(props: Omit<ProfileDataItemTypes, "field">) {

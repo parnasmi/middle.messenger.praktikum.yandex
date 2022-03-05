@@ -1,10 +1,10 @@
 import { Block } from "../../../utils";
 import tmpl from "./avatarUploadForm.tmpl.hbs";
 import { Button } from "../../Button";
-import {AvatarUploadFormType, FileInputType} from "./avatarUploadForm.types";
+import { AvatarUploadFormType, FileInputType } from "./avatarUploadForm.types";
 
 class FileInput extends Block {
-	constructor(props:FileInputType ) {
+	constructor(props: FileInputType) {
 		super("input", {
 			...props,
 			attributes: {
@@ -18,11 +18,9 @@ class FileInput extends Block {
 	}
 }
 
-
-
 export class AvatarUploadForm extends Block {
-	constructor({ inputEvents,...restProps }: AvatarUploadFormType) {
-		const input = new FileInput({events: inputEvents})
+	constructor({ inputEvents, ...restProps }: AvatarUploadFormType) {
+		const input = new FileInput({ events: inputEvents });
 		const button = new Button({
 			title: "Поменять",
 			events: {

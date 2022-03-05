@@ -4,8 +4,8 @@ import { Block } from "../../shared/utils";
 import tmpl from "./profilePassowordChange.tmpl.hbs";
 import { ProfileNav, ProfileAvatar } from "../../shared/components";
 import { PasswordChangeForm } from "./components";
-import store from '../../shared/store';
-import {RESOURCE_URL} from "../../../config";
+import store from "../../shared/store";
+import { RESOURCE_URL } from "../../../config";
 export class ProfilePasswordChange extends Block {
 	constructor() {
 		document.title = "Profile";
@@ -25,12 +25,13 @@ export class ProfilePasswordChange extends Block {
 				editForm,
 			},
 		});
-
 	}
 
 	componentDidMount() {
 		const user = store.getState().user;
-		(this.children.profileAvatar as Block).setProps({avatarUrl: `${RESOURCE_URL}${user.avatar}`,})
+		(this.children.profileAvatar as Block).setProps({
+			avatarUrl: `${RESOURCE_URL}${user.avatar}`,
+		});
 	}
 
 	render(): DocumentFragment {

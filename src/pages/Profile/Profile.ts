@@ -5,7 +5,9 @@ import {
 	AvatarChangePopup,
 	ProfileDataItem,
 	ProfileNav,
-	ProfileAvatar, Popup, Element,
+	ProfileAvatar,
+	Popup,
+	Element,
 } from "../../shared/components";
 import { ProfileDataItemTypes } from "../../shared/components/ProfileDataItem/ProfileDataItem.types";
 import { dataItemJson } from "./dataItemJson";
@@ -15,16 +17,15 @@ import { SkeletonProfile } from "./components";
 import { ProfileController } from "../../shared/modules/profile";
 import { OverlayPopup } from "../../shared/components/OverlayPopup";
 // import { TUser } from "../../shared/modules/types";
-import {RESOURCE_URL} from '../../../config';
-import {Router} from "../../shared/utils";
-import {AuthController} from "../../shared/modules/auth";
-import {initializePublicRoutes} from "../../index";
+import { RESOURCE_URL } from "../../../config";
+import { Router } from "../../shared/utils";
+import { AuthController } from "../../shared/modules/auth";
+import { initializePublicRoutes } from "../../index";
 
 const profileController = new ProfileController();
 const authController = new AuthController();
-const router = new Router('#root')
+const router = new Router("#root");
 export class Profile extends Popup {
-
 	constructor() {
 		document.title = "Profile";
 		const profileNav = new ProfileNav();
@@ -33,44 +34,44 @@ export class Profile extends Popup {
 		const overlayPopup = new OverlayPopup();
 		const avatarChangePopup = new AvatarChangePopup();
 		const editLink = new Element({
-			tagName: 'a',
-			text: 'Изменить данные',
-			attributes: { class: "profile-info__action", href: "#"},
+			tagName: "a",
+			text: "Изменить данные",
+			attributes: { class: "profile-info__action", href: "#" },
 			events: {
-				click: (e:Event) => {
+				click: (e: Event) => {
 					e.preventDefault();
-					router.go('/settings-update')
-				}
-			}
+					router.go("/settings-update");
+				},
+			},
 		});
 		const passwordChangeLink = new Element({
-			tagName: 'a',
-			text: 'Изменить пароль',
-			attributes: { class: "profile-info__action", href: "#"},
+			tagName: "a",
+			text: "Изменить пароль",
+			attributes: { class: "profile-info__action", href: "#" },
 			events: {
-				click: (e:Event) => {
+				click: (e: Event) => {
 					e.preventDefault();
-					router.go('/password-change')
-				}
-			}
+					router.go("/password-change");
+				},
+			},
 		});
 		const logoutLink = new Element({
-			tagName: 'a',
-			text: 'Выйти',
-			attributes: { class: "error profile__logout", href: "#"},
+			tagName: "a",
+			text: "Выйти",
+			attributes: { class: "error profile__logout", href: "#" },
 			events: {
-				click: async (e:Event) => {
+				click: async (e: Event) => {
 					e.preventDefault();
 					await authController.logout({
 						success: () => {
 							setTimeout(() => {
 								initializePublicRoutes();
-								router.go('/')
-							}, 100)
-						}
-					})
-				}
-			}
+								router.go("/");
+							}, 100);
+						},
+					});
+				},
+			},
 		});
 		super("main", {
 			attributes: {
@@ -83,11 +84,11 @@ export class Profile extends Popup {
 				avatarChangePopup,
 				passwordChangeLink,
 				editLink,
-				logoutLink
+				logoutLink,
 			},
 			isFetched: false,
 			skeleton,
-			firstName:null
+			firstName: null,
 		});
 
 		// store.on(StoreEvents.Updated, () => {
@@ -112,12 +113,12 @@ export class Profile extends Popup {
 							avatarChangePopup,
 							editLink,
 							passwordChangeLink,
-							logoutLink
+							logoutLink,
 						},
 						isFetched: true,
-						firstName: data.first_name
+						firstName: data.first_name,
 					});
-					profileAvatar.setProps({avatarUrl:  `${RESOURCE_URL}${data.avatar}`});
+					profileAvatar.setProps({ avatarUrl: `${RESOURCE_URL}${data.avatar}` });
 				} catch (e) {
 					console.log("error occured while set props", e);
 				}
@@ -132,9 +133,7 @@ export class Profile extends Popup {
 				valueComponent: dataItem.valueComponent,
 			});
 		});
-
 	}
-
 
 	render(): DocumentFragment {
 		return this.compile(tmpl, this.props);

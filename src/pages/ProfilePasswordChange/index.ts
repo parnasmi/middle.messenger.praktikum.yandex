@@ -1,1 +1,1 @@
-export {ProfilePasswordChange as default} from './ProfilePasswordChange'
+export { ProfilePasswordChange as default } from "./ProfilePasswordChange";

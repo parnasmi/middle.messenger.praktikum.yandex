@@ -1,10 +1,10 @@
-import tmpl from './editForm.tmpl.hbs'
-import {Button, EditInputField, Form} from "../../../shared/components";
-import {Block} from "../../../shared/utils";
-import {userProfileFormFields} from './userProfileFormFields'
-import {SignUpTypes} from "../../../shared/modules/signUp";
-import {ProfileController} from "../../../shared/modules/profile";
-const profileController = new ProfileController()
+import tmpl from "./editForm.tmpl.hbs";
+import { Button, EditInputField, Form } from "../../../shared/components";
+import { Block } from "../../../shared/utils";
+import { userProfileFormFields } from "./userProfileFormFields";
+import { SignUpTypes } from "../../../shared/modules/signUp";
+import { ProfileController } from "../../../shared/modules/profile";
+const profileController = new ProfileController();
 export class EditForm extends Form<SignUpTypes> {
 	constructor(props: any) {
 		const { userProfileData } = props;
@@ -14,12 +14,12 @@ export class EditForm extends Form<SignUpTypes> {
 	}
 	async _onSend() {
 		await profileController.updateProfile(this.formData, {
-			success:(data) => {
-				console.log('updated data', data)
+			success: (data) => {
+				console.log("updated data", data);
 			},
-			error:(error) => {
-				console.log('update error', error)
-			}
+			error: (error) => {
+				console.log("update error", error);
+			},
 		});
 	}
 	private _generateInputs(inputs: any, userProfileData: any) {
@@ -61,12 +61,12 @@ export class EditForm extends Form<SignUpTypes> {
 			attributes: { class: "full-w", type: "submit" },
 		});
 	}
-	componentDidUpdate(oldProps: any, newProps: any): boolean {
-    this._generateInputs(userProfileFormFields, newProps.userProfileData);
-		const normalizedFormValues = {...newProps.userProfileData};
+	componentDidUpdate(_: any, newProps: any): boolean {
+		this._generateInputs(userProfileFormFields, newProps.userProfileData);
+		const normalizedFormValues = { ...newProps.userProfileData };
 		delete normalizedFormValues.id;
 		delete normalizedFormValues.avatar;
-		this.setFormValues(normalizedFormValues)
+		this.setFormValues(normalizedFormValues);
 		return true;
 	}
 

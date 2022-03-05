@@ -1,14 +1,14 @@
 .btn {
-  background-color: $color-primary;
-  color: $color-white;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border-radius: 8px;
-  line-height: 1;
-  font-size: 13px;
-  transition: all 0.3s;
+	background-color: $color-primary;
+	color: $color-white;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-radius: 8px;
+	line-height: 1;
+	font-size: 13px;
+	transition: all 0.3s;
 
-  &:hover {
-    background-color: darken($color-primary, 10%);
-  }
+	&:hover {
+		background-color: darken($color-primary, 10%);
+	}
 }

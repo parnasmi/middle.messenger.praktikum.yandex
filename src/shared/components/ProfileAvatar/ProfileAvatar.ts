@@ -22,7 +22,6 @@ export class ProfileAvatar extends Block {
 		});
 	}
 
-
 	protected render(): DocumentFragment {
 		return this.compile(tmpl, this.props);
 	}

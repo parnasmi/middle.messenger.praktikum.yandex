@@ -1,1 +1,1 @@
-export {ChatSearch} from './ChatSearch'
+export { ChatSearch } from "./ChatSearch";

@@ -6,7 +6,7 @@ import { ChatContentMessages } from "../ChatContentMessages";
 import store, { connect } from "../../../../shared/store";
 import { ChatController } from "../../../../shared/modules/chat/chat.controller";
 import { AddUserPopup, Popup } from "../../../../shared/components";
-import {RemoveUserPopup} from "../../../../shared/components/RemoveUserPopup";
+import { RemoveUserPopup } from "../../../../shared/components/RemoveUserPopup";
 
 const chatController = new ChatController();
 
@@ -26,15 +26,13 @@ class ChatContentComponent extends Popup {
 				chatContentInputs,
 				chatContentMessages,
 				addUserPopup,
-				removeUserPopup
+				removeUserPopup,
 			},
 		});
-
 	}
 
-
 	componentDidUpdate(oldProps: any, newProps: any): boolean {
-		super.dispatchComponentDidMount();//just to reinitialize popup events
+		super.dispatchComponentDidMount(); //just to reinitialize popup events
 		if (
 			newProps?.selectedChat &&
 			oldProps?.selectedChat?.id !== newProps?.selectedChat?.id
@@ -50,7 +48,6 @@ class ChatContentComponent extends Popup {
 
 		return true;
 	}
-
 
 	render(): DocumentFragment {
 		return this.compile(tmpl, this.props);

@@ -1,2 +1,2 @@
-export {Meta} from './meta'
-export {Events} from './events'
+export { Meta } from "./meta";
+export { Events } from "./events";

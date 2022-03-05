@@ -1,4 +1,4 @@
-import {Block, closeModal} from "../../utils";
+import { Block, closeModal } from "../../utils";
 import tmpl from "./addUserPopup.tmpl.hbs";
 import { FormContainer } from "../FormContainer";
 import { ChatController } from "../../modules/chat/chat.controller";
@@ -25,7 +25,7 @@ export class AddUserPopup extends Block {
 				await chatController.addUser(chatId, Number(formData.number), cb);
 			},
 			successHandler: () => {
-				closeModal('add-user-popup')
+				closeModal("add-user-popup");
 			},
 			errorHandler: () => {
 				console.error("Error while adding user");

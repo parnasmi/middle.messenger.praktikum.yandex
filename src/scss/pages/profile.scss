@@ -1,78 +1,77 @@
 @import "../base/variables";
 
 .profile {
-
 }
 
 .profile__nav {
-  background-color: $color-grey-light;
-  border: 1px solid $color-grey-border;
-  padding-left: 18px;
-  padding-right: 18px;
+	background-color: $color-grey-light;
+	border: 1px solid $color-grey-border;
+	padding-left: 18px;
+	padding-right: 18px;
 }
 
 .profile__nav-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background-color: $color-primary;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $color-white;
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	background-color: $color-primary;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $color-white;
 }
 
 .profile__info {
-  width: 510px;
+	width: 510px;
 }
 
 .profile__avatar {
-  background-color: $color-grey-light-2;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+	background-color: $color-grey-light-2;
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	margin-bottom: 20px;
 }
 
 .profile__data-item:not(:last-child) {
-  border-bottom: 1px solid $color-grey-border;
+	border-bottom: 1px solid $color-grey-border;
 }
 
 .profile__name {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 50px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 50px;
 }
 
 .profile__avatar_edit {
-  margin-bottom: 97px;
+	margin-bottom: 97px;
 }
 
 .profile__actions_save-btn {
-  width: 280px;
+	width: 280px;
 }
 
 .profile__input-error {
-  position: absolute;
-  font-size: 9px;
-  right: 0;
-  bottom: -11px;
+	position: absolute;
+	font-size: 9px;
+	right: 0;
+	bottom: -11px;
 }
 
 .profile__avatar-overlay {
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba($color-black, 50%);
-  color: $color-white;
-  padding: 20px;
-  opacity: 0;
-  transition: .2s ease;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba($color-black, 50%);
+	color: $color-white;
+	padding: 20px;
+	opacity: 0;
+	transition: 0.2s ease;
 }
 
 .profile__avatar:hover .profile__avatar-overlay {
-  opacity: 1;
+	opacity: 1;
 }

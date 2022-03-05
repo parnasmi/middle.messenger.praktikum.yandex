@@ -1,30 +1,30 @@
-import tmpl from './signForm.tmpl.hbs'
-import {Form} from "../Form";
-import {TextInputField} from "../TextInputField";
-import {TextInputFieldTypes} from "../TextInputField/textInputField.types";
-import {Block, Router} from "../../utils";
-import {Button} from "../Button";
-import {Element, Loader} from '../index'
-import {SignUpController, SignUpTypes} from "../../modules/signUp";
-import {AuthController} from "../../modules/auth";
+import tmpl from "./signForm.tmpl.hbs";
+import { Form } from "../Form";
+import { TextInputField } from "../TextInputField";
+import { TextInputFieldTypes } from "../TextInputField/textInputField.types";
+import { Block, Router } from "../../utils";
+import { Button } from "../Button";
+import { Element, Loader } from "../index";
+import { SignUpController, SignUpTypes } from "../../modules/signUp";
+import { AuthController } from "../../modules/auth";
 
-const router = new Router('#root');
+const router = new Router("#root");
 
 type SignFormType = {
-  inputs: TextInputFieldTypes[];
-  attributes: {
-    class: string;
-  };
-  signFormModifierClass: string;
-  buttonText: string;
-  linkText: string;
-  link: string;
-  headingText: string;
-  pageType: 'sign-up' | 'sign-in'
-}
+	inputs: TextInputFieldTypes[];
+	attributes: {
+		class: string;
+	};
+	signFormModifierClass: string;
+	buttonText: string;
+	linkText: string;
+	link: string;
+	headingText: string;
+	pageType: "sign-up" | "sign-in";
+};
 
 const signUpController = new SignUpController();
-const authController = new AuthController()
+const authController = new AuthController();
 
 export class SignForm extends Form<SignUpTypes> {
 	buttonText: string;
@@ -112,8 +112,8 @@ export class SignForm extends Form<SignUpTypes> {
 	}
 
 	componentDidMount() {
-    //just to hide loader when logout
-    (this.children.spinner as Block).hide()
+		//just to hide loader when logout
+		(this.children.spinner as Block).hide();
 	}
 
 	render(): DocumentFragment {

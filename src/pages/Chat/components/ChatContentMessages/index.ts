@@ -1,1 +1,1 @@
-export {ChatContentMessages} from './ChatContentMessages'
+export { ChatContentMessages } from "./ChatContentMessages";

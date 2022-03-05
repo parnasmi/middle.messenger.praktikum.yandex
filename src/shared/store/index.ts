@@ -1,4 +1,4 @@
-import store from './Store';
+import store from "./Store";
 export default store;
-export {StoreEvents} from './store.types'
-export {connect} from './connect'
+export { StoreEvents } from "./store.types";
+export { connect } from "./connect";

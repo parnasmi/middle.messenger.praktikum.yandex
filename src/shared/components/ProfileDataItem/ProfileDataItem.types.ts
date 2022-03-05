@@ -1,7 +1,7 @@
-import {Block} from "../../utils";
+import { Block } from "../../utils";
 
 export type ProfileDataItemTypes = {
-  label: string;
-  valueComponent: Block | string;
-  field: string;
-}
+	label: string;
+	valueComponent: Block | string;
+	field: string;
+};

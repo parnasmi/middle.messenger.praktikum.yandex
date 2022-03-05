@@ -1,5 +1,5 @@
 export type InitWsParams = {
-  chatId: number;
-  userId: number;
-  token: string;
-}
+	chatId: number;
+	userId: number;
+	token: string;
+};

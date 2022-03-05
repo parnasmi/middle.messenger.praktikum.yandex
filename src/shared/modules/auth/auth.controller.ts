@@ -27,10 +27,10 @@ export class AuthController {
 		}
 	}
 
-	public async logout(cb:IFormCallback) {
+	public async logout(cb: IFormCallback) {
 		try {
 			await authApi.logout();
-			cb?.success!()
+			cb?.success!();
 		} catch (e) {
 			console.error("error occured while logout");
 		}

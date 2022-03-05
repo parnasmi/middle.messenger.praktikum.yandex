@@ -26,7 +26,7 @@ export class SignIn extends Block {
 			linkText: "Нет аккаунта",
 			link: "/sign-up",
 			headingText: "Вход",
-			pageType: 'sign-in'
+			pageType: "sign-in",
 		});
 
 		super("div", {

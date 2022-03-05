@@ -21,10 +21,13 @@ export class PasswordChangeForm extends Form<PasswordChangeFormType> {
 			},
 			{
 				success: () => {
-					this.setProps({ responseResultInfo: "Пароль изменен",errorClass: '' });
+					this.setProps({ responseResultInfo: "Пароль изменен", errorClass: "" });
 				},
 				error: (error) => {
-					this.setProps({responseResultInfo: (error as any).reason, errorClass: 'error'})
+					this.setProps({
+						responseResultInfo: (error as any).reason,
+						errorClass: "error",
+					});
 				},
 			},
 		);

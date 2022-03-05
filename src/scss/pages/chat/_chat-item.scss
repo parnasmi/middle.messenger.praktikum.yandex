@@ -1,72 +1,72 @@
 .chat-item {
-  padding: 12px 10px;
-  transition: all 0.3s;
-  &.active,
-  &:hover {
-    background-color: $color-bg-primary-hover;
-  }
+	padding: 12px 10px;
+	transition: all 0.3s;
+	&.active,
+	&:hover {
+		background-color: $color-bg-primary-hover;
+	}
 }
 
 .chat-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 10px;
-  right: 10px;
-  border-top: 1px solid $color-grey-border;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 10px;
+	right: 10px;
+	border-top: 1px solid $color-grey-border;
 }
 
 .chat-item__avatar {
-  border-radius: 50px;
-  width: 47px;
-  height: 47px;
-  background-color: $color-grey-light-2;
-  margin-right: 10px;
-  overflow: hidden;
+	border-radius: 50px;
+	width: 47px;
+	height: 47px;
+	background-color: $color-grey-light-2;
+	margin-right: 10px;
+	overflow: hidden;
 }
 
 .chat-item__name {
-  margin-bottom: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  color: #000000;
+	margin-bottom: 4px;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1;
+	color: #000000;
 }
 
 .chat-item__last-msg-text {
-  font-size: 12px;
-  color: $color-grey;
-  height: 26px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.1;
+	font-size: 12px;
+	color: $color-grey;
+	height: 26px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 1.1;
 }
 
 .chat-item__meta-info {
-  width: 50px;
+	width: 50px;
 }
 
 .chat-item__date {
-  font-weight: 500;
-  font-size: 9px;
-  color: $color-grey;
+	font-weight: 500;
+	font-size: 9px;
+	color: $color-grey;
 }
 
 .chat-item__unread-count {
-  margin-top: 14px;
-  background-color: $color-primary;
-  color: $color-white;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  text-align: center;
-  font-size: 11px;
-  line-height: 20px;
+	margin-top: 14px;
+	background-color: $color-primary;
+	color: $color-white;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 11px;
+	line-height: 20px;
 }
 
 .chat-item__last-msg-author {
-  color: #000;
+	color: #000;
 }

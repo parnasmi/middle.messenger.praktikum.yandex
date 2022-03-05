@@ -10,8 +10,7 @@ export class SignUpApi extends BaseApi {
 			data: JSON.stringify(signUpData),
 			headers: {
 				mode: "cors",
-				credentials: "true",
-				"content-type": "application/json",
+				credentials: "true"
 			},
 		});
 	}

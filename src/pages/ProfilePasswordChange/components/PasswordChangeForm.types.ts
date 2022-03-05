@@ -1,5 +1,5 @@
 export type PasswordChangeFormType = {
-  oldPassword: string;
-  newPassword: string;
-  retypePassword: string
-}
+	oldPassword: string;
+	newPassword: string;
+	retypePassword: string;
+};

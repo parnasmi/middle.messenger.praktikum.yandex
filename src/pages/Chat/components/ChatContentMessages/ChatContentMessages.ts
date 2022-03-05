@@ -5,7 +5,7 @@ import { ChatMessage } from "../ChatMessage";
 import store, { connect } from "../../../../shared/store";
 
 class ChatContentMessagesComponent extends Block {
-	private readonly currentUserId:number;
+	private readonly currentUserId: number;
 	constructor() {
 		super("section", {
 			attributes: {
@@ -17,7 +17,7 @@ class ChatContentMessagesComponent extends Block {
 
 	private _generateMessages(messagesJson: ChatMessageType[]) {
 		this.children.messagesLogs = messagesJson.map((message): Block => {
-			return new ChatMessage({ ...message, currentUserId:this.currentUserId });
+			return new ChatMessage({ ...message, currentUserId: this.currentUserId });
 		});
 	}
 
