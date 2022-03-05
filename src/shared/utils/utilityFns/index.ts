@@ -1,4 +1,4 @@
-export {mergeClassnames} from './classnames'
-export {isEqual} from './isEqual'
-export {set} from './set'
-export {closeModal} from './closeModal'
+export { mergeClassnames } from "./classnames";
+export { isEqual } from "./isEqual";
+export { set } from "./set";
+export { closeModal } from "./closeModal";

@@ -1,8 +1,8 @@
-import {Block} from "../../../../shared/utils";
-import {connect} from "../../../../shared/store";
-import tmpl from './chatList.tmpl.hbs'
-import {ChatItem} from "../ChatItem/ChatItem";
-import {ChatItemType} from "../ChatItem/chatItemTypes.types";
+import { Block } from "../../../../shared/utils";
+import { connect } from "../../../../shared/store";
+import tmpl from "./chatList.tmpl.hbs";
+import { ChatItem } from "../ChatItem/ChatItem";
+import { ChatItemType } from "../ChatItem/chatItemTypes.types";
 
 class ChatList extends Block {
 	constructor() {
@@ -13,15 +13,15 @@ class ChatList extends Block {
 		});
 	}
 
-	private generateChatItems(chatItems:ChatItemType[]) {
-		this.children.chatListItems = chatItems.map((chat, index) => {
+	private generateChatItems(chatItems: ChatItemType[]) {
+		this.children.chatListItems = chatItems.map((chat) => {
 			return new ChatItem(chat);
-		})
+		});
 	}
 
-	componentDidUpdate(oldProps: any, newProps: any): boolean {
+	componentDidUpdate(_: any, newProps: any): boolean {
 		this.generateChatItems(newProps.chats);
-    return true
+		return true;
 	}
 
 	protected render(): DocumentFragment {
@@ -29,4 +29,4 @@ class ChatList extends Block {
 	}
 }
 
-export default connect(ChatList, (state) => ({chats: state.chats}))
+export default connect(ChatList, (state) => ({ chats: state.chats }));

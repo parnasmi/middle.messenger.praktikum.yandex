@@ -1,1 +1,1 @@
-export {ProfileNav} from './ProfileNav'
+export { ProfileNav } from "./ProfileNav";

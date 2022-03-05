@@ -1,8 +1,8 @@
-import {Block, mergeClassnames} from "../../utils";
-import {TextInput} from "../TextInput";
-import {FormFieldErrorMsg} from "../FormFieldErrorMsg";
-import {EditInputFieldTypes} from "./editInputField.types";
-import tmpl from './editInputField.tmpl.hbs'
+import { Block, mergeClassnames } from "../../utils";
+import { TextInput } from "../TextInput";
+import { FormFieldErrorMsg } from "../FormFieldErrorMsg";
+import { EditInputFieldTypes } from "./editInputField.types";
+import tmpl from "./editInputField.tmpl.hbs";
 
 export class EditInputField extends Block {
 	constructor(props: EditInputFieldTypes) {
@@ -11,10 +11,12 @@ export class EditInputField extends Block {
 		super("li", {
 			attributes: {
 				...(props.selfProps?.attributes || {}),
-				class: `profile__data-item ${mergeClassnames(props.selfProps?.attributes?.class)}`
+				class: `profile__data-item ${mergeClassnames(
+					props.selfProps?.attributes?.class,
+				)}`,
 			},
-			children: {textInput, errorMessage},
-			label: props.label
+			children: { textInput, errorMessage },
+			label: props.label,
 		});
 	}
 
@@ -25,10 +27,10 @@ export class EditInputField extends Block {
 	}
 
 	public validateInput(isValid: boolean) {
-		(this.children.errorMessage as Block).setProps({ isShown: !isValid })
+		(this.children.errorMessage as Block).setProps({ isShown: !isValid });
 	}
 
 	render(): DocumentFragment {
-		return this.compile(tmpl, this.props)
+		return this.compile(tmpl, this.props);
 	}
 }

@@ -1,2 +1,2 @@
-import {Block} from "../utils";
-export type ChildrenType = Record<string, Block>
+import { Block } from "../utils";
+export type ChildrenType = Record<string, Block>;

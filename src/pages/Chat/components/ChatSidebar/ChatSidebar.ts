@@ -7,7 +7,6 @@ import { ChatCreatePopup } from "../../../../shared/components/ChatCreatePopup";
 import { ChatController } from "../../../../shared/modules/chat/chat.controller";
 import ChatList from "../ChatList";
 
-
 const router = new Router("#root");
 const chatController = new ChatController();
 
@@ -48,13 +47,12 @@ export class ChatSidebar extends Popup {
 				createChatButton,
 				chatCreatePopup,
 				profileButton,
-				chatList: new ChatList()
+				chatList: new ChatList(),
 			},
 		});
 
 		chatController.getChatList();
 	}
-
 
 	render(): DocumentFragment {
 		return this.compile(tmpl, this.props);

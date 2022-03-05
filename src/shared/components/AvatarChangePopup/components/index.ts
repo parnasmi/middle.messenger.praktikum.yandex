@@ -1,2 +1,2 @@
-export {AvatarUploadForm} from './AvatarUploadForm'
-export {AvatarUploadFormType, FileInputType} from "./avatarUploadForm.types";
+export { AvatarUploadForm } from "./AvatarUploadForm";
+export { AvatarUploadFormType, FileInputType } from "./avatarUploadForm.types";

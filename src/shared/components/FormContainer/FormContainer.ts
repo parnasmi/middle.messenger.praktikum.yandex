@@ -20,16 +20,16 @@ export class FormContainer extends Form<any> {
 	protected _onSend() {
 		this.props.submitHandler(this.formData, {
 			success: (data: any) => {
-				if(typeof this.props.successHandler === 'function') {
-					this.props.successHandler(data)
+				if (typeof this.props.successHandler === "function") {
+					this.props.successHandler(data);
 				}
 			},
 			error: (error: any) => {
 				(this.children.apiErrorText as Block).setProps({
 					text: (error as any).reason,
 				});
-				if(typeof this.props.errorHandler === 'function') {
-					this.props.errorHandler()
+				if (typeof this.props.errorHandler === "function") {
+					this.props.errorHandler();
 				}
 			},
 		});

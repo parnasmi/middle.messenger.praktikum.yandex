@@ -27,7 +27,7 @@ export class SignUp extends Block {
 			headingText: "Регистрация",
 			linkText: "Войти",
 			link: "/",
-			pageType: 'sign-up'
+			pageType: "sign-up",
 		});
 
 		super("div", {

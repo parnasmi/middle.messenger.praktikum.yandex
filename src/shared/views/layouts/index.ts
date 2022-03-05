@@ -1,2 +1,2 @@
-import base from './base.hbs';
-export {base}
+import base from "./base.hbs";
+export { base };

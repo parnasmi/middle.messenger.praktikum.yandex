@@ -2,7 +2,7 @@ import { Block } from "../../../../shared/utils";
 import { ChatItemLastMessage, ChatItemType } from "./chatItemTypes.types";
 import tmpl from "./chatItem.tmpl.hbs";
 import store from "../../../../shared/store";
-import {RESOURCE_URL} from "../../../../../config";
+import { RESOURCE_URL } from "../../../../../config";
 
 const getLastMessageAuthor = (last_message: ChatItemLastMessage | null) => {
 	if (!last_message) return null;
@@ -27,10 +27,9 @@ export class ChatItem extends Block {
 				: null,
 			messageOwner: ownMessage ? "Вы:" : getLastMessageAuthor(last_message),
 			activeClass: selectedChat?.id === props.id ? "active" : "",
-			avatar: props.avatar ? `${RESOURCE_URL}${props.avatar}` : null
+			avatar: props.avatar ? `${RESOURCE_URL}${props.avatar}` : null,
 		});
 
-		console.log('tmpl chat', tmpl)
 	}
 
 	render(): DocumentFragment {

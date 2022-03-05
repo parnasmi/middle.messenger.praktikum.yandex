@@ -1,1 +1,1 @@
-export {ChatPending} from './ChatPending'
+export { ChatPending } from "./ChatPending";

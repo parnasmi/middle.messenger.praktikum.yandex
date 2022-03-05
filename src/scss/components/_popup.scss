@@ -1,42 +1,42 @@
 .popup {
-  position: fixed;
-  background-color: $color-white;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%) scale(0);
-  transition: 300ms ease;
-  z-index: 10;
-  width: 340px;
-  border-radius: 12px;
-  padding: 40px 30px;
-  text-align: center;
+	position: fixed;
+	background-color: $color-white;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	transition: 300ms ease;
+	z-index: 10;
+	width: 340px;
+	border-radius: 12px;
+	padding: 40px 30px;
+	text-align: center;
 
-  &.active {
-    transform: translate(-50%,-50%) scale(1);
-  }
+	&.active {
+		transform: translate(-50%, -50%) scale(1);
+	}
 }
 
 .popup__heading {
-  font-weight: 500;
-  font-size: 15px;
-  margin-bottom: 40px;
+	font-weight: 500;
+	font-size: 15px;
+	margin-bottom: 40px;
 }
 
 .popup__action-text {
-  font-size: 12px;
-  color: $color-primary;
-  text-decoration: underline;
-  margin-bottom: 40px;
+	font-size: 12px;
+	color: $color-primary;
+	text-decoration: underline;
+	margin-bottom: 40px;
 }
 
 .popup__instruction-text {
-  font-size: 11px;
-  color: #FF2F2F;
-  font-weight: 500;
+	font-size: 11px;
+	color: #ff2f2f;
+	font-weight: 500;
 }
 
 .popup__action-text_selected {
-  color: #8d8d8d;
-  font-size: 14px;
-  text-decoration: none;
+	color: #8d8d8d;
+	font-size: 14px;
+	text-decoration: none;
 }

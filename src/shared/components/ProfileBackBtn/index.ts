@@ -1,1 +1,1 @@
-export {ProfileBackBtn} from './ProfileBackBtn'
+export { ProfileBackBtn } from "./ProfileBackBtn";

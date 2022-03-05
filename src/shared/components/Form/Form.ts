@@ -40,7 +40,7 @@ export class Form<T> extends Block {
 	} //constructor
 
 	protected _handleSubmit() {
-		if('message' in this.formData) {
+		if ("message" in this.formData) {
 			this._customValidation();
 			this._onSend();
 			return;

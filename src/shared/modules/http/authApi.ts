@@ -8,13 +8,13 @@ export class AuthApi extends BaseApi {
 	create(loginData: AuthProfileTypes) {
 		return authHttpInstance.post("/signin", {
 			data: JSON.stringify(loginData),
-			headers: {"content-type": "application/json"},
+			// headers: {"content-type": "application/json"},
 		});
 	}
 	getme() {
-		return authHttpInstance.get('/user', {})
+		return authHttpInstance.get("/user", {});
 	}
 	logout() {
-		return authHttpInstance.post('/logout', {})
+		return authHttpInstance.post("/logout", {});
 	}
 }

@@ -1,1 +1,2 @@
-export const  mergeClassnames = (classNames: string | undefined) => classNames || '';
+export const mergeClassnames = (classNames: string | undefined) =>
+	classNames || "";

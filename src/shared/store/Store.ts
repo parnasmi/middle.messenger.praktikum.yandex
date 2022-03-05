@@ -5,7 +5,6 @@ class Store extends EventBus {
 		messages: [],
 	};
 
-
 	public getState() {
 		return this.state;
 	}
@@ -19,7 +18,7 @@ class Store extends EventBus {
 		try {
 			this.emit(StoreEvents.Updated);
 		} catch (e) {
-			console.error('no such event', e)
+			console.error("no such event", e);
 		}
 	}
 }

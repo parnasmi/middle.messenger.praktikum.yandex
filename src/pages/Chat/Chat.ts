@@ -5,11 +5,11 @@ import { base } from "../../shared/views/layouts";
 const layouts = require("handlebars-layouts");
 import "../../scss/styles.scss";
 import "../../scss/pages/chat/index.scss";
-import { ChatContent, ChatSidebar,ChatPending } from "./components";
-import {OverlayPopup} from "../../shared/components/OverlayPopup";
+import { ChatContent, ChatSidebar, ChatPending } from "./components";
+import { OverlayPopup } from "../../shared/components/OverlayPopup";
 import handlebars from "handlebars/dist/handlebars.runtime";
-import store, {connect} from '../../shared/store';
-import {ChatItemType} from "./components/ChatItem/chatItemTypes.types";
+import store, { connect } from "../../shared/store";
+import { ChatItemType } from "./components/ChatItem/chatItemTypes.types";
 
 const searchIcon = new URL("../../assets/img/icon-search.svg", import.meta.url);
 // Register helpers
@@ -36,19 +36,28 @@ class Chat extends Block {
 			},
 		});
 		document.title = "Chat";
+		//Ревьюэру: Где и как отписаться от hashchange не смог решить. Поэтому пошел таким путем. Был рад если
+		// если подсказали как отписаться в таких случае. У нас же нет componentDidUnmount.
+		if(!('hashChangeEventSet' in window)) {
+			console.log('hashchange event set')
+			window.addEventListener("hashchange", () => {
+				const chatId = window.location.hash.slice(1);
+				const selectedChat = store
+					.getState()
+					.chats.find((chat: ChatItemType) => chat.id === +chatId);
+				store.set("selectedChat", selectedChat);
+			});
+		}
 
-		window.addEventListener("hashchange", () => {
-			const chatId = window.location.hash.slice(1);
-			const selectedChat = store.getState().chats.find((chat: ChatItemType) => chat.id === +chatId);
-			store.set("selectedChat", selectedChat);
-		});
+		(window as any).hashChangeEventSet = true;
 
 	}
-	
 
 	protected render(): DocumentFragment {
 		return this.compile(tmpl, this.props);
 	}
 }
 
-export default connect(Chat, (state) => ({selectedChat: state?.selectedChat}))
+export default connect(Chat, (state) => ({
+	selectedChat: state?.selectedChat,
+}));

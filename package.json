@@ -8,10 +8,15 @@
     "server": "node app.js",
     "start": "npm run clean && parcel build static/index.html && node app.js",
     "clean": "rimraf ./dist && rimraf ./.parcel-cache",
-    "eslint": "eslint 'src/**/*.ts' --fix",
+    "eslint": "eslint 'src/**/*.ts'",
     "test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha --require ts-node/register src/**/*.spec.ts",
-		"test-b": "./node_modules/.bin/mocha"
-  },
+		"test-b": "./node_modules/.bin/mocha",
+		"lint": "npx eslint src",
+		"lint:fix": "npm run lint -- --fix",
+		"prettier": "npx prettier src --check",
+		"prettier:fix": "npm run prettier -- --write",
+		"format": "npm run prettier:fix && npm run lint:fix"
+	},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parnasmi/middle.messenger.praktikum.yandex.git"

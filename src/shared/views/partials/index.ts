@@ -1,2 +1,2 @@
-import meta from './meta.hbs'
-export {meta}
+import meta from "./meta.hbs";
+export { meta };

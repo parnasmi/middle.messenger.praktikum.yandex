@@ -29,15 +29,15 @@ export class websocket {
 		this.ws.send(JSON.stringify(message));
 	}
 
-	static onOpen(handler:() => void) {
-		this.ws.addEventListener('open', handler);
+	static onOpen(handler: () => void) {
+		this.ws.addEventListener("open", handler);
 	}
-	static onClose(handler:WebsocketCloseHandlerType) {
-		this.ws.addEventListener('close', handler);
+	static onClose(handler: WebsocketCloseHandlerType) {
+		this.ws.addEventListener("close", handler);
 	}
 
 	static closeSocket() {
-		if(this.ws) {
+		if (this.ws) {
 			this.ws.close();
 			console.log("------ Websocket closed ------ ");
 		}

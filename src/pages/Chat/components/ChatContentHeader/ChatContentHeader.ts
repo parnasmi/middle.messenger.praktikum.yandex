@@ -14,13 +14,10 @@ export class ChatContentHeaderComponent extends Block {
 		});
 	}
 
-
 	protected render(): DocumentFragment {
 		return this.compile(tmpl, this.props);
 	}
 }
-
-
 
 export const ChatContentHeader = connect(
 	ChatContentHeaderComponent,

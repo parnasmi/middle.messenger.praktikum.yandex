@@ -4,7 +4,7 @@ import { ChatMessageType } from "./ChatMessage.types";
 
 export class ChatMessage extends Block {
 	constructor(props: ChatMessageType) {
-		const d = new Date(props.time)
+		const d = new Date(props.time);
 		super("li", {
 			...props,
 			attributes: {
@@ -19,7 +19,7 @@ export class ChatMessage extends Block {
 			isOwnMessage: props.user_id === props.currentUserId,
 			message: props.type === "message" ? props.content : "",
 			time: d.toLocaleTimeString(),
-			isRead: props?.is_read
+			isRead: props?.is_read,
 		});
 	}
 

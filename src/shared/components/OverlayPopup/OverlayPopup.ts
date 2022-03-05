@@ -1,4 +1,4 @@
-import {Block} from "../../utils";
+import { Block } from "../../utils";
 // import tmpl from './overlayPopup.tmpl.hbs';
 export class OverlayPopup extends Block {
 	constructor() {
@@ -10,6 +10,6 @@ export class OverlayPopup extends Block {
 	}
 
 	render(): DocumentFragment {
-		return new DocumentFragment()
+		return new DocumentFragment();
 	}
 }

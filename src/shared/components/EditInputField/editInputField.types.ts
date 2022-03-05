@@ -1,14 +1,13 @@
-import {IInput} from "../TextInput/textinput.types";
-import {FormFieldErrorMsgType} from "../FormFieldErrorMsg/formFieldErrorMsg.type";
-
+import { IInput } from "../TextInput/textinput.types";
+import { FormFieldErrorMsgType } from "../FormFieldErrorMsg/formFieldErrorMsg.type";
 
 export type EditInputFieldTypes = {
-  selfProps?: {
-    attributes?: {
-      class?:string
-    }
-  };
-  textInput: IInput;
-  errorMessage:FormFieldErrorMsgType;
-  label: string
-}
+	selfProps?: {
+		attributes?: {
+			class?: string;
+		};
+	};
+	textInput: IInput;
+	errorMessage: FormFieldErrorMsgType;
+	label: string;
+};
