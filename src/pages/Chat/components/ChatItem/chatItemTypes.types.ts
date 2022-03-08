@@ -1,8 +1,17 @@
-export type ChatItemTypes = {
-  id:number;
-  avatar: string;
-  from_user: string;
-  last_text_message: string;
-  date:string;
-  unread_count: number | null;
-}
+import { SignUpTypes } from "../../../../shared/modules/signUp";
+
+export type ChatItemType = {
+	avatar: null;
+	created_by: number;
+	id: number;
+	last_message: ChatItemLastMessage | null;
+	title: string;
+	unread_count: number;
+};
+
+export type ChatItemLastMessage = {
+	content: string;
+	id: number;
+	time: string;
+	user: SignUpTypes;
+};

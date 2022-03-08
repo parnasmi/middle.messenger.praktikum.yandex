@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { Meta, Events } from "./types";
 import { EventBus } from "../Eventbus";
+
 // Ревьюверу - никак не смог заставить работать через generic. Во вложенных компонентах не удалось типизировать
 export class Block<P = any> {
 	static EVENTS = {
@@ -27,7 +28,7 @@ export class Block<P = any> {
 		};
 
 		this.props = this._makePropsProxy(props || ({} as P));
-		this.children = { ...(this.props as any).children, ...children };
+		this.children = { ...(propsAndChildren as any).children, ...children };
 		this.eventBus = () => eventBus;
 		this._registerEvents(eventBus);
 		eventBus.emit(Block.EVENTS.INIT, this.props);
@@ -54,6 +55,7 @@ export class Block<P = any> {
 
 		return { children, props };
 	}
+
 	// eslint-disable-next-line no-unused-vars
 	compile(tmpl: (ctx: any) => string, props: any) {
 		const propsAndStubs = { ...props };
@@ -88,12 +90,41 @@ export class Block<P = any> {
 		return fragment.content;
 	}
 
+	private _componentDidMount(props: P) {
+		Object.values(this.children).forEach((child) => {
+			if (Array.isArray(child)) {
+				child.forEach((childElement) => childElement.dispatchComponentDidMount());
+			} else {
+				child.dispatchComponentDidMount();
+			}
+		});
+
+		this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+		setTimeout(() => {
+			this.componentDidMount(props);
+		}, 300);
+	}
+
+	public dispatchComponentDidMount() {
+		this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+	}
+
 	private _componentDidUpdate(oldProps: P, newProps: P) {
 		const response = this.componentDidUpdate(oldProps, newProps);
 
 		if (!response) return;
 
+		if (newProps && "children" in newProps) {
+			this.children = (newProps as any).children;
+		}
+
 		this._render();
+	}
+
+	// eslint-disable-next-line no-unused-vars
+	//@ts-ignore
+	public componentDidUpdate(oldProps: P, newProps: P) {
+		return true;
 	}
 
 	get element() {
@@ -154,29 +185,7 @@ export class Block<P = any> {
 	}
 
 	// eslint-disable-next-line no-unused-vars
-	public componentDidUpdate(oldProps: P, newProps: P) {
-		return true;
-	}
-
-	public dispatchComponentDidMount() {
-		this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-	}
-
-	private _componentDidMount(props: P) {
-		this.componentDidMount(props);
-
-		Object.values(this.children).forEach((child) => {
-			if (Array.isArray(child)) {
-				child.forEach((childElement) => childElement.dispatchComponentDidMount());
-			} else {
-				child.dispatchComponentDidMount();
-			}
-		});
-
-		this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-	}
-
-	// eslint-disable-next-line no-unused-vars
+	//@ts-ignore
 	public componentDidMount(props: P) {}
 
 	public init() {
@@ -203,10 +212,12 @@ export class Block<P = any> {
 				return typeof value === "function" ? value.bind(target) : value;
 			},
 			set(target: Record<string, unknown>, prop: string, value: unknown) {
+				const oldValue = { ...target };
 				target[prop] = value;
 				self
 					.eventBus()
-					.emit(Block.EVENTS.FLOW_CDU, { ...target }, self._meta.props);
+					// .emit(Block.EVENTS.FLOW_CDU, { ...target }, self._meta.props);
+					.emit(Block.EVENTS.FLOW_CDU, oldValue, target);
 				return true;
 			},
 			deleteProperty() {
@@ -217,13 +228,14 @@ export class Block<P = any> {
 
 	public setProps = (nextProps: P) => {
 		if (!nextProps) return;
-
+		// const { children, props } = this._getChildren(nextProps);
 		Object.assign(this.props, nextProps);
 	};
 
 	public show() {
 		this.getContent().style.display = "block";
 	}
+
 	public hide() {
 		this.getContent().style.display = "none";
 	}

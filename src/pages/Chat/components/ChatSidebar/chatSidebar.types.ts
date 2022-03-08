@@ -1,3 +1,1 @@
-export type ChatSidebarTypes = {
-  
-}
+export type ChatSidebarTypes = {};

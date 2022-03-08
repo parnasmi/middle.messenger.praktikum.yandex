@@ -1,34 +1,58 @@
-import {Block} from "../../../../shared/utils";
-import tmpl from './chatSidebar.tmpl.hbs';
-import {ChatSearch} from "../ChatSearch";
-import {ChatItemTypes} from "../ChatItem/chatItemTypes.types";
-import {ChatItem} from "../ChatItem/ChatItem";
-type ChatSidebarType = {
-  chatItems: ChatItemTypes[]
-}
+import { Router } from "../../../../shared/utils";
+import tmpl from "./chatSidebar.tmpl.hbs";
+import { ChatSearch } from "../ChatSearch";
+import { ChatSidebarProfileLink } from "../ChatSidebarProfileLink";
+import { Button, Popup } from "../../../../shared/components";
+import { ChatCreatePopup } from "../../../../shared/components/ChatCreatePopup";
+import { ChatController } from "../../../../shared/modules/chat/chat.controller";
+import ChatList from "../ChatList";
 
-export class ChatSidebar extends Block {
-	constructor({ chatItems }:ChatSidebarType) {
+const router = new Router("#root");
+const chatController = new ChatController();
+
+export class ChatSidebar extends Popup {
+	constructor() {
 		const searchInput = new ChatSearch({
 			events: {
 				blur: (e: Event) =>
 					console.log("on blur chatSearch", (e.target as HTMLInputElement).value),
 			},
 		});
+		const createChatButton = new Button({
+			title: "Создать чат",
+			attributes: {
+				class: "",
+				type: "button",
+				"data-modal-target": "chat-create-popup",
+			},
+		});
+
+		const chatCreatePopup = new ChatCreatePopup();
+		const profileButton = new ChatSidebarProfileLink({
+			events: {
+				click: (e: Event) => {
+					e.preventDefault();
+					router.go("/settings");
+				},
+			},
+		});
+		// console.log('chatCreatePopup',chatCreatePopup)
+
 		super("aside", {
 			attributes: {
-				class: "chat__sidebar flex-shrink-0 full-h"
+				class: "chat__sidebar flex-shrink-0 full-h",
 			},
-			searchInput,
+			children: {
+				searchInput,
+				createChatButton,
+				chatCreatePopup,
+				profileButton,
+				chatList: new ChatList(),
+			},
 		});
-    this._generateChatItems(chatItems)
-	}
 
-	private _generateChatItems(chatItems: ChatItemTypes[]) {
-    this.children.chatList = [...chatItems,...chatItems,...chatItems,...chatItems,...chatItems].map((chat, index) => {
-      return new ChatItem(chat);
-    })
-  }
+		chatController.getChatList();
+	}
 
 	render(): DocumentFragment {
 		return this.compile(tmpl, this.props);

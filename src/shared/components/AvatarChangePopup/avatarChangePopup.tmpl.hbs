@@ -1,0 +1,11 @@
+<div class="popup__inner">
+	{{#if fileHasbeenUploaded}}
+		<div class="popup__heading">Файл загружен</div>
+	{{/if}}
+	{{{form}}}
+	{{#if filename}}
+		<span></span>
+	{{else}}
+		<div class="popup__instruction-text">{{errorText}}</div>
+	{{/if}}
+</div>

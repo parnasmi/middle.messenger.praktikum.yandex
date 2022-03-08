@@ -1,6 +1,6 @@
-import {Block, compile, mergeClassnames} from "../../utils";
-import tmpl from './FormFieldErrorMsg.tmpl.hbs'
-import {FormFieldErrorMsgType} from "./formFieldErrorMsg.type";
+import { Block, compile, mergeClassnames } from "../../utils";
+import tmpl from "./FormFieldErrorMsg.tmpl.hbs";
+import { FormFieldErrorMsgType } from "./formFieldErrorMsg.type";
 
 export class FormFieldErrorMsg extends Block {
 	constructor(props: FormFieldErrorMsgType) {
@@ -14,8 +14,7 @@ export class FormFieldErrorMsg extends Block {
 	}
 
 	componentDidUpdate(oldProps: any, newProps: any): boolean {
-
-    if(newProps.isShown) {
+		if (newProps.isShown) {
 			this.show();
 			return true;
 		}
@@ -24,10 +23,9 @@ export class FormFieldErrorMsg extends Block {
 	}
 
 	render() {
-		if(this.props.isShown) {
+		if (this.props.isShown) {
 			return compile(tmpl, this.props);
 		}
-		return new DocumentFragment()
-
+		return new DocumentFragment();
 	}
 }

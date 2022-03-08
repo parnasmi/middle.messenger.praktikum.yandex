@@ -4,6 +4,8 @@ import { Block } from "../../shared/utils";
 import tmpl from "./profileEdit.tmpl.hbs";
 import { ProfileNav, ProfileAvatar } from "../../shared/components";
 import { EditForm } from "./components";
+import store from "../../shared/store";
+import { RESOURCE_URL } from "../../../config";
 
 const userProfileData: Record<string, string> = {
 	email: "pochta@yandex.ru",
@@ -16,9 +18,9 @@ const userProfileData: Record<string, string> = {
 
 export class ProfileEdit extends Block {
 	constructor() {
-		document.title = "Profile";
+		document.title = "Profile Update";
 		const profileNav = new ProfileNav();
-		const profileAvatar = new ProfileAvatar({});
+		const profileAvatar = new ProfileAvatar({ avatarUrl: null });
 		const editForm = new EditForm({ userProfileData });
 		super("main", {
 			attributes: {
@@ -30,11 +32,15 @@ export class ProfileEdit extends Block {
 				editForm,
 			},
 		});
-
-		// this._generateFormAfterDidMount(dataItemJson)
 	}
 
-	//TODO: _generateFormAfterDidMount
+	componentDidMount() {
+		const user = store.getState().user;
+		(this.children.editForm as Block).setProps({ userProfileData: user });
+		(this.children.profileAvatar as Block).setProps({
+			avatarUrl: `${RESOURCE_URL}${user.avatar}`,
+		});
+	}
 
 	render(): DocumentFragment {
 		return this.compile(tmpl, this.props);

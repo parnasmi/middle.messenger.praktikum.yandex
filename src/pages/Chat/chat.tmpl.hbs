@@ -1,4 +1,10 @@
 <section class="chat full-h-w flex">
 	{{{chatSidebar}}}
-	{{{chatContent}}}
+	{{#if selectedChat}}
+		{{{chatContent}}}
+	{{else}}
+		{{{chatPending}}}
+	{{/if}}
+
+	{{{overlayPopup}}}
 </section>

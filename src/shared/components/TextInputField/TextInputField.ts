@@ -1,8 +1,8 @@
-import {Block, mergeClassnames} from "../../utils";
-import {TextInput} from "../TextInput";
-import {FormFieldErrorMsg} from "../FormFieldErrorMsg";
-import {TextInputFieldTypes} from "./textInputField.types";
-import tmpl from './textInputField.tmpl.hbs'
+import { Block, mergeClassnames } from "../../utils";
+import { TextInput } from "../TextInput";
+import { FormFieldErrorMsg } from "../FormFieldErrorMsg";
+import { TextInputFieldTypes } from "./textInputField.types";
+import tmpl from "./textInputField.tmpl.hbs";
 
 export class TextInputField extends Block {
 	constructor(props: TextInputFieldTypes) {
@@ -12,9 +12,11 @@ export class TextInputField extends Block {
 		super("div", {
 			attributes: {
 				...(props.selfProps?.attributes || {}),
-				class: `sign-form__field ${mergeClassnames(props.selfProps?.attributes?.class)}`
+				class: `sign-form__field ${mergeClassnames(
+					props.selfProps?.attributes?.class,
+				)}`,
 			},
-			children: {textInput, errorMessage},
+			children: { textInput, errorMessage },
 		});
 	}
 
@@ -25,10 +27,10 @@ export class TextInputField extends Block {
 	}
 
 	public validateInput(isValid: boolean) {
-		(this.children.errorMessage as Block).setProps({ isShown: !isValid })
+		(this.children.errorMessage as Block).setProps({ isShown: !isValid });
 	}
 
 	render(): DocumentFragment {
-		return this.compile(tmpl, this.props)
+		return this.compile(tmpl, this.props);
 	}
 }

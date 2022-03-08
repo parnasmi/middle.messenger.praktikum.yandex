@@ -1,0 +1,11 @@
+<h1 class="sign-form__heading">{{headingText}}</h1>
+<div class="sign-form__fields {{signFormModifierClass}}">
+	{{#each inputs}}
+		{{{this}}}
+	{{/each}}
+	{{{apiErrorText}}}
+	{{{spinner}}}
+</div>
+<div class="sign-forms__buttons mt-auto text-center">
+	{{{button}}}
+</div>
