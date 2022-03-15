@@ -1,21 +1,11 @@
 import { Block } from "../../shared/utils";
 import tmpl from "./chat.tmpl.hbs";
-// import { base } from "../../shared/views/layouts";
-
-// const layouts = require("handlebars-layouts");
 import "../../scss/styles.scss";
 import "../../scss/pages/chat/index.scss";
 import { ChatContent, ChatSidebar, ChatPending } from "./components";
 import { OverlayPopup } from "../../shared/components/OverlayPopup";
-// import handlebars from "handlebars/dist/handlebars.runtime";
 import store, { connect } from "../../shared/store";
 import { ChatItemType } from "./components/ChatItem/chatItemTypes.types";
-
-// const searchIcon = new URL("../../assets/img/icon-search.svg", import.meta.url);
-// Register helpers
-// handlebars.registerHelper(layouts(handlebars));
-// Register partials
-// handlebars.registerPartial("layout", base);
 
 class Chat extends Block {
 	constructor() {
@@ -27,7 +17,6 @@ class Chat extends Block {
 			attributes: {
 				class: "full-h-w chat-page",
 			},
-			// searchIcon: searchIcon,
 			children: {
 				chatSidebar,
 				chatContent,
@@ -36,8 +25,6 @@ class Chat extends Block {
 			},
 		});
 		document.title = "Chat";
-		//Ревьюэру: Где и как отписаться от hashchange не смог решить. Поэтому пошел таким путем. Был рад если
-		// если подсказали как отписаться в таких случае. У нас же нет componentDidUnmount.
 		if(!('hashChangeEventSet' in window)) {
 			window.addEventListener("hashchange", () => {
 				const chatId = window.location.hash.slice(1);

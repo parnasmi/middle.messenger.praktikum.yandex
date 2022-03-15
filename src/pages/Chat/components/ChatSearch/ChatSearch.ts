@@ -1,10 +1,7 @@
 import { Block } from "../../../../shared/utils";
 import tmpl from "./chatSearch.tmpl.hbs";
 import { ChatSearchTypes } from "./chatSearch.types";
-const searchIcon = new URL(
-	"../../../../assets/img/icon-search.svg",
-	import.meta.url,
-);
+import searchIcon from '../../../../assets/img/icon-search.svg'
 export class ChatSearch extends Block {
 	constructor(props: ChatSearchTypes) {
 		super("div", {

@@ -73,7 +73,6 @@
   },
   "dependencies": {
     "@types/hbs": "^4.0.1",
-    "handlebars-layouts": "^3.1.4",
     "nanoid": "^3.2.0"
   }
 }
