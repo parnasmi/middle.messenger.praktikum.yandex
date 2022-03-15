@@ -45,13 +45,15 @@ export class AuthController {
 			store.initialSet("user", userdata);
 			return userdata;
 		} catch (e) {
-			console.log("error while fetching user", e);
+			console.error("error while fetching user1", e);
+
 			initializePublicRoutes();
 			if (document.location.pathname === "/sign-up") {
 				router.go("/sign-up");
 				return;
 			}
 			router.go("/");
+			throw new Error('hello error');
 		}
 	}
 }

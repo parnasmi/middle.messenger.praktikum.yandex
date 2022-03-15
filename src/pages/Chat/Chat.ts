@@ -1,21 +1,21 @@
 import { Block } from "../../shared/utils";
 import tmpl from "./chat.tmpl.hbs";
-import { base } from "../../shared/views/layouts";
+// import { base } from "../../shared/views/layouts";
 
-const layouts = require("handlebars-layouts");
+// const layouts = require("handlebars-layouts");
 import "../../scss/styles.scss";
 import "../../scss/pages/chat/index.scss";
 import { ChatContent, ChatSidebar, ChatPending } from "./components";
 import { OverlayPopup } from "../../shared/components/OverlayPopup";
-import handlebars from "handlebars/dist/handlebars.runtime";
+// import handlebars from "handlebars/dist/handlebars.runtime";
 import store, { connect } from "../../shared/store";
 import { ChatItemType } from "./components/ChatItem/chatItemTypes.types";
 
-const searchIcon = new URL("../../assets/img/icon-search.svg", import.meta.url);
+// const searchIcon = new URL("../../assets/img/icon-search.svg", import.meta.url);
 // Register helpers
-handlebars.registerHelper(layouts(handlebars));
+// handlebars.registerHelper(layouts(handlebars));
 // Register partials
-handlebars.registerPartial("layout", base);
+// handlebars.registerPartial("layout", base);
 
 class Chat extends Block {
 	constructor() {
@@ -27,7 +27,7 @@ class Chat extends Block {
 			attributes: {
 				class: "full-h-w chat-page",
 			},
-			searchIcon: searchIcon,
+			// searchIcon: searchIcon,
 			children: {
 				chatSidebar,
 				chatContent,

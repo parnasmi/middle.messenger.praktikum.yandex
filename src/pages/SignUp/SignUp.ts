@@ -1,18 +1,18 @@
 import { Block } from "../../shared/utils";
-import handlebars from "handlebars/dist/handlebars.runtime";
+// import handlebars from "handlebars/dist/handlebars.runtime";
 import tmpl from "./signUp.tmpl.hbs";
-import { base } from "../../shared/views/layouts";
+// import { base } from "../../shared/views/layouts";
 
-const layouts = require("handlebars-layouts");
+// const layouts = require("handlebars-layouts");
 import "../../scss/styles.scss";
 import "../../scss/pages/sign-form.scss";
 import { SignForm } from "../../shared/components";
 import { signUpJsonData } from "./signUpJsonData";
 
 // Register helpers
-handlebars.registerHelper(layouts(handlebars));
+// handlebars.registerHelper(layouts(handlebars));
 // Register partials
-handlebars.registerPartial("layout", base);
+// handlebars.registerPartial("layout", base);
 
 export class SignUp extends Block {
 	constructor() {

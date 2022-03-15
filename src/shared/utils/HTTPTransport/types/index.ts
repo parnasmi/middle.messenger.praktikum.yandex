@@ -1,3 +1,3 @@
 export { HTTPMethods } from "./HTTPMethods";
-export { HTTPOptions } from "./HTTPOptions";
-export { XHRHTTPRequestResultType } from "./XHRHTTPRequestResultType";
+export type { HTTPOptions } from "./HTTPOptions";
+export type { XHRHTTPRequestResultType } from "./XHRHTTPRequestResultType";
