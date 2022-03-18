@@ -21,6 +21,11 @@
     "watch": "webpack --watch",
     "serve": "webpack serve"
   },
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm-run-all test lint"
+		}
+	},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parnasmi/middle.messenger.praktikum.yandex.git"
@@ -52,6 +57,7 @@
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
     "jsdom": "^19.0.0",
     "mocha": "^9.2.2",
     "postcss": "^8.4.8",
