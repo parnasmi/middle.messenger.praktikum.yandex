@@ -6,7 +6,7 @@
     "dev": "npm run clean && parcel static/index.html",
     "build": "webpack --mode=production --node-env=production",
     "server": "node app.js",
-    "start": "npm run clean && parcel build static/index.html && node app.js",
+    "start": "npm-run-all build:prod server",
     "clean": "rimraf ./dist",
     "eslint": "eslint 'src/**/*.ts'",
     "test": "TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha --require ts-node/register src/**/*.spec.ts",
