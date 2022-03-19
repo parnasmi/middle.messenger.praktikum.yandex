@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:17-alpine3.14
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -9,9 +9,8 @@ WORKDIR /usr/src/app
 COPY package*.json /.
 
 RUN npm install
-RUN npm run build
-# Bundle app source
-COPY . .
 
-EXPOSE 3000
+COPY . .
+RUN npm run build
+CMD npm run server
 
