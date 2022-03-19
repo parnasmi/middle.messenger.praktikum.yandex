@@ -1,9 +1,12 @@
 ### Веб приложение "Chat"
 
-В проекте были использован сборщик Parcel
-- Чтобы запустить в режиме разработки нужно запустить команду `npm run dev`
+В проекте на 4 ом спринте Parcel был заменен на Webpack и 
+- добавлен webpack config с соответствующими плагинами и лоадерами.
+- Чтобы запустить в режиме разработки нужно запустить команду `npm run serve`
 - Чтобы собрать build, нужно запустить команду `npm run build`
 - Чтобы запустить сервер на порту 3000, нужно запустить команду `npm run start`
+- Добавлен Dockerfile и Makefile для сборки образа и запуска контейнера.
+
 
 
 ##Использован компонентный подход
@@ -15,11 +18,14 @@
 ## Адрес задеплоенной версии
 https://loving-banach-cbcad4.netlify.app/
 
+## Адрес задеплоенной версии на Heroku
+https://infinite-depths-38111.herokuapp.com/
+
+### Ссылка на PR Спринт 4
+https://github.com/parnasmi/middle.messenger.praktikum.yandex/pull/4
 
 ### Ссылка на PR Спринт 3
 https://github.com/parnasmi/middle.messenger.praktikum.yandex/pull/3
-
-
 
 ### Ссылка на PR Спринт 1
 https://github.com/parnasmi/middle.messenger.praktikum.yandex/pull/1
