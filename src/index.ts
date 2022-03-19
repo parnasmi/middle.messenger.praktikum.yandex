@@ -36,5 +36,6 @@ authController
 	})
 	.catch(() => {
 		initializePublicRoutes();
+		console.log('hello, world')
 		router.go(document.location.pathname);
 	});

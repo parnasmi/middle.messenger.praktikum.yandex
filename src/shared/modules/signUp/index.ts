@@ -1,2 +1,2 @@
 export { SignUpController } from "./signUp.controller";
-export { SignUpTypes } from "./signUp.types";
+export type { SignUpTypes } from "./signUp.types";
