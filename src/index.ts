@@ -14,7 +14,7 @@ const authController = new AuthController();
 
 export function initializePrivateRoutes() {
 	router
-		// .use("/", Chat)
+		.use("/", Chat)
 		.use("/messenger", Chat)
 		.use("/settings", Profile)
 		.use("/settings-update", ProfileEdit)

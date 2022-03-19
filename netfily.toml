@@ -10,4 +10,5 @@
 
 [[redirects]]
     from = "/*"
-    to = "/index"
+    to = "/"
+    status = 200
