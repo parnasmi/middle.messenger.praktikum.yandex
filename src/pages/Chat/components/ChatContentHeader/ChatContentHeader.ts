@@ -5,7 +5,6 @@ import { RESOURCE_URL } from "../../../../../config";
 
 export class ChatContentHeaderComponent extends Block {
 	constructor(props: any) {
-		console.log("chatAvatar props", props);
 		super("header", {
 			attributes: {
 				class: "chat__content-header flex justify-between",

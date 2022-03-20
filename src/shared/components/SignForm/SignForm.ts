@@ -40,9 +40,8 @@ export class SignForm extends Form<SignUpTypes> {
 
 		if (this.props.pageType === "sign-up") {
 			signUpController.register(this.formData, {
-				success: (data) => {
-					console.log("data in callback", data);
-				},
+				// eslint-disable-next-line no-unused-vars
+				success: (data) => {},
 				error: (error) => {
 					(this.children.apiErrorText as Block).show();
 					(this.children.apiErrorText as Block).setProps({
@@ -57,9 +56,8 @@ export class SignForm extends Form<SignUpTypes> {
 
 		if (this.props.pageType === "sign-in") {
 			authController.signIn(this.formData, {
-				success: (data) => {
-					console.log("data in callback", data);
-				},
+				// eslint-disable-next-line no-unused-vars
+				success: (data) => {},
 				error: (error) => {
 					(this.children.apiErrorText as Block).show();
 					(this.children.apiErrorText as Block).setProps({
