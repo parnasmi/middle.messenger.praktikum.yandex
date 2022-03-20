@@ -20,7 +20,7 @@ export class AuthController {
 			cb?.success!(userData);
 			initializePrivateRoutes();
 			router.go("/messenger");
-			console.log("sign in data", { data, userData });
+			// console.log("sign in data", { data, userData });
 		} catch (e: unknown) {
 			console.error("sign in error", e);
 			cb?.error!((e as XHRHTTPRequestResultType).json());
@@ -32,6 +32,7 @@ export class AuthController {
 	public async logout(cb: IFormCallback) {
 		try {
 			await authApi.logout();
+			initializePublicRoutes();
 			cb?.success!();
 		} catch (e) {
 			console.error("error occured while logout");
@@ -45,13 +46,14 @@ export class AuthController {
 			store.initialSet("user", userdata);
 			return userdata;
 		} catch (e) {
-			console.log("error while fetching user", e);
+			// console.error("error while fetching user1", e);
 			initializePublicRoutes();
 			if (document.location.pathname === "/sign-up") {
 				router.go("/sign-up");
 				return;
 			}
 			router.go("/");
+			throw new Error('hello error');
 		}
 	}
 }

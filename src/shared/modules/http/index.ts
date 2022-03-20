@@ -4,4 +4,4 @@ export { SignUpApi } from "./signUpApi";
 export { AuthApi } from "./authApi";
 export { ProfileApi } from "./profileApi";
 
-export { PassWordFormType } from "./http.types";
+export type { PassWordFormType } from "./http.types";

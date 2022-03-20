@@ -66,7 +66,7 @@ export class Profile extends Popup {
 						success: () => {
 							setTimeout(() => {
 								initializePublicRoutes();
-								router.go("/");
+								router.go("/sign-in");
 							}, 100);
 						},
 					});

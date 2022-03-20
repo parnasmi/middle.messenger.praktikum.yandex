@@ -1,11 +1,7 @@
 import { Block, mergeClassnames } from "../../utils";
 import tmpl from "./profileAvatar.tmpl.hbs";
 import { ProfileAvatarTypes } from "./ProfileAvatar.types";
-
-const avatarIcon = new URL(
-	"../../../assets/img/icon-avatar.svg",
-	import.meta.url,
-);
+import  avatarIcon from '../../../assets/img/icon-avatar.svg';
 
 export class ProfileAvatar extends Block {
 	constructor(props: ProfileAvatarTypes) {

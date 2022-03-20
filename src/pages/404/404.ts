@@ -3,7 +3,7 @@ import tmpl from "./404.tmpl.hbs";
 import "../../scss/styles.scss";
 import "../../scss/pages/service-page.scss";
 
-export class NotFound extends Block<{}> {
+export class NotFound extends Block {
 	constructor() {
 		super("main", {
 			attributes: {
