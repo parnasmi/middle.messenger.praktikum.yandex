@@ -97,11 +97,12 @@ export class HTTPTransport {
 		timeout = 5000,
 	): Promise<XHRHTTPRequestResultType> => {
 		const {
-			headers = { ...defaultOptions.headers },
+			headers,
 			data = defaultOptions.data,
 			method = defaultOptions.method,
 			queryParams = defaultOptions.queryParams,
 		} = options;
+
 
 		const self = this;
 		return new Promise((resolve, reject) => {
@@ -114,13 +115,14 @@ export class HTTPTransport {
 				true,
 			);
 			xhr.withCredentials = true;
+			const containedHeaders = { ...defaultOptions.headers, ...headers };
 			const isMultiPartHeader =
 				options?.headers?.["content-type"] === "multipart/form-data";
-			const headerKeys = Object.keys(isMultiPartHeader ? {} : headers);
+			const headerKeys = Object.keys(isMultiPartHeader ? {} : containedHeaders);
 
 			if (headerKeys.length) {
 				headerKeys.forEach((key) => {
-					xhr.setRequestHeader(key, headers[key]);
+					xhr.setRequestHeader(key, containedHeaders[key]);
 				});
 			}
 

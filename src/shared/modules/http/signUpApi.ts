@@ -6,8 +6,10 @@ const signUpHttpInstance = new HTTPTransport({ endPoint: "/auth" });
 
 export class SignUpApi extends BaseApi {
 	create(signUpData: SignUpTypes) {
+		const data = {...signUpData};
+		delete (data as any).retypePassword;
 		return signUpHttpInstance.post("/signup", {
-			data: JSON.stringify(signUpData),
+			data: JSON.stringify(data),
 			headers: {
 				mode: "cors",
 				credentials: "true"
